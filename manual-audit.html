@@ -11,6 +11,7 @@
     try {
       const saved = localStorage.getItem('aimy-ds-theme');
       if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      if (new URLSearchParams(location.search).get('embed') === '1') document.documentElement.classList.add('is-embedded');
     } catch (error) {}
   </script>
   <style>
@@ -1645,6 +1646,52 @@ body {
 }
 .kpi-card.is-active {
   box-shadow: 0 0 0 2px rgba(var(--qa-accent-rgb),.10), var(--shadow-md);
+}
+html.is-embedded,
+html.is-embedded body {
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+html.is-embedded .app-topnav,
+html.is-embedded .app-sidebar,
+html.is-embedded .page-head,
+html.is-embedded #qaDock,
+html.is-embedded #supportPane,
+html.is-embedded .restore-support-btn,
+html.is-embedded .support-backdrop,
+html.is-embedded .mobile-nav,
+html.is-embedded .source-global-btn {
+  display: none !important;
+}
+html.is-embedded .app {
+  position: static;
+  inset: auto;
+  display: block;
+  height: 100%;
+  min-height: 0;
+}
+html.is-embedded .main,
+html.is-embedded .workspace,
+html.is-embedded .audit-pane {
+  height: 100%;
+  min-height: 0;
+}
+html.is-embedded .workspace {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+}
+html.is-embedded .audit-pane {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+html.is-embedded .audit-scroll {
+  height: 100%;
+  padding: 0 4px 24px;
 }
 </style>
 </head>
