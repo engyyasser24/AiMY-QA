@@ -18444,7 +18444,7 @@
             passRate: '38%',
             ticketCount: 14,
             tickets: [
-              { date: 'Jun 2, 2026', channel: 'voice', type: 'Agent', score: 52, scoreClass: 'err', status: 'fail', summary: 'Failed to confirm resolution before closing. Customer escalated.', detailId: 'eval-detail-human' },
+              { date: 'May 7, 2026', channel: 'voice', type: 'Agent', score: 52, scoreClass: 'err', status: 'fail', summary: 'Failed to confirm resolution before closing. Customer escalated.', detailId: 'eval-detail-human', route: 'manual-audit.html?eval=ev-1042&from=reviews' },
               { date: 'Jun 4, 2026', channel: 'voice', type: 'Agent', score: 67, scoreClass: 'warn', status: 'borderline', summary: 'Good empathy but missed follow-up SOP. Tone consistently professional.' },
               { date: 'Jun 5, 2026', channel: 'email', type: 'Agent', score: 71, scoreClass: 'warn', status: 'borderline', summary: 'Response time within SLA. Resolution confirmed but phrasing imprecise.' },
               { date: 'Jun 6, 2026', channel: 'chat', type: 'Agent', score: 48, scoreClass: 'err', status: 'fail', summary: 'Customer expressed frustration twice with no de-escalation attempt.' },
@@ -18599,8 +18599,12 @@
 
               /* Wire click */
               if (t.detailId) {
-                shell.onclick = (function(id, name) {
+                shell.onclick = (function(id, name, route) {
                   return function() {
+                    if (route) {
+                      window.location.href = route;
+                      return;
+                    }
                     var lbl1 = document.getElementById('evalDetailBackLabel');
                     var lbl2 = document.getElementById('evalDetailAiBackLabel');
                     var backText = name + ' \u00b7 Tickets this week';
@@ -18608,10 +18612,14 @@
                     if (lbl2) lbl2.textContent = backText;
                     window.openEvalDetail(id, true);
                   };
-                })(t.detailId, agentName);
-                shell.onkeydown = (function(id, name) {
+                })(t.detailId, agentName, t.route);
+                shell.onkeydown = (function(id, name, route) {
                   return function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
+                      if (route) {
+                        window.location.href = route;
+                        return;
+                      }
                       var lbl1 = document.getElementById('evalDetailBackLabel');
                       var lbl2 = document.getElementById('evalDetailAiBackLabel');
                       var backText = name + ' \u00b7 Tickets this week';
@@ -18620,7 +18628,7 @@
                       window.openEvalDetail(id, true);
                     }
                   };
-                })(t.detailId, agentName);
+                })(t.detailId, agentName, t.route);
               } else {
                 shell.onclick = function() {
                   if (window.showToast) window.showToast({ title: 'Full eval not yet loaded', sub: 'This ticket\'s evaluation detail is not available in this demo.' });
@@ -22404,7 +22412,7 @@
            pinned to what those pages actually say. A summary that disagrees
            with the page it summarises is the defect, not the shortcut. */
         var I = [
-          { id: "ev-1042", fails: ["g-followup", "g-resolution"], agent: "Omar Abdallah", d: "2026-05-07", ch: "voice",  score: 52, st: "fail",   conf: "high", sent: "neg", verdict: "awaiting",   detail: "eval-detail-human", sum: "Failed to confirm resolution before closing. Customer escalated." },
+          { id: "ev-1042", fails: ["g-followup", "g-resolution"], agent: "Omar Abdallah", d: "2026-05-07", ch: "voice",  score: 52, st: "fail",   conf: "high", sent: "neg", verdict: "awaiting",   detail: "eval-detail-human", route: "manual-audit.html?eval=ev-1042&from=reviews", sum: "Failed to confirm resolution before closing. Customer escalated." },
           { id: "ev-1043", fails: ["g-followup", "g-resolution", "g-survey"], agent: "AiMY",          d: "2026-05-08", ch: "chat",   score: 58, st: "fail",   conf: "high", sent: "neg", verdict: "awaiting",   detail: "eval-detail-ai",    sum: "Cancellation confirmed but the timeline question went unanswered." },
           { id: "ev-1044", fails: ["g-survey", "g-empathy"], agent: "Tariq Mansour", d: "2026-05-09", ch: "voice",  score: 61, st: "fail",   conf: "med",  sent: "neg", verdict: "awaiting",   detail: "eval-detail-human", sum: "Long hold without an update. Resolution correct but late." },
           { id: "ev-1045", fails: [], agent: "Sarah Reyes",   d: "2026-05-09", ch: "chat",   score: 96, st: "pass",   conf: "high", sent: "pos", verdict: "confirmed",  detail: "eval-detail-human", sum: "Clean handling end to end. Survey promoted." },
@@ -23133,6 +23141,10 @@
           var er = t.closest("[data-open-eval]");
           if (er) {
             var rec = I.filter(function (y) { return y.id === er.dataset.evalId; })[0];
+            if (rec && rec.route) {
+              window.location.href = rec.route;
+              return;
+            }
             if (rec && window.hydrateEvalDetail) window.hydrateEvalDetail(er.dataset.openEval, rec);
             if (window.openEvalDetail) window.openEvalDetail(er.dataset.openEval);
             return;
@@ -23185,6 +23197,7 @@
           var deep = fromUrl();
           paintFilters(); paintSort(); paintRows();
           if (deep) {
+            if (window.setView) window.setView("evals");
             var sec = document.getElementById("evalListAccountWide");
             if (sec) sec.scrollIntoView({ block: "start" });
           }
