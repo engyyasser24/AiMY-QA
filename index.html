@@ -5182,13 +5182,13 @@
         align-items: flex-start;
         justify-content: space-between;
         gap: 12px;
-        padding: 16px 20px 16px;
+        padding: 10px 20px;
         border-bottom: 1px solid var(--wash-5);
       }
       .eval-header-left {
         display: flex;
-        flex-direction: column;
-        gap: 3px;
+        align-items: baseline;
+        gap: 10px;
       }
       .eval-title {
         font-size: 15px;
@@ -6623,12 +6623,13 @@
       .dashboard-section-head h2 { font-family:var(--font-display); font-size:17px; font-weight:800; color:var(--d50); letter-spacing:-.01em; }
       .dashboard-section-head span { font-size:11px; color:var(--d500); }
       .bcard-stat.is-word { font-size:25px; letter-spacing:-.02em; }
-      .eval-header-sub { margin-left:auto; font-size:11px; color:var(--d500); }
+      .eval-header-sub { margin-left:0; font-size:11px; color:var(--d300); }
       .eval-bars-section-label strong { color:var(--d300); }
       .eval-bars-section-label { display:flex; align-items:center; justify-content:space-between; gap:12px; }
       .eval-bars-column-label { font-size:9px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--d300); }
       @media (max-width:700px) {
-        .eval-header-sub { display:block; width:100%; margin:3px 0 0; }
+        .eval-header-left { align-items:flex-start; flex-direction:column; gap:3px; }
+        .eval-header-sub { display:block; width:auto; margin:0; }
       }
 
       /* Quality × CSAT quadrant bubble chart */
@@ -8842,13 +8843,13 @@
                   <span class="type-label">Total audits</span>
                   <span class="priority-badge">P3 · Stable</span>
                 </div>
-                <div class="bcard-stat-line"><span class="bcard-stat">396</span><span class="bcard-stat-cap">of <b>550</b> eligible tickets</span></div>
+                <div class="bcard-stat-line"><span class="bcard-stat">396</span><span class="bcard-stat-cap">of <b>550</b> eligible interactions</span></div>
                 
                 <div class="aimy-done">
                   <svg class="aimy-done-mark" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
                   <span class="work-state ws-completed" data-work-state="completed"><span class="ws-dot"></span>Completed</span><span class="aimy-done-text"><b>72% coverage</b> across <b>all products</b></span>
                   <span class="aimy-done-actions">
-                    <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="Show the 396 audited tickets out of 550 eligible (72% coverage) by product." data-aimy-topic="audit-volume">Review audited tickets</button>
+                    <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="Show the 396 audited interactions out of 550 eligible (72% coverage) by product." data-aimy-topic="audit-volume">Review audited interactions</button>
                   </span>
                 </div>
               </div>
@@ -8862,7 +8863,7 @@
                   <span class="priority-badge">P3 · Healthy</span>
                 </div>
                 <div class="bcard-stat-line"><span class="bcard-stat ok">7.3%</span><span class="bcard-stat-cap">of audits fail</span></div>
-                <div class="bcard-status">Out of 396 audited tickets</div>
+                <div class="bcard-status">Out of 396 audited interactions</div>
                 <div class="aimy-done">
                   <svg class="aimy-done-mark" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
                   <span class="work-state ws-completed" data-work-state="completed"><span class="ws-dot"></span>Completed</span><span class="aimy-done-text">Within the <b>10% fail-rate threshold</b></span>
@@ -8881,12 +8882,12 @@
                   <span class="priority-badge">P3 · Positive</span>
                 </div>
                 <div class="bcard-stat-line"><span class="bcard-stat ok">Positive</span></div>
-                <div class="bcard-status ok">39 of <b>52</b> analyzed interactions this week · <b>75%</b></div>
+                <div class="bcard-status ok">39 of <b>52</b> analyzed interactions this week</div>
                 <div class="aimy-done">
                   <svg class="aimy-done-mark" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
                   <span class="work-state ws-drafted" data-work-state="drafted"><span class="ws-dot"></span>Drafted</span><span class="aimy-done-text">Coaching drafted · <b>3 agents</b></span>
                   <span class="aimy-done-actions">
-                    <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="Positive sentiment is holding this week, with 39 of 52 analyzed interactions positive (75%). Break this down by product and show which behaviors are driving the result, current versus previous week, and the playbook we should replicate." data-aimy-undo="the sentiment coaching notes" data-aimy-topic="sentiment">Read the positive sentiment notes</button>
+                    <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="Positive sentiment is holding this week, with 39 of 52 analyzed interactions positive. Break this down by product and show which behaviors are driving the result, current versus previous week, and the playbook we should replicate." data-aimy-undo="the sentiment coaching notes" data-aimy-topic="sentiment">Read the positive sentiment notes</button>
                   </span>
                 </div>
               </div>
@@ -9178,13 +9179,13 @@
                 <div class="eval-header">
                   <div class="eval-header-left">
                     <span class="eval-title">Audit performance by product</span>
-                    <span class="eval-header-sub">audited tickets · trend</span>
+                    <span class="eval-header-sub">audited interactions · trend</span>
                   </div>
                 </div>
 
                 <!-- Top Products by Volume -->
                 <div class="eval-products-section" style="position:relative">
-                  <div class="eval-bars-section-label"><span>Audited tickets by product</span><span class="eval-bars-column-label">Quality score</span></div>
+                  <div class="eval-bars-section-label"><span>Audited interactions by product</span><span class="eval-bars-column-label">Quality score</span></div>
                   <div class="eval-bars">
                     <div class="eval-bar-row" data-segment="objectif-lune"
                       onmouseenter="evalHover('objectif-lune')" onmouseleave="scheduleEvalOut()"
