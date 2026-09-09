@@ -6055,6 +6055,10 @@
       .kpa-decision.selected.na { color: var(--d200); background: var(--wash-7); border-color: var(--wash-10); }
       .kpa-result { margin-left: auto; color: var(--d500); font-size: 10px; }
       .kpa-result b { color: var(--d200); }
+      /* Audit-only frame: player and transcript removed, audit spans full width. */
+      #eval-detail-human .call-player { display: none; }
+      #eval-detail-human .eval-detail-grid { grid-template-columns: minmax(0, 1fr); }
+      #eval-detail-human .eval-detail-grid > div:first-child { display: none; }
 
       /* Result card, expanded variant for detail page */
       /* The summary strip. Everything that was three stacked cards, on two
@@ -11283,6 +11287,83 @@
                         if (btn) decide(card, btn);
                       });
                     });
+
+                    /* Audit metadata Q&A, mirrors the manual-audit prototype's composer. */
+                    var AUDIT_META = {
+                      agent: 'The agent is Omar Abdallah (omar.abdallah@flairstech.com), Product Support, 5 months tenure.',
+                      customer: 'The customer is an unknown caller — identity was verified in the secure pre-call IVR flow.',
+                      score: 'The provisional quality score is 52% (Fail). 2 KPIs failed: Follow-up confirmation and Resolution confirmation.',
+                      confidence: 'AiMY confidence for this evaluation is 91%: full transcript available, all goals answerable, no conflicting signals.',
+                      priority: 'This interaction is a refund status escalation handled in the Product Support queue.',
+                      queue: 'Queue: Product Support · Source: Voice call.',
+                      timeline: 'The call took place on 7 May 2026 at 10:05 and ran 8 minutes 34 seconds. Audited by Nour Wael on 12 May 2026.',
+                      duration: 'Call duration was 8 minutes 34 seconds (10:05–10:13, 7 May 2026).',
+                      evaluator: 'The evaluator is Nour Wael (Quality Auditor).',
+                      auditor: 'The evaluator is Nour Wael (Quality Auditor).',
+                      issue: 'Issue reported: the customer waited three days for a refund. The agent escalated it to clear the same day.',
+                      resolution: 'Resolution: the refund was escalated on the call, but the agent closed without confirming resolution or next steps — both KPIs failed.',
+                      verdict: 'Current verdict: Fail at 52%, awaiting your manual review of the remaining KPIs.',
+                      fail: 'Failed KPIs: Follow-up confirmation (CR-041, 18 pts) and Resolution confirmation (CR-018, 16 pts).'
+                    };
+
+                    function auditAnswer(text) {
+                      var lo = text.toLowerCase();
+                      for (var key in AUDIT_META) if (lo.indexOf(key) !== -1) return AUDIT_META[key];
+                      if (/who|name/.test(lo)) return AUDIT_META.agent;
+                      if (/when|date|time/.test(lo)) return AUDIT_META.timeline;
+                      if (/why|reason/.test(lo)) return AUDIT_META.resolution;
+                      return 'I could not match that question to the metadata in this audit. Try a field such as agent, customer, score, priority, or timeline. This preview searches the included audit data; it is not connected to an AI service.';
+                    }
+
+                    function detailIsOpen() {
+                      var page = document.getElementById('eval-detail-human');
+                      return page && page.classList.contains('open');
+                    }
+
+                    function postChat(text, isUser) {
+                      var thread = document.getElementById('overlayThread');
+                      if (!thread) return;
+                      var msg = document.createElement('div');
+                      msg.className = 'chat-msg ' + (isUser ? 'user' : 'aimy');
+                      msg.innerHTML = isUser
+                        ? '<div class="msg-bubble"></div><div class="msg-avatar user-av">NW</div>'
+                        : '<div class="msg-avatar aimy-av"><svg width="23" height="25" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg></div><div class="msg-bubble"></div>';
+                      msg.querySelector('.msg-bubble').textContent = text;
+                      thread.appendChild(msg);
+                      thread.scrollTop = thread.scrollHeight;
+                    }
+
+                    function auditChatSubmit(input) {
+                      var text = (input.value || '').trim();
+                      if (!text) return;
+                      input.value = '';
+                      var overlay = document.getElementById('aimyOverlay');
+                      var bar = document.getElementById('aimyFloatBar');
+                      var suggestions = document.getElementById('overlaySuggestions');
+                      if (overlay) overlay.classList.add('open');
+                      if (bar) bar.classList.add('hidden');
+                      if (suggestions) suggestions.classList.add('hidden');
+                      postChat(text, true);
+                      setTimeout(function () { postChat(auditAnswer(text), false); }, 420);
+                    }
+
+                    document.addEventListener('keydown', function (e) {
+                      if (e.key !== 'Enter' || e.shiftKey || !detailIsOpen()) return;
+                      var input = e.target;
+                      if (input.id !== 'aimyFloatInput' && input.id !== 'overlayInput') return;
+                      e.preventDefault();
+                      e.stopPropagation();
+                      auditChatSubmit(input);
+                    }, true);
+
+                    document.addEventListener('click', function (e) {
+                      if (!detailIsOpen()) return;
+                      var send = e.target.closest && e.target.closest('#aimyFloatSend, #overlaySend');
+                      if (!send) return;
+                      e.preventDefault();
+                      e.stopPropagation();
+                      auditChatSubmit(document.getElementById(send.id === 'overlaySend' ? 'overlayInput' : 'aimyFloatInput'));
+                    }, true);
                   })();
                 </script>
               </div>
