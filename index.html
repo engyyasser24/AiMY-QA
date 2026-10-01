@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <script>
@@ -27,7 +27,7 @@
     <title>AiMY QA · Dashboard</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -48,12 +48,12 @@
         --d800: #1c2630;
         --d750: #233040;
         --d700: #2e3d50;
-        --d600: #4a5b6e;
-        --d500: #637280;
-        --d400: #8b9aaa;
-        --d300: #b0bcca;
-        --d100: #d8e0e8;
-        --d50: #eef2f6;
+        --d600: #8091a5;
+        --d500: #8394a8;
+        --d400: #93a2b4;
+        --d300: #a8b5c5;
+        --d100: #dee5ed;
+        --d50: #f5f7fb;
         --brand: #3369ff;
         --brand-dim: rgba(51, 105, 255, 0.15);
         /* QA product accent. TEMPORARY PLACEHOLDER (#8b4ff4 is Talent's purple).
@@ -61,14 +61,14 @@
         --qa-accent: #8b4ff4;
         --qa-accent-rgb: 139, 79, 244;
         --qa-accent-dim: rgba(139, 79, 244, 0.15);
-        --teal: #6fdfe2;
+        --teal: #45d3e6;
         --purple: #8b4ff4;
-        --ok: #17b26a;
-        --warn: #f79009;
-        --err: #f04438;
-        --ok-bg: rgba(23, 178, 106, 0.12);
-        --warn-bg: rgba(247, 144, 9, 0.12);
-        --err-bg: rgba(240, 68, 56, 0.12);
+        --ok: #4ed6a1;
+        --warn: #f7c95c;
+        --err: #ff7282;
+        --ok-bg: rgba(78, 214, 161, 0.12);
+        --warn-bg: rgba(247, 201, 92, 0.13);
+        --err-bg: rgba(255, 114, 130, 0.12);
 
         /* Motion tokens, only two durations allowed. Longer motion
        (chart animation, skeleton shimmer) defines its own keyframe. */
@@ -94,11 +94,11 @@
        Source of truth: design-strategy/design-system.md §1–§3. */
 
         /* Neutral ramp. --d200 was already referenced but never defined */
-        --d200: #c8d2dc;
+        --d200: #c3ceda;
 
         /* Semantic: info completes the ok/warn/err set (.ws-detected) */
-        --info: #0ea5e9;
-        --info-bg: rgba(14, 165, 233, 0.12);
+        --info: #7ea7ff;
+        --info-bg: rgba(126, 167, 255, 0.12);
 
         /* Accents are GLOBAL, one --accent per product, not per-product
        tokens. Aliased onto the existing --qa-accent trio rather than
@@ -158,6 +158,7 @@
 
         /* Type */
         --font-sans: "Urbanist", system-ui, sans-serif;
+        --font-display: "Poppins", system-ui, sans-serif;
         --font-mono: "JetBrains Mono", ui-monospace, monospace;
         /* Strongest text. White on dark, near-black on light, the
        hardcoded #fff values that assumed a dark surface now use this. */
@@ -172,7 +173,14 @@
            both animations were silently falling back to the default `ease`.
            Same value as agent-scorecards.html:69 and settings.html:96. */
         --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-      }
+      
+        --err-strong: #f04438;
+        --ink-primary: var(--d50);
+        --ink-secondary: var(--d100);
+        --ink-muted: var(--d200);
+        --ink-placeholder: var(--d400);
+        --ink-rule: var(--d600);
+}
 
       /* ══════════════════════════════════════════════════════════════════
          LIGHT THEME
@@ -212,17 +220,17 @@
 
         /* Semantic hues darkened one step, dark-mode mid-tones fail contrast
            as text on white. Tint backgrounds stay pale. */
-        --ok:   #0e9257;
-        --warn: #b26205;
-        --err:  #d92d20;
-        --info: #067dc2;
-        --ok-bg:   rgba(23,178,106,0.14);
-        --warn-bg: rgba(247,144,9,0.14);
-        --err-bg:  rgba(240,68,56,0.14);
-        --info-bg: rgba(14,165,233,0.14);
+        --ok:   #3f6b52;
+        --warn: #7a613c;
+        --err:  #8a473f;
+        --info: #4d6b85;
+        --ok-bg:   rgba(63,107,82,0.14);
+        --warn-bg: rgba(122,97,60,0.14);
+        --err-bg:  rgba(138,71,63,0.14);
+        --info-bg: rgba(138,166,189,0.14);
 
         /* Surfaces */
-        --body-bg:           #f4f6f9;
+        --body-bg:           #eef1f6;
         --card-bg:           #ffffff;
         --card-bg-raised:    #f7f9fc;
         --card-border:       rgba(16,24,40,0.10);
@@ -268,7 +276,9 @@
         --glass-bg: rgba(255,255,255,0.85);
         --glass-border: rgba(16,24,40,0.10);
         /* --card-border-focus and --code-bg are identical in both themes */
-      }
+      
+        --err-strong: #d92d20;
+}
 
       /* ── Scoped chrome corrections ────────────────────────────────────
          design-system.md §4 allows "a small set of scoped chrome/component
@@ -294,11 +304,11 @@
       }
       :root[data-theme="light"] .aimy-overlay { background: rgba(244,246,249,0.86); }
       :root[data-theme="light"] .overlay-input-bar,
-      :root[data-theme="light"] .msg-bubble { background: var(--card-bg); }
-      :root[data-theme="light"] .chat-msg.user .msg-bubble { background: var(--qa-accent-dim); color: var(--d50); }
+      :root[data-theme="light"] .msg-bubble { background: transparent; }
+      :root[data-theme="light"] .chat-msg.user .msg-bubble { background: transparent; color: var(--d50); }
       /* ── Solid semantic fills in light ────────────────────────────────
          These chips use DARK text on a bright fill, which reads well against
-         dark-theme --ok (#17b26a, 6.6:1). Light darkens --ok to #0e9257 for
+         dark-theme --ok (#7fae94, 6.6:1). Light darkens --ok to #3f6b52 for
          text legibility, and dark-on-dark-green drops to 3.5:1. White on the
          same fill is 4.1:1, so the text inverts rather than the fill, the
          chip keeps its meaning and its colour. */
@@ -326,7 +336,7 @@
       :root[data-theme="light"] .filter-chip:hover { color: rgba(16,24,40,0.92); }
 
       /* Solid-green confirm buttons: dark text works on dark-theme --ok
-         (#17b26a) but, not on light's darker #0e9257. */
+         (#7fae94) but, not on light's darker #3f6b52. */
       :root[data-theme="light"] .fbt-fb.yes,
       :root[data-theme="light"] .fbt-fb.yes:hover { color: #fff; }
 
@@ -451,7 +461,7 @@
       }
 
       body {
-        font-family: "Urbanist", sans-serif;
+        font-family: var(--font-sans);
         background: var(--body-bg);
         color: var(--d50);
         height: 100vh;
@@ -588,6 +598,64 @@
         align-items: center;
         gap: 12px;
         flex-shrink: 0;
+      }
+      .content-view-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+        padding: 3px;
+        background: var(--wash-2);
+        border: 1px solid var(--wash-7);
+        border-radius: var(--r-pill);
+      }
+      .content-view-toggle button {
+        font-family: var(--font-sans);
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--d400);
+        padding: 5px 9px;
+        border: 0;
+        border-radius: var(--r-pill);
+        background: transparent;
+        cursor: pointer;
+        transition: background-color var(--t-fast), color var(--t-fast);
+      }
+      .content-view-toggle button:hover { color: var(--d200); }
+      .content-view-toggle button.active {
+        color: var(--d50);
+        background: var(--brand-dim);
+      }
+      .content-view-toggle button:focus-visible {
+        outline: 2px solid var(--brand);
+        outline-offset: 2px;
+      }
+      .audit-only[hidden], .evaluation-only[hidden] { display: none !important; }
+      @media (max-width: 980px) {
+        .app-topnav { padding-inline: 16px; }
+        .topnav-right { gap: 8px; }
+        .content-view-toggle { padding: 2px; }
+        .content-view-toggle button {
+          font-size: 9px;
+          padding: 4px 7px;
+        }
+      }
+      @media (max-width: 700px) {
+        .app-topnav { height: auto; min-height: var(--topbar-height); padding-block: 6px; }
+        .topnav-right { min-width: 0; gap: 6px; }
+        .content-view-toggle { order: -1; }
+        .content-view-toggle button {
+          font-size: 8px;
+          padding: 4px 6px;
+        }
+      }
+      @media (max-width: 480px) {
+        .app-topnav { padding-inline: 10px; }
+        .topnav-spacer, .topnav-tabs { display: none; }
+        .topnav-logo { padding-right: 0; margin-right: 0; }
+        .topnav-right { flex: 1 1 auto; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+        .content-view-toggle button { font-size: 9px; }
+        .topnav-user-info { display: none !important; }
+        .topnav-user > svg { display: none; }
       }
 
       /* Notification bell */
@@ -978,6 +1046,57 @@
         background-size: 200% 100%;
         animation: glassShimmer 4s linear 2;
       }
+      .interaction-type-filter {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 0;
+        min-width: 0;
+      }
+      .interaction-type-label {
+        color: var(--d300);
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .interaction-type-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+        padding: 3px;
+        background: transparent;
+        border: 0;
+        border-radius: 8px;
+        box-shadow: none;
+        min-width: 0;
+      }
+      .interaction-type-option {
+        border: 1px solid transparent;
+        border-radius: var(--r-pill);
+        background: transparent;
+        color: var(--d400);
+        cursor: pointer;
+        font: 600 12px/1.2 var(--font-sans);
+        padding: 5px 11px;
+        white-space: nowrap;
+        transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+      }
+      .interaction-type-option:hover { color: var(--d200); background: var(--wash-3); }
+      .interaction-type-option:active { transform: scale(0.98); }
+      .interaction-type-option[aria-checked="true"] {
+        color: var(--d50);
+        background: var(--qa-accent-dim);
+        border-color: rgba(var(--qa-accent-rgb), 0.28);
+      }
+      .interaction-type-option:focus-visible {
+        outline: 2px solid var(--qa-accent);
+        outline-offset: 2px;
+      }
+      @media (max-width: 560px) {
+        .interaction-type-filter { align-items: flex-start; flex-direction: column; gap: 5px; }
+        .interaction-type-toggle { width: 100%; }
+        .interaction-type-option { flex: 1; }
+      }
       .active-filter-strip.visible { display: flex; }
 
       .afs-label {
@@ -1176,12 +1295,12 @@
       /* ── GRID OPTION A (Asymmetrical Split) ── */
       .tier-1-grid {
         display: grid;
-        /* Three, not four. The Quality Score card was removed once the opener
-           took ownership of that number. */
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 16px;
         margin-bottom: 16px;
       }
+      @media (max-width:1100px) { .tier-1-grid { grid-template-columns:repeat(2,1fr); } }
+      @media (max-width:680px) { .tier-1-grid { grid-template-columns:1fr; } }
       .tier-2-grid {
         display: grid;
         /* Was 1.5fr 1fr, weighted for the quality chart that used to sit in the
@@ -1705,6 +1824,50 @@
         background: var(--ok-bg);
         color: var(--ok);
         border: 1px solid rgba(23, 178, 106, 0.2);
+      }
+      .fail-rate-card .bcard-stat.ok {
+        color: var(--d50);
+      }
+      .fail-rate-card .work-state.ws-completed,
+      .fail-rate-card .priority-badge {
+        background: var(--wash-3);
+        color: var(--d100);
+        border-color: var(--wash-8);
+      }
+      .fail-rate-card .bcard-status {
+        display: block;
+        color: var(--d100);
+      }
+      .fail-rate-card .bcard-status::before {
+        display: none;
+      }
+      .fail-rate-card .aimy-done-text {
+        color: var(--d100);
+      }
+      .fail-rate-card .aimy-done-text b {
+        color: var(--d50);
+      }
+      .fail-rate-card .aimy-done-link.primary {
+        color: var(--d100);
+        border-color: var(--wash-8);
+        background: var(--wash-3);
+      }
+      .fail-rate-card .aimy-done-link.primary:hover {
+        background: var(--wash-7);
+      }
+      .sentiment-card .bcard-status::before {
+        display: none;
+      }
+      .sentiment-card .bcard-status {
+        display: block;
+        color: var(--d100);
+      }
+      .sentiment-card .aimy-done-text { color: var(--d100); }
+      .csat-card .bcard-status::before {
+        display: none;
+      }
+      .csat-card .bcard-status {
+        display: block;
       }
       .ai .priority-badge {
         background: rgba(0, 102, 255, 0.1);
@@ -2852,6 +3015,177 @@
         background: rgba(247, 144, 9, 0.18);
       }
 
+      /* AiMY Insights — compact KPI improvement cards.
+         Each card reads as: KPI + metric → short problem → short solution
+         with a work-state chip → one primary action. */
+      .ai-insights {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .ai-insights-summary {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 2px 2px 4px;
+        font-size: 11.5px;
+        line-height: 1.5;
+        color: var(--d300);
+      }
+      .ai-insights-summary svg { width: 12px; height: 14px; color: var(--ai-text); opacity: 0.9; flex-shrink: 0; }
+      .ai-insights-summary b { color: var(--d100); font-weight: 700; }
+
+      .ai-insight {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+          "title metric"
+          "problem action";
+        column-gap: 16px;
+        row-gap: 4px;
+        align-items: center;
+        padding: 14px 16px;
+        background: var(--card-bg);
+        border: 0;
+        border-radius: var(--r-lg);
+      }
+      .ai-insight:focus-within { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+      /* Glass surface (DS: glass 85%) with a soft semantic tint (DS: tint 12%). */
+      .ai-insight[data-severity="critical"] { --ins-tone: var(--err); }
+      .ai-insight[data-severity="warning"]  { --ins-tone: var(--warn); }
+      .ai-insight[data-severity="positive"] { --ins-tone: var(--ok); }
+      .ai-insight[data-severity] {
+        background:
+          linear-gradient(135deg, color-mix(in srgb, var(--ins-tone) 12%, transparent) 0%, color-mix(in srgb, var(--ins-tone) 4%, transparent) 45%, transparent 78%),
+          linear-gradient(180deg, var(--wash-2) 0%, transparent 55%),
+          color-mix(in srgb, var(--card-bg) 85%, transparent);
+        box-shadow: inset 0 1px 0 var(--wash-4);
+        backdrop-filter: blur(18px) saturate(1.2);
+        -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      }
+
+      .ai-insight[data-rank="1"] { order: 1; }
+      .ai-insight[data-rank="2"] { order: 2; }
+      .ai-insight[data-rank="3"] { order: 3; }
+      .ai-insight[data-rank="4"] { order: 4; }
+      .ai-insights-ontrack { order: 5; }
+
+      .ai-insight__row {
+        display: contents;
+      }
+      .ai-insight__name {
+        grid-area: title;
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        color: var(--d50);
+      }
+      .ai-insight__metric {
+        grid-area: metric;
+        justify-self: end;
+        font-family: var(--font-display);
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--d50);
+        white-space: nowrap;
+      }
+      .ai-insight__metric--err  { color: var(--err); }
+      .ai-insight__metric--warn { color: var(--warn); }
+      .ai-insight__metric--ok   { color: var(--ok); }
+      .ai-insight__metric small { font-size: 11px; font-weight: 600; color: var(--d400); margin-left: 4px; }
+
+      .ai-insight__problem {
+        grid-area: problem;
+        margin: 0;
+        min-width: 0;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.45;
+        color: var(--d200);
+      }
+      .ai-insight__problem b { color: var(--d100); font-weight: 700; }
+
+      .ai-insight__solution {
+        display: none;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--d100);
+      }
+      .ai-insight__solution svg { width: 12px; height: 14px; color: var(--ai-text); flex-shrink: 0; }
+      .ai-insight__solution .work-state { margin-left: auto; }
+
+      .ai-insight__actions {
+        grid-area: action;
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin: 0;
+      }
+      .ai-insight__actions .entry-action {
+        flex: 0 0 auto;
+        min-width: 116px;
+        justify-content: center;
+        color: var(--d200);
+        background: var(--glass-bg, rgba(255, 255, 255, 0.06));
+        border-color: var(--glass-border, rgba(255, 255, 255, 0.12));
+        box-shadow: inset 0 1px 0 var(--wash-8), 0 4px 14px rgba(0, 0, 0, 0.16);
+        backdrop-filter: blur(16px) saturate(1.35);
+        -webkit-backdrop-filter: blur(16px) saturate(1.35);
+      }
+      .ai-insight__actions .entry-action:hover {
+        color: var(--d50);
+        background: var(--wash-7);
+        border-color: var(--card-border-hover);
+        box-shadow: inset 0 1px 0 var(--wash-8), 0 5px 14px rgba(0, 0, 0, 0.18);
+      }
+      .ai-insight__actions .entry-action .em-ico { color: var(--d300); }
+
+      /* On-track summary stays as one calm line. */
+      .ai-insights-ontrack {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 10px 14px;
+        border: 1px dashed var(--wash-6);
+        border-radius: var(--r-lg);
+      }
+      .ai-insights-ontrack p {
+        margin: 0;
+        flex: 1 1 260px;
+        min-width: 0;
+        font-size: 11.5px;
+        line-height: 1.5;
+        color: var(--d300);
+      }
+      .ai-insights-ontrack p b { color: var(--d100); font-weight: 700; }
+      .ai-insights-ontrack .work-state { flex-shrink: 0; }
+      .ai-insights-ontrack .entry-action { margin-left: auto; }
+
+      @media (max-width: 640px) {
+        .ai-insight {
+          grid-template-areas:
+            "title metric"
+            "problem problem"
+            "action action";
+          row-gap: 8px;
+        }
+        .ai-insight__actions { justify-content: flex-start; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .ai-insight { transition: none; }
+      }
+
       /* Chart component */
       .chart-v2 {
         background: var(--card-bg);
@@ -3792,35 +4126,6 @@
         opacity: 1;
       }
 
-      /* Overlay header badge · "AiMY Chat" label */
-      .overlay-badge {
-        position: absolute;
-        top: 28px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        color: var(--d400);
-        padding: 5px 12px;
-        background: var(--wash-3);
-        border: 1px solid var(--wash-7);
-        border-radius: 20px;
-        opacity: 0;
-        transition: opacity 200ms 100ms ease;
-      }
-      .aimy-overlay.open .overlay-badge {
-        opacity: 1;
-      }
-      .overlay-badge svg {
-        width: 11px;
-        height: 11px;
-      }
-
       /* Context continuity bar. Sits below the badge, shows what AiMY is basing on */
       .overlay-context-bar {
         position: absolute;
@@ -3901,45 +4206,8 @@
         background: var(--wash-7);
         border-radius: 2px;
       }
-
-      /* Message bubbles */
-      .chat-msg {
-        display: flex;
-        gap: 10px;
-        align-items: flex-start;
-        padding: 0 4px;
-      }
       .chat-msg.user {
         flex-direction: row-reverse;
-      }
-
-      .msg-avatar {
-        width: 28px;
-        height: 28px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 10px;
-        font-weight: 700;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-      .msg-avatar.aimy-av {
-        background: rgba(70, 40, 140, 0.35);
-        border: 1px solid rgba(139, 79, 244, 0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .msg-avatar.aimy-av svg {
-        width: 14px;
-        height: 16px;
-      }
-      .msg-avatar.user-av {
-        background: linear-gradient(135deg, #7c3aed, var(--brand));
-        color: #fff;
-        font-size: 9px;
       }
 
       .msg-bubble {
@@ -3950,25 +4218,6 @@
         font-weight: 500;
         line-height: 1.6;
         color: var(--d50);
-      }
-      .chat-msg.aimy .msg-bubble {
-        background: var(--wash-4);
-        border: 1px solid var(--wash-7);
-        border-radius: 4px 12px 12px 12px;
-      }
-      .chat-msg.user .msg-bubble {
-        background: rgba(var(--qa-accent-rgb), 0.14);
-        border: 1px solid rgba(var(--qa-accent-rgb), 0.22);
-        border-radius: 12px 4px 12px 12px;
-        color: var(--d100);
-      }
-
-      /* AiMY typing indicator */
-      .typing-dots {
-        display: flex;
-        gap: 4px;
-        padding: 6px 4px;
-        align-items: center;
       }
       .typing-dots span {
         width: 6px;
@@ -4008,35 +4257,6 @@
           transform 300ms 80ms cubic-bezier(0.22, 1, 0.36, 1),
           opacity 300ms 80ms ease;
       }
-      .aimy-overlay.open .overlay-input-wrap {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      .overlay-input-bar {
-        background: rgba(20, 27, 36, 0.72);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid var(--wash-9);
-        border-radius: 40px;
-        box-shadow:
-          0 8px 32px rgba(0, 0, 0, 0.4),
-          inset 0 1px 0 var(--wash-5);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 12px 12px 16px;
-        transition:
-          border-color var(--transition-base),
-          box-shadow var(--transition-base);
-      }
-      .overlay-input-bar:focus-within {
-        border-color: rgba(var(--qa-accent-rgb), 0.45);
-        box-shadow:
-          0 12px 40px rgba(0, 0, 0, 0.5),
-          0 0 0 3px rgba(var(--qa-accent-rgb), 0.1),
-          inset 0 1px 0 var(--wash-7);
-      }
 
       .overlay-input {
         flex: 1;
@@ -4054,10 +4274,6 @@
         max-height: 120px;
         overflow-y: auto;
       }
-      .overlay-input::placeholder {
-        color: var(--d500);
-        font-weight: 400;
-      }
 
       .overlay-send {
         width: 36px;
@@ -4072,15 +4288,6 @@
         flex-shrink: 0;
         transition: transform var(--transition-fast), box-shadow var(--transition-fast);
         box-shadow: 0 2px 10px rgba(var(--qa-accent-rgb), 0.4);
-      }
-      .overlay-send:hover {
-        box-shadow: 0 4px 20px rgba(var(--qa-accent-rgb), 0.55);
-        transform: translateY(-1px);
-      }
-      .overlay-send svg {
-        width: 15px;
-        height: 15px;
-        stroke: #fff;
       }
 
       /* Overlay suggested prompts, shown when thread is empty */
@@ -4834,19 +5041,19 @@
         align-items: flex-start;
         justify-content: space-between;
         gap: 12px;
-        padding: 16px 20px 16px;
+        padding: 16px 20px;
         border-bottom: 1px solid var(--wash-5);
       }
       .eval-header-left {
         display: flex;
-        flex-direction: column;
-        gap: 3px;
+        align-items: baseline;
+        gap: 16px;
       }
       .eval-title {
-        font-size: 15px;
-        font-weight: 700;
+        font-size: 18px;
+        font-weight: 800;
         color: var(--d50);
-        letter-spacing: -0.01em;
+        letter-spacing: -0.02em;
       }
       .eval-subtitle {
         font-size: 11px;
@@ -5265,6 +5472,7 @@
         font-size: 12px;
         font-weight: 600;
         color: var(--d300);
+        white-space: nowrap;
       }
       .eval-bar-avg {
         font-size: 11px;
@@ -5646,7 +5854,7 @@
         border: 1px solid transparent; flex-shrink: 0;
       }
       .coach-btn.accept {
-        background: rgba(23,178,106,0.12); color: var(--ok); border-color: rgba(23,178,106,0.25);
+        background: rgba(127,174,148,0.14); color: var(--ok); border-color: rgba(23,178,106,0.25);
       }
       .coach-btn.accept:hover { background: rgba(23,178,106,0.22); }
       .coach-btn.defer {
@@ -6157,8 +6365,11 @@
       /* bcard status. Replaces the gap bar with a short (<=3 word) tag */
       .bcard-status { display:inline-flex; align-items:center; gap:6px; margin:9px 0 2px; font-size:11px; font-weight:700; letter-spacing:.01em; color:var(--d300); }
       .bcard-status::before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor; flex-shrink:0; }
+      .bcard-status.plain::before { display:none; }
       .bcard-status.err { color:var(--err); }
       .bcard-status.warn { color:var(--warn); }
+      .bcard-status.ok { color:var(--ok); }
+      .sentiment-card .bcard-status.ok { color:var(--d100); }
 
       /* Chart tooltip dip action */
       .tooltip-action { margin-top:8px; padding-top:7px; border-top:1px solid var(--wash-8); display:flex; align-items:center; gap:6px; }
@@ -6266,6 +6477,19 @@
       .dash-view[hidden] { display:none; }
       .dir-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:16px; }
       @media (max-width: 1100px){ .dir-cards { grid-template-columns:1fr; } }
+
+      .dashboard-section-head { display:flex; align-items:baseline; gap:16px; margin:18px 0 10px; }
+      .dashboard-section-head h2 { flex-shrink:0; white-space:nowrap; font-family:var(--font-display); font-size:18px; font-weight:800; color:var(--d50); letter-spacing:-.02em; }
+      .dashboard-section-head span { font-size:11px; color:var(--d500); }
+      .bcard-stat.is-word { font-size:25px; letter-spacing:-.02em; }
+      .eval-header-sub { margin-left:0; font-size:11px; color:var(--d300); }
+      .eval-bars-section-label strong { color:var(--d300); }
+      .eval-bars-section-label { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+      .eval-bars-column-label { font-size:9px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--d300); }
+      @media (max-width:700px) {
+        .eval-header-left { align-items:flex-start; flex-direction:column; gap:3px; }
+        .eval-header-sub { display:block; width:auto; margin:0; }
+      }
 
       /* Quality × CSAT quadrant bubble chart */
       .quad-wrap { padding:6px 4px 2px; }
@@ -6388,42 +6612,61 @@
          It replaces the 83% hero. A score is orientation you already had; this
          is what moved while you were away. */
       .slv { background:linear-gradient(120deg, rgba(var(--accent-rgb),0.10), rgba(0,102,255,0.04)); border:1px solid rgba(var(--accent-rgb),0.2); border-radius:16px; padding:18px 20px; margin-bottom:18px; box-shadow:var(--elev-1); }
+      .slv-layout { display:grid; grid-template-columns:minmax(0,1fr) 340px; align-items:stretch; gap:16px; margin-bottom:18px; }
+      .slv-layout > .slv { margin-bottom:0; }
       .slv-head { display:flex; align-items:center; gap:9px; margin-bottom:9px; }
       .slv-head svg { width:18px; height:20px; }
       .slv-head b { font-size:13px; font-weight:800; letter-spacing:0.01em; color:var(--d50); }
       .slv-time { margin-left:auto; font-size:11px; color:var(--d500); }
-      .slv-line { font-size:14px; color:var(--d100); line-height:1.6; margin:0; }
+      .slv-line { max-width:780px; font-size:13.5px; color:var(--d300); line-height:1.6; margin:0; }
       .slv-line b { color:var(--d50); font-variant-numeric:tabular-nums; }
       .slv-line strong { color:var(--d50); font-weight:700; }
-      .slv-signals { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+      .slv-signals { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; opacity:.9; }
 
-      .slv-body { display:flex; align-items:flex-start; gap:26px; flex-wrap:wrap; }
-      .slv-main { flex:1 1 460px; min-width:0; }
+      .slv-body { display:block; }
+      .slv-main { min-width:0; padding:4px 0 2px; }
 
       /* ── The score anchor ────────────────────────────────────────────────
          Deliberately NOT named .v2-stat-value/.v2-stat-delta: applyRangeToChart
          indexes those class names document-wide by position, so reusing them
          here would make the chart's range tabs write into the opener. */
-      .slv-score { flex:0 0 auto; display:flex; flex-direction:column; align-items:flex-start; gap:2px;
-                   padding-left:26px; border-left:1px solid rgba(var(--accent-rgb),0.18); }
-      .slv-score-cap { font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--d500); }
-      .slv-score-val { font-size:32px; font-weight:800; line-height:1.05; letter-spacing:-0.02em;
-                       color:var(--warn); font-variant-numeric:tabular-nums; }
-      .slv-score-sub { font-size:11px; color:var(--d400); }
-      .slv-score-trend { font-size:11px; font-weight:600; color:var(--ok); font-variant-numeric:tabular-nums; }
-      .slv-score-toggle { margin-top:10px; display:inline-flex; align-items:center; gap:5px;
-                          background:var(--wash-3); border:1px solid var(--wash-7); border-radius:var(--r-pill);
-                          padding:5px 11px; font-size:11px; font-weight:600; color:var(--d300);
-                          font-family:inherit; cursor:pointer;
-                          transition:background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast); }
-      .slv-score-toggle:hover { background:var(--wash-6); border-color:var(--wash-10); color:var(--d100); }
-      .slv-score-chev { width:12px; height:12px; transition:transform var(--transition-fast); }
-      .slv-score-toggle[aria-expanded="true"] .slv-score-chev { transform:rotate(180deg); }
-      @media (prefers-reduced-motion: reduce) { .slv-score-chev { transition:none; } }
+       .slv-score { display:grid; grid-template-columns:auto minmax(0,1fr); grid-template-areas:"cap cap" "value sub" "value trend" "toggle toggle";
+         align-items:center; align-content:space-between; column-gap:14px; row-gap:1px; min-width:0; padding:14px 18px 12px; border-radius:20px;
+         background:
+           linear-gradient(150deg, rgba(var(--qa-accent-rgb),0.09) 0%, rgba(var(--qa-accent-rgb),0.03) 50%, var(--wash-1) 100%),
+           color-mix(in srgb, var(--card-bg) 70%, transparent);
+         border:1px solid rgba(var(--qa-accent-rgb),0.14);
+         box-shadow:0 10px 28px rgba(0,0,0,0.18), inset 0 1px 0 var(--wash-3);
+         backdrop-filter:blur(18px) saturate(1.2); -webkit-backdrop-filter:blur(18px) saturate(1.2); }
+       .slv-score-cap { grid-area:cap; margin-bottom:4px; font-size:10.5px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:var(--d400); }
+       .slv-score-val { grid-area:value; font-size:38px; font-weight:800; line-height:1; letter-spacing:-0.035em;
+               color:var(--warn); font-variant-numeric:tabular-nums; text-shadow:0 0 22px rgba(247,201,92,0.16); }
+       .slv-score-sub { grid-area:sub; align-self:end; font-size:12px; color:var(--d400); }
+       .slv-score-sub strong { color:var(--d200); font-weight:700; }
+       .slv-score-trend { grid-area:trend; align-self:start; font-size:12px; font-weight:600; color:var(--d400); font-variant-numeric:tabular-nums; }
+      .slv-score-trend .trend-positive { color:var(--ok); font-weight:700; }
+            .slv-score-toggle { grid-area:toggle; width:100%; min-width:0; margin-top:8px; display:grid; grid-template-columns:minmax(0,1fr);
+              grid-template-areas:"action" "chart" "source"; gap:4px;
+              background:transparent; border:0; border-radius:var(--r-lg); padding:0;
+              font-family:inherit; color:var(--d300); cursor:pointer; text-align:left; box-shadow:none; }
+      .slv-score-toggle:focus-visible { outline:2px solid var(--qa-accent); outline-offset:4px; }
+      .slv-score-toggle-action { grid-area:action; justify-self:end; display:inline-flex; align-items:center; gap:6px; color:var(--qa-accent); font-size:12px; font-weight:700; white-space:nowrap; }
+      .slv-score-toggle-action-label { opacity:1; transition:color var(--transition-fast); }
+      .slv-score-toggle:hover .slv-score-toggle-action,
+      .slv-score-toggle:focus-visible .slv-score-toggle-action,
+      .slv-score-toggle[aria-expanded="true"] .slv-score-toggle-action { color:var(--d50); }
+      .slv-score-expand { width:14px; height:14px; flex-shrink:0; }
+      .slv-score-mini-chart { grid-area:chart; display:block; width:100%; height:28px; overflow:visible; }
+      .slv-score-mini-target { stroke:var(--wash-8); stroke-width:1; vector-effect:non-scaling-stroke; }
+      .slv-score-mini-fill { fill:rgba(var(--qa-accent-rgb),.12); }
+      .slv-score-mini-path { fill:none; stroke:var(--qa-accent); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+      .slv-score-mini-end { fill:var(--qa-accent); stroke:var(--body-bg); stroke-width:1.5; }
+      .slv-score-mini-source { grid-area:source; display:flex; align-items:center; gap:7px; margin-top:0; font-size:10.5px; font-weight:600; color:var(--d400); }
+      .slv-score-mini-source::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 2px var(--ok-bg); flex-shrink:0; }
+      @media (prefers-reduced-motion: reduce) { .slv-score-toggle-action-label { transition:none; } }
       /* Narrow: the score drops below the narrative rather than squeezing it. */
       @media (max-width: 900px) {
-        .slv-score { flex:1 1 100%; padding-left:0; border-left:0;
-                     padding-top:14px; border-top:1px solid rgba(var(--accent-rgb),0.18); }
+        .slv-layout { grid-template-columns:1fr; gap:12px; }
       }
 
       /* ── Resume pill, the prior-thread cue (§4 continuity) ─────────────
@@ -6773,6 +7016,42 @@
         background: transparent;
         font-family: "Urbanist", sans-serif;
       }
+      .gps-controls {
+        display: flex; align-items: center; gap: 8px;
+        min-width: 0; max-width: 100%;
+      }
+      .gps-filter-btn {
+        display: inline-flex; align-items: center; gap: 7px;
+        min-height: 32px; padding: 5px 10px;
+        background: var(--wash-3); border: 1px solid var(--wash-6);
+        border-radius: 8px; color: var(--d300);
+        font-family: inherit; font-size: 12px; font-weight: 600;
+        line-height: 1.4; white-space: nowrap; cursor: pointer;
+        transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+      }
+      .gps-filter-btn:hover { background: var(--wash-6); color: var(--d50); }
+      .gps-filter-btn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+      .gps-filter-btn svg { width: 10px; height: 10px; color: var(--d400); flex-shrink: 0; }
+      .gps-export-btn {
+        display: inline-flex; align-items: center; gap: 7px;
+        min-height: 32px; padding: 5px 10px;
+        background: var(--wash-3); border: 1px solid var(--wash-6);
+        border-radius: 8px; color: var(--d300);
+        font-family: inherit; font-size: 12px; font-weight: 600;
+        line-height: 1.4; white-space: nowrap; cursor: pointer;
+        transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+      }
+      .gps-export-btn:hover { background: var(--wash-6); color: var(--d50); }
+      .gps-export-btn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+      .gps-export-btn svg { width: 15px; height: 15px; color: var(--d400); flex-shrink: 0; }
+      .gps-date-btn { gap: 6px; }
+      .gps-date-btn .gps-date-clear { width: 15px; height: 15px; margin-left: -1px; }
+      .gps-date-btn .gps-date-calendar { width: 15px; height: 15px; margin-left: 1px; }
+      @media (max-width: 700px) {
+        .gps-bar { --gps-pad-x: 16px; overflow-x: auto; justify-content: flex-start; }
+        .gps-controls { margin-left: auto; }
+        .gps-filter-btn, .gps-export-btn { font-size: 11px; padding-inline: 8px; }
+      }
       /* Visually hidden, but part of the trigger's accessible name, so the
          control still announces as "Product scope: Upland" now that the
          printed label is gone. */
@@ -6942,6 +7221,7 @@
          column. Loaded last so it overrides the inline canvas rules, the
          same order sales.css has over aimy-ds.css. -->
     <link rel="stylesheet" href="assets/aimy-canvas.css?v=5" />
+    <link rel="stylesheet" href="assets/aimy-sessions.css?v=2" />
 
     <!-- The responsive layer above both: one UI scale for large screens,
          the 1024px tablet floor, and the shell height that keeps the
@@ -6949,6 +7229,7 @@
          the same order aimy-canvas.css has over this page's inline block. -->
     <link rel="stylesheet" href="assets/aimy-responsive.css?v=7" />
     <link rel="stylesheet" href="assets/aimy-rail.css?v=2" />
+    <link rel="stylesheet" href="assets/aimy-typography.css?v=1" />
     <script src="assets/aimy-viewport.js?v=5"></script>
   </head>
   <body>
@@ -7066,6 +7347,10 @@
       <!-- Right side -->
       <div class="topnav-spacer"></div>
       <div class="topnav-right">
+        <div class="content-view-toggle" role="tablist" aria-label="Dashboard content view">
+          <button id="auditViewTab" class="active" type="button" role="tab" aria-selected="true" data-content-view="audit">Audit view</button>
+          <button id="evaluationViewTab" type="button" role="tab" aria-selected="false" data-content-view="evaluation">Evaluation view</button>
+        </div>
         <!-- V1 opens in a new tab so the two builds can be compared side by
              side. One link, not a segmented pair: you are on V2, so the only
              thing worth offering is the way out. The href is the placeholder,
@@ -7195,6 +7480,18 @@
              tracked with aria-activedescendant. Focus lands in the input,
              never on an option, so the options are not tabbable. -->
         <div class="gps-bar" id="gpsBar">
+          <div class="gps-controls" aria-label="Dashboard filters">
+            <div class="interaction-type-filter" aria-label="Interaction type filter">
+              <div class="interaction-type-toggle" role="radiogroup" aria-label="Interaction type">
+                <button class="interaction-type-option" type="button" role="radio" aria-checked="true" data-interaction-type="all">All interactions</button>
+                <button class="interaction-type-option" type="button" role="radio" aria-checked="false" data-interaction-type="calls">Calls</button>
+                <button class="interaction-type-option" type="button" role="radio" aria-checked="false" data-interaction-type="tickets">Tickets</button>
+              </div>
+            </div>
+            <button class="gps-filter-btn" type="button" aria-haspopup="listbox" aria-label="Filter by client">
+              All clients
+              <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 1 5 5 9 1"></polyline></svg>
+            </button>
           <div class="gps" id="gpsRoot">
             <button class="gps-btn" id="gpsBtn" type="button"
                     aria-haspopup="listbox" aria-expanded="false"
@@ -7239,19 +7536,24 @@
               <div class="gps-empty" id="gpsEmpty" role="status" hidden>No products match.</div>
             </div>
           </div>
+            <button class="gps-filter-btn gps-date-btn" type="button" aria-label="Change date range">
+              <span>01 Jan 2026 ~ 15 Sep 2026</span>
+              <svg class="gps-date-clear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+              <svg class="gps-date-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"></rect><path d="M16 2.5v4M8 2.5v4M3 9h18"></path></svg>
+            </button>
+            <button class="gps-export-btn" type="button" aria-label="Export dashboard">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v12"></path>
+                <path d="m7 10 5 5 5-5"></path>
+                <path d="M5 21h14"></path>
+              </svg>
+              Export
+            </button>
+          </div>
         </div>
 
         <div class="dashboard-scroll">
-          <!-- The Manager/Director toggle moved into the masthead: it is demo
-               scaffolding, and standing at the head of the page it read as a
-               feature the product offers. See .nav-role-switch. -->
           <div class="dash-view" id="viewManager">
-          <!-- Active filter strip, only visible when filters are applied -->
-          <div class="active-filter-strip" id="activeFilterStrip">
-            <span class="afs-label">Filtered by</span>
-            <!-- Active filter chips injected here by JS -->
-            <button class="afs-clear-all" id="afsClearAll">Clear all</button>
-          </div>
         <!-- ════ AIMY DAILY SUMMARY CARD ════════════════════════════════════════
              Headline metric + 3 key signals + primary action for today.
              Content driven by JS data below (updateSummaryCard).
@@ -7275,6 +7577,7 @@
              derived from any data structure, in the Reviews original and in
              this port. They will go stale silently.
         ══════════════════════════════════════════════════════════════════ -->
+        <div class="slv-layout audit-only">
         <div class="slv" id="briefingOpener" role="region" aria-label="Since your last visit">
           <div class="slv-head">
             <svg viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
@@ -7284,7 +7587,7 @@
           <div class="slv-body">
             <div class="slv-main">
               <p class="slv-line" id="briefingOpenerText">
-                I ran <b>2,847</b> evaluations overnight. <strong>Three things need you</strong>: a response-time fix for
+                I ran <b>2,847</b> audited interactions overnight. <strong>Three things need you</strong>: a response-time fix for
                 <b>8 agents</b> is staged, <b>6</b> coaching plans are drafted, and <b>2</b> dispute replies are waiting to send.
                 Quality slipped <b>4 points</b>, all of it in Objectif Lune.
               </p>
@@ -7308,30 +7611,35 @@
               <svg class="em-ico"><use href="#em-ico-investigate"/></svg>Read the 2 drafted replies
             </button>
           </div>
-            </div>
-
-            <!-- The score anchor is back, and this time it is the only place
-                 the dashboard states the number. The Quality Score briefing
-                 card that made it a duplicate is gone, and the chart that
-                 explains it now opens directly underneath from this button,
-                 so the opener answers "what changed" and "where do I stand"
-                 without the reader going looking for the second half. -->
-            <div class="slv-score">
-              <span class="slv-score-cap">Quality score</span>
-              <span class="slv-score-val">87.3%</span>
-              <span class="slv-score-sub">2.7 under the 90% goal</span>
-              <span class="slv-score-trend">&#8593; 5.2% vs last period</span>
-              <button class="slv-score-toggle" id="qsChartToggle" type="button"
-                      aria-expanded="false" aria-controls="qsChartPanel"
-                      onclick="toggleQualityChart(this)">
-                <span class="slv-score-toggle-label">Show the trend</span>
-                <svg class="slv-score-chev" viewBox="0 0 12 12" fill="none" stroke="currentColor"
-                     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M3 4.5L6 7.5L9 4.5"/>
-                </svg>
-              </button>
-            </div>
           </div>
+        </div>
+        </div>
+        <div class="slv-score" aria-label="Quality score summary">
+          <span class="slv-score-cap">Quality score</span>
+          <span class="slv-score-val">87.3%</span>
+          <span class="slv-score-sub"><strong>2.7</strong> under the <strong>90%</strong> goal</span>
+          <span class="slv-score-trend"><span class="trend-positive">&#8593; 5.2%</span> vs last period</span>
+          <button class="slv-score-toggle" id="qsChartToggle" type="button"
+                  aria-expanded="false" aria-controls="qsChartPanel"
+                  aria-label="Open Quality Score trend" title="Open trend"
+                  onclick="toggleQualityChart(this)">
+            <span class="slv-score-toggle-action">
+              <span class="slv-score-toggle-action-label">Open trend</span>
+              <svg class="slv-score-expand" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 3H3v3M10 3h3v3M6 13H3v-3M10 13h3v-3"/>
+              </svg>
+            </span>
+            <svg class="slv-score-mini-chart" viewBox="0 0 300 28" preserveAspectRatio="none"
+                 aria-hidden="true" focusable="false">
+              <line class="slv-score-mini-target" id="qsMiniTrendTarget" x1="2" x2="298" y1="10" y2="10"/>
+              <path class="slv-score-mini-fill" id="qsMiniTrendFill"/>
+              <path class="slv-score-mini-path" id="qsMiniTrendPath"/>
+              <circle class="slv-score-mini-end" id="qsMiniTrendEnd" r="3"/>
+            </svg>
+            <span class="slv-score-mini-source" id="qsMiniTrendSource">Real audit data · YTD</span>
+          </button>
+        </div>
         </div>
 
         <!-- ══════════════════════════════════════════════════════════════════
@@ -7722,7 +8030,7 @@
                     width="72"
                     height="16"
                     rx="4"
-                    fill="rgba(247,144,9,0.12)"
+                    fill="rgba(192,164,124,0.14)"
                   />
                   <text
                     x="760"
@@ -8280,7 +8588,7 @@
       :root[data-theme="light"] .floop-ask               { color: #5b21b6; }
 
 </style>
-        <section class="floop" aria-label="Feedback loop overview">
+        <section class="floop evaluation-only" aria-label="Feedback loop overview">
           <div class="floop-head">
             <h2>Feedback loop</h2>
             <span class="fl-spacer"></span>
@@ -8288,7 +8596,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
               Generate report
             </button>
-            <a href="agent-scorecards.html">Open in Reviews →</a>
+            <a href="agent-scorecards.html?view=evals">Open in Reviews →</a>
           </div>
           <div class="floop-grid">
             <!-- The three-stage funnel moved into the canvas. It was the
@@ -8460,62 +8768,81 @@
             </div>
         </section>
 
+        <div class="dashboard-section-head audit-only">
+          <h2>Audit health</h2>
+          <span>What the audited interactions say about KPI performance</span>
+        </div>
         <div class="tier-1-grid">
-            <div class="bcard p1 tier-primary" role="region" tabindex="0">
+          <div class="bcard p3 audit-only" role="region" tabindex="0">
               <div class="bcard-accent"></div>
               <div class="bcard-body">
                 <div class="bcard-meta">
-                  <span class="type-label">SLA Breach</span>
-                  <span class="work-state ws-staged" data-work-state="staged"><span class="ws-dot"></span>Staged</span>
-                  <span class="priority-badge">P1 · Critical</span>
+                  <span class="type-label">Total audits</span>
+                  <span class="priority-badge">P3 · Stable</span>
                 </div>
-                <div class="bcard-stat-line"><span class="bcard-stat err">61%</span><span class="bcard-stat-cap">SLA compliance</span></div>
-                <div class="bcard-status err">29 pts under</div>
+                <div class="bcard-stat-line"><span class="bcard-stat">396</span><span class="bcard-stat-cap">of <b>550</b> eligible interactions</span></div>
+                
                 <div class="aimy-done">
                   <svg class="aimy-done-mark" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
-                  <span class="work-state ws-staged" data-work-state="staged"><span class="ws-dot"></span>Staged</span><span class="aimy-done-text">Fix staged · <b>8 agents</b></span>
+                  <span class="work-state ws-completed" data-work-state="completed"><span class="ws-dot"></span>Completed</span><span class="aimy-done-text"><b>72% coverage</b> across <b>all products</b></span>
                   <span class="aimy-done-actions">
-                    <button data-entry-mode="review" class="aimy-done-link primary" data-aimy-review="SLA compliance is at 61%, 29pts below the 90% target. Break this down by product: compare Objectif Lune, Qvidian, InterFax, and Adestra on breach count, average first response time, and current vs 90% target. Then list the top 5 agents driving the most breaches with their individual compliance rates and the queues they operate in. Flag any product where compliance has been below target for more than 2 consecutive weeks." data-aimy-undo="the response-time fix for 8 agents" data-aimy-topic="sla">Approve the response-time fix (8 agents)</button>
+                    <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="Show the 396 audited interactions out of 550 eligible (72% coverage) by product." data-aimy-topic="audit-volume">Review audited interactions</button>
                   </span>
                 </div>
               </div>
             </div>
 
-            <div class="bcard p1" role="region" tabindex="0">
+          <div class="bcard p3 fail-rate-card audit-only" role="region" tabindex="0">
               <div class="bcard-accent"></div>
               <div class="bcard-body">
                 <div class="bcard-meta">
-                  <span class="type-label">Goals Off Track</span>
-                  <span class="work-state ws-drafted" data-work-state="drafted"><span class="ws-dot"></span>Drafted</span>
-                  <span class="priority-badge">P1 · Urgent</span>
+                  <span class="type-label">Fail Rate</span>
+                  <span class="priority-badge">P3 · Healthy</span>
                 </div>
-                <div class="bcard-stat-line"><span class="bcard-stat err">3</span><span class="bcard-stat-cap">goals off track</span></div>
-                <div class="bcard-status err">empathy at 32%</div>
+                <div class="bcard-stat-line"><span class="bcard-stat ok">7.3%</span><span class="bcard-stat-cap">of audits fail</span></div>
+                <div class="bcard-status">Out of 396 audited interactions</div>
                 <div class="aimy-done">
                   <svg class="aimy-done-mark" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
-                  <span class="work-state ws-drafted" data-work-state="drafted"><span class="ws-dot"></span>Drafted</span><span class="aimy-done-text"><b>6</b> coaching plans created</span>
+                  <span class="work-state ws-completed" data-work-state="completed"><span class="ws-dot"></span>Completed</span><span class="aimy-done-text">Within the <b>10% fail-rate threshold</b></span>
                   <span class="aimy-done-actions">
-                    <button data-entry-mode="review" class="aimy-done-link primary" data-aimy-review="3 goals are off track. Show a breakdown by product for each: Correct ticket status (150 failures) across Objectif Lune and Qvidian, Grammar and clarity (55 failures) in InterFax and Second Street, and Update cadence (47 failures) in Qvidian and RightAnswers. For each show: current attainment vs goal, which agents are off the goal, and a current vs goal bar per product. Then show the prioritised coaching plan I created, grouped by agent and ranked by impact." data-aimy-undo="coaching plans for 6 agents" data-aimy-topic="coaching-goals">Approve the 6 coaching plans</button>
+                    <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="The audit fail rate is 7.3%, with 29 of 396 audited tickets failing at least one KPI. Show the trend by product and KPI, and identify what is keeping the rate below the 10% threshold so we can replicate it." data-aimy-topic="sla">Review the fail-rate trend</button>
                   </span>
                 </div>
               </div>
             </div>
 
-            <div class="bcard p1" role="region" tabindex="0">
+            <div class="bcard p3 sentiment-card audit-only" role="region" tabindex="0">
               <div class="bcard-accent"></div>
               <div class="bcard-body">
                 <div class="bcard-meta">
                   <span class="type-label">Sentiment</span>
-                  <span class="work-state ws-drafted" data-work-state="drafted"><span class="ws-dot"></span>Drafted</span>
-                  <span class="priority-badge">P1 · Urgent</span>
+                  <span class="priority-badge">P3 · Positive</span>
                 </div>
-                <div class="bcard-stat-line"><span class="bcard-stat err">39</span><span class="bcard-stat-cap">flagged this week</span></div>
-                <div class="bcard-status err">3 agents driving</div>
+                <div class="bcard-stat-line"><span class="bcard-stat ok">Positive</span></div>
+                <div class="bcard-status ok">39 of <b>52</b> analyzed interactions this week</div>
                 <div class="aimy-done">
                   <svg class="aimy-done-mark" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
                   <span class="work-state ws-drafted" data-work-state="drafted"><span class="ws-dot"></span>Drafted</span><span class="aimy-done-text">Coaching drafted · <b>3 agents</b></span>
                   <span class="aimy-done-actions">
-                    <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="Negative sentiment is rising week over week, 39 flagged interactions, 3 agents responsible for most of it. Break this down by product: which of Objectif Lune, Adestra, Qvidian, and InterFax have the highest negative sentiment rates, and show current vs previous week for each. List the 3 flagged agents with their sentiment scores, ticket volumes, and the specific escalation types triggering negative responses. Show the coaching I drafted and the single fastest intervention to reverse the trend." data-aimy-undo="escalation coaching for 3 agents" data-aimy-topic="sentiment">Read the 3 drafted coaching notes</button>
+                    <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="Positive sentiment is holding this week, with 39 of 52 analyzed interactions positive. Break this down by product and show which behaviors are driving the result, current versus previous week, and the playbook we should replicate." data-aimy-undo="the sentiment coaching notes" data-aimy-topic="sentiment">Read the positive sentiment notes</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bcard csat-card" role="region" tabindex="0">
+              <div class="bcard-body">
+                <div class="bcard-meta">
+                  <span class="type-label">CSAT</span>
+                  <span class="priority-badge" id="csatPeriodLabel">This week</span>
+                </div>
+                <div class="bcard-stat-line"><span class="bcard-stat warn">50%</span><span class="bcard-stat-cap">average outcome</span></div>
+                <div class="bcard-status warn">3 of 6 rated good; 3 need follow-up</div>
+                <div class="aimy-done">
+                  <svg class="aimy-done-mark" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
+                  <span class="work-state ws-recommended" data-work-state="recommended"><span class="ws-dot"></span>Recommended</span><span class="aimy-done-text"><b>3 lower ratings</b> identified; review the drivers before coaching</span>
+                  <span class="aimy-done-actions">
+                    <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="CSAT is 50%: 3 of 6 ratings were good and 3 were not. Show the three lower-rated interactions, group the reasons for dissatisfaction, and recommend the highest-leverage coaching action before I contact the agents." data-aimy-topic="csat">Review CSAT drivers</button>
                   </span>
                 </div>
               </div>
@@ -8531,7 +8858,7 @@
               </svg>
               <span class="ads-label">AiMY</span>
               <span class="work-state ws-detected" data-work-state="detected"><span class="ws-dot"></span>Detected</span>
-              <span class="ads-state" id="adsStateText">Watching 3 goals off track · Nov dip open</span>
+              <span class="ads-state" id="adsStateText">Watching 3 audit KPIs below target · Nov dip open</span>
               <span class="ads-confidence" id="adsConfidence">high confidence</span>
             </div>
             <!-- "Explore in canvas" named our architecture and left the user to
@@ -8539,97 +8866,121 @@
             <button class="ads-cta"
                     data-entry-mode="investigate"
                     data-aimy-topic="goals-off-track"
-                    data-aimy-ask="Show me all 3 goals off track and what I should do about each.">
-              Show me all 3 goals off track
+                      data-aimy-ask="Show me all 3 audit KPIs below target and what I should do about each.">
+                    Show me all 3 audit KPIs
               <svg viewBox="0 0 13 13" fill="none" width="11" height="11">
                 <path d="M2 6.5H11M7 2.5L11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
           </div>
 
-          <div class="tier-2-grid">
+          <div class="tier-2-grid audit-only">
             <div class="layout-column">
-              <div class="goal-feed">
-                <div class="goal-brief kf-err">
-                  <div class="kf-rank">#1</div>
-                  <div class="kf-body">
-                    <div class="kf-name">Ticket status accuracy &middot; 150 off goal <span class="work-state ws-drafted" data-work-state="drafted"><span class="ws-dot"></span>Coaching drafted</span></div>
-                    <p class="kf-conclusion">
-                      Widest gap, Objectif Lune &amp; Qvidian. I’ve <strong>drafted coaching</strong> for the <strong>8 agents</strong> closing tickets with wrong status codes.
-                    </p>
-                    <div class="kf-evidence">
-                      <div class="kf-ev-item"><span class="trend-dn">&#8595; worsening</span><span>this period</span></div>
-                      <div class="kf-ev-item"><span class="v">103</span><span>in Objectif Lune</span></div>
-                    </div>
+              <div class="dashboard-section-head">
+                <h2>Improvement opportunities</h2>
+                <span>Patterns, risks, and recommended actions from your audited interactions</span>
+              </div>
+              <div class="ai-insights">
+                <article class="ai-insight" data-classification="highest-impact" data-severity="critical" data-rank="1" tabindex="0" aria-labelledby="ai-insight-status-name">
+                  <div class="ai-insight__row">
+                    <h3 class="ai-insight__name" id="ai-insight-status-name">Ticket status accuracy</h3>
+                    <span class="ai-insight__metric ai-insight__metric--err">71%<small>of 369</small></span>
                   </div>
-                  <button data-entry-mode="review" class="kf-action" data-aimy-topic="goal-status" data-aimy-undo="the status-code coaching for 8 agents" data-aimy-review="Show the status-code coaching I created for the 8 agents in Objectif Lune and Qvidian. Who it covers, what changed, and the tickets it targets.">Approve the status-code coaching (8)</button>
-                </div>
+                  <p class="ai-insight__problem">Wrong status codes from <b>8 agents</b> in Objectif Lune &amp; Qvidian.</p>
+                  <p class="ai-insight__solution">
+                    <svg viewBox="0 0 18 20" aria-hidden="true"><use href="#aimy-logo-small"/></svg>
+                    Coach the 8 agents with a status-code reference.
+                    <span class="work-state ws-drafted" data-work-state="drafted"><span class="ws-dot"></span>Coaching drafted</span>
+                  </p>
+                  <div class="ai-insight__actions">
+                    <button class="entry-action em-review ea-sm"
+                            data-entry-mode="review"
+                            data-aimy-topic="goal-status"
+                            data-aimy-undo="the status-code coaching for 8 agents"
+                            data-aimy-review="Show the status-code coaching I created for the 8 agents in Objectif Lune and Qvidian. Who it covers, what changed, and the tickets it targets.">
+                      <svg class="em-ico" aria-hidden="true"><use href="#em-ico-review"/></svg>
+                      Review ticket status accuracy
+                    </button>
+                  </div>
+                </article>
 
-                <div class="goal-brief kf-err">
-                  <div class="kf-rank">#2</div>
-                  <div class="kf-body">
-                    <div class="kf-name">Grammar &amp; clarity &middot; 55 off goal <span class="work-state ws-drafted" data-work-state="drafted"><span class="ws-dot"></span>Coaching drafted</span></div>
-                    <p class="kf-conclusion">
-                      InterFax &amp; Second Street. I drafted writing-quality coaching for the <strong>4 agents</strong> behind it.
-                    </p>
-                    <div class="kf-evidence">
-                      <div class="kf-ev-item"><span style="color: var(--d300)">&rarr; stable</span><span>not improving</span></div>
-                      <div class="kf-ev-item"><span class="v">55</span><span>off goal</span></div>
-                    </div>
+                <article class="ai-insight" data-classification="persistent-gap" data-severity="warning" data-rank="3" tabindex="0" aria-labelledby="ai-insight-grammar-name">
+                  <div class="ai-insight__row">
+                    <h3 class="ai-insight__name" id="ai-insight-grammar-name">Grammar &amp; clarity</h3>
+                    <span class="ai-insight__metric ai-insight__metric--warn">55%<small>of 369</small></span>
                   </div>
-                  <button data-entry-mode="investigate" class="kf-action" data-aimy-topic="goal-grammar" data-aimy-undo="the grammar coaching for 4 agents" data-aimy-review="Show the writing-quality coaching I drafted for the 4 agents in InterFax and Second Street, their worst responses and the clarity checklist I gave them.">Read the grammar coaching (4)</button>
-                </div>
+                  <p class="ai-insight__problem">Persistent gap across <b>4 agents</b> in InterFax &amp; Second Street.</p>
+                  <p class="ai-insight__solution">
+                    <svg viewBox="0 0 18 20" aria-hidden="true"><use href="#aimy-logo-small"/></svg>
+                    Send the writing-quality coaching with a clarity checklist.
+                    <span class="work-state ws-drafted" data-work-state="drafted"><span class="ws-dot"></span>Coaching drafted</span>
+                  </p>
+                  <div class="ai-insight__actions">
+                    <button class="entry-action em-investigate ea-sm"
+                            data-entry-mode="investigate"
+                            data-aimy-topic="goal-grammar"
+                            data-aimy-undo="the grammar coaching for 4 agents"
+                            data-aimy-review="Show the writing-quality coaching I drafted for the 4 agents in InterFax and Second Street, their worst responses and the clarity checklist I gave them.">
+                      <svg class="em-ico" aria-hidden="true"><use href="#em-ico-review"/></svg>
+                      Review grammar &amp; clarity
+                    </button>
+                  </div>
+                </article>
 
-                <div class="goal-brief kf-err">
-                  <div class="kf-rank">#3</div>
-                  <div class="kf-body">
-                    <div class="kf-name">Update cadence &middot; 47 off goal <span class="work-state ws-staged" data-work-state="staged"><span class="ws-dot"></span>Nudge staged</span></div>
-                    <p class="kf-conclusion">
-                      Qvidian &amp; RightAnswers past the SLA window. I set a <strong>4-hour</strong> follow-up nudge for the <strong>3 agents</strong>.
-                    </p>
-                    <div class="kf-evidence">
-                      <div class="kf-ev-item"><span class="trend-up">&#8593; 3%</span><span>slowly improving</span></div>
-                      <div class="kf-ev-item"><span class="v">47</span><span>off goal</span></div>
-                    </div>
+                <article class="ai-insight" data-classification="improving" data-severity="positive" data-rank="4" tabindex="0" aria-labelledby="ai-insight-cadence-name">
+                  <div class="ai-insight__row">
+                    <h3 class="ai-insight__name" id="ai-insight-cadence-name">Update cadence</h3>
+                    <span class="ai-insight__metric ai-insight__metric--ok">47%<small>of 369</small></span>
                   </div>
-                  <button data-entry-mode="review" class="kf-action" data-aimy-topic="goal-cadence" data-aimy-undo="the follow-up cadence for 3 agents" data-aimy-review="Show the follow-up cadence I set for the 3 agents in Qvidian and RightAnswers. The tickets left past the SLA update window and the new nudge timing.">Approve the 4-hour follow-up nudge (3)</button>
-                </div>
+                  <p class="ai-insight__problem"><b>3 agents</b> in Qvidian &amp; RightAnswers past the SLA update window.</p>
+                  <p class="ai-insight__solution">
+                    <svg viewBox="0 0 18 20" aria-hidden="true"><use href="#aimy-logo-small"/></svg>
+                    Launch a 4-hour follow-up nudge for the 3 agents.
+                    <span class="work-state ws-staged" data-work-state="staged"><span class="ws-dot"></span>Nudge staged</span>
+                  </p>
+                  <div class="ai-insight__actions">
+                    <button class="entry-action em-review ea-sm"
+                            data-entry-mode="review"
+                            data-aimy-topic="goal-cadence"
+                            data-aimy-undo="the follow-up cadence for 3 agents"
+                            data-aimy-review="Show the follow-up cadence I set for the 3 agents in Qvidian and RightAnswers. The tickets left past the SLA update window and the new nudge timing.">
+                      <svg class="em-ico" aria-hidden="true"><use href="#em-ico-review"/></svg>
+                      Review update cadence
+                    </button>
+                  </div>
+                </article>
 
-                <div class="goal-brief kf-warn">
-                  <div class="kf-rank">#4</div>
-                  <div class="kf-body">
-                    <div class="kf-name">First response time &middot; 71% to goal <span class="work-state ws-staged" data-work-state="staged"><span class="ws-dot"></span>Rebalance staged</span></div>
-                    <p class="kf-conclusion">
-                      Slipping in Objectif Lune &amp; Adestra, <strong>4 pts</strong> under goal. I queued a <strong>2-agent</strong> rebalance for the shift.
-                    </p>
-                    <div class="kf-evidence">
-                      <div class="kf-ev-item"><span class="trend-dn">&#8595; 2%</span><span>declining</span></div>
-                      <div class="kf-ev-item"><span class="v">75%</span><span>goal</span></div>
-                    </div>
+                <article class="ai-insight" data-classification="emerging-risk" data-severity="critical" data-rank="2" tabindex="0" aria-labelledby="ai-insight-frt-name">
+                  <div class="ai-insight__row">
+                    <h3 class="ai-insight__name" id="ai-insight-frt-name">First response time</h3>
+                    <span class="ai-insight__metric ai-insight__metric--err">71%<small>of 369</small></span>
                   </div>
-                  <button data-entry-mode="review" class="kf-action" data-aimy-topic="goal-frt" data-aimy-undo="the 2-agent rebalance" data-aimy-review="First response time is at 71%, 4 pts under the 75% goal and falling in Objectif Lune and Adestra. Show the queues driving the delay and the 2-agent rebalance I queued for the shift.">Rebalance the shift (2 agents)</button>
-                </div>
+                  <p class="ai-insight__problem">Slipping in Objectif Lune &amp; Adestra, 4 pts under goal.</p>
+                  <p class="ai-insight__solution">
+                    <svg viewBox="0 0 18 20" aria-hidden="true"><use href="#aimy-logo-small"/></svg>
+                    Rebalance 2 agents into the busy shift.
+                    <span class="work-state ws-staged" data-work-state="staged"><span class="ws-dot"></span>Rebalance staged</span>
+                  </p>
+                  <div class="ai-insight__actions">
+                    <button class="entry-action em-review ea-sm"
+                            data-entry-mode="review"
+                            data-aimy-topic="goal-frt"
+                            data-aimy-undo="the 2-agent rebalance"
+                            data-aimy-review="First response time is at 71%, 4 pts under the 75% goal and falling in Objectif Lune and Adestra. Show the queues driving the delay and the 2-agent rebalance I queued for the shift.">
+                      <svg class="em-ico" aria-hidden="true"><use href="#em-ico-review"/></svg>
+                      Review first response time
+                    </button>
+                  </div>
+                </article>
 
-                <!-- Was three cards (#5-#7) saying nothing needs attention.
-                     Three blocks to report an absence is exactly the weight the
-                     model was meant to remove. One line does it. -->
-                <div class="goal-brief kf-ok" data-aimy-item="goals-on-track" style="align-items:center">
-                  <div class="kf-body">
-                    <!-- Badge on its own row above the sentence, the same shape
-                         the ranked cards use where .kf-name sits above
-                         .kf-conclusion. Inline at the head of the sentence it
-                         indented the first line and broke the leading with its
-                         own height. -->
-                    <span class="work-state ws-detected" data-work-state="detected"><span class="ws-dot"></span>Detected</span>
-                    <p class="kf-conclusion" style="margin:0">
-                      <strong>3 goals are on track</strong>, identity verification 82%, first-contact resolution 87%, script adherence 91%. Nothing needed.
-                    </p>
-                  </div>
+                <div class="ai-insights-ontrack" data-aimy-item="goals-on-track">
+                  <span class="work-state ws-detected" data-work-state="detected"><span class="ws-dot"></span>On target</span>
+                  <p><b>3 KPIs on target</b> &mdash; identity verification, first-contact resolution, script adherence.</p>
                   <button class="entry-action em-prompt ea-sm"
                           data-entry-mode="prompt"
                           data-aimy-topic="goals-on-track"
                           data-aimy-ask="What are the three on-track goals doing that the failing ones aren't?">
-                    <svg class="em-ico"><use href="#em-ico-prompt"/></svg>Ask what&#8217;s working
+                    <svg class="em-ico" aria-hidden="true"><use href="#em-ico-prompt"/></svg>Ask what&#8217;s working
                   </button>
                 </div>
               </div>
@@ -8640,20 +8991,21 @@
                 <!-- Header -->
                 <div class="eval-header">
                   <div class="eval-header-left">
-                    <span class="eval-title">Evaluation &amp; Friction</span>
+                    <span class="eval-title">Audit performance by product</span>
+                    <span class="eval-header-sub">audited interactions · trend</span>
                   </div>
                 </div>
 
                 <!-- Top Products by Volume -->
                 <div class="eval-products-section" style="position:relative">
-                  <div class="eval-bars-section-label">Top Products by Volume</div>
+                  <div class="eval-bars-section-label"><span>Audited interactions by product</span><span class="eval-bars-column-label">Quality score</span></div>
                   <div class="eval-bars">
                     <div class="eval-bar-row" data-segment="objectif-lune"
                       onmouseenter="evalHover('objectif-lune')" onmouseleave="scheduleEvalOut()"
                       onclick="window.openOverlay && window.openOverlay('Objectif Lune has the highest review volume at 411 with a 79.2% avg quality, worst in portfolio. Show top failing goals, agent attribution, and the fastest intervention.')">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--warn)"></span>Objectif Lune</span>
-                        <div class="eval-bar-right"><span class="eval-bar-count">411</span><span class="eval-bar-avg warn">79.2%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-count">411 tickets</span><span class="eval-bar-avg warn">79.2%</span></div>
                       </div>
                       <div class="eval-bar-track"><div class="eval-bar-fill" style="width:91%;background:var(--warn)"></div></div>
                     </div>
@@ -8662,7 +9014,7 @@
                       onclick="window.openOverlay && window.openOverlay('Adestra has 398 reviews at 93.7% avg quality, best performer in the portfolio. Show what agents are driving this and what behaviors we can replicate elsewhere.')">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--ok)"></span>Adestra</span>
-                        <div class="eval-bar-right"><span class="eval-bar-count">398</span><span class="eval-bar-avg ok">93.7%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-count">398 tickets</span><span class="eval-bar-avg ok">93.7%</span></div>
                       </div>
                       <div class="eval-bar-track"><div class="eval-bar-fill" style="width:88%;background:linear-gradient(90deg,var(--ok),#22c55e)"></div></div>
                     </div>
@@ -8671,7 +9023,7 @@
                       onclick="window.openOverlay && window.openOverlay('InterFax has 334 reviews at 88.4% avg quality, 1.6pts below the 90% target. Show which goals are dragging it under and what coaching action would close the gap.')">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--ok)"></span>InterFax</span>
-                        <div class="eval-bar-right"><span class="eval-bar-count">334</span><span class="eval-bar-avg warn">88.4%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-count">334 tickets</span><span class="eval-bar-avg warn">88.4%</span></div>
                       </div>
                       <div class="eval-bar-track"><div class="eval-bar-fill" style="width:74%;background:linear-gradient(90deg,var(--ok),#22c55e)"></div></div>
                     </div>
@@ -8680,7 +9032,7 @@
                       onclick="window.openOverlay && window.openOverlay('RightAnswers has 274 reviews at 91.3% avg quality, above target. Show quality trend and whether it is stable or improving.')">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--ok)"></span>RightAnswers</span>
-                        <div class="eval-bar-right"><span class="eval-bar-count">274</span><span class="eval-bar-avg ok">91.3%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-count">274 tickets</span><span class="eval-bar-avg ok">91.3%</span></div>
                       </div>
                       <div class="eval-bar-track"><div class="eval-bar-fill" style="width:61%;background:linear-gradient(90deg,var(--ok),#22c55e)"></div></div>
                     </div>
@@ -8689,7 +9041,7 @@
                       onclick="window.openOverlay && window.openOverlay('Qvidian has 221 reviews at 80.1% avg quality, second worst in portfolio. Show top failure goals, agent attribution, and the fastest intervention to bring it above target.')">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--err)"></span>Qvidian</span>
-                        <div class="eval-bar-right"><span class="eval-bar-count">221</span><span class="eval-bar-avg err">80.1%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-count">221 tickets</span><span class="eval-bar-avg err">80.1%</span></div>
                       </div>
                       <div class="eval-bar-track"><div class="eval-bar-fill" style="width:49%;background:var(--err)"></div></div>
                     </div>
@@ -8699,23 +9051,6 @@
                     <div class="eval-causes-float-title" id="causeFloatTitle">Details</div>
                     <div class="eval-causes-float-list" id="causeFloatList"></div>
                   </div>
-                </div>
-
-
-                <!-- Trend strip -->
-                <div class="eval-trend-strip">
-                  <span class="eval-trend-ok">
-                    <svg viewBox="0 0 11 11" fill="none">
-                      <path d="M1 7L4 4L6.5 6.5L10 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Avg quality ↑ 2.1% vs prior period
-                  </span>
-                  <span class="eval-borderline-badge"
-                    onclick="window.openOverlay && window.openOverlay('Quality score is at 87.3% across 3,363 reviewed tickets this week, 2.7pts below the 90% target. Show me the product breakdown and the top 3 goal levers that would close the gap fastest.')"
-                    tabindex="0" role="button"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}"
-                    >2.7 pts under goal · fix queued</span
-                  >
                 </div>
 
                 <!-- AiMY unified insight -->
@@ -8754,12 +9089,13 @@
                      \u00a75.5 ask for. These were numbers wearing office clothes. -->
 
                 <!-- Friction signals \u2192 canvas CTA -->
-                <div class="eval-canvas-cta" onclick="appendFrictionCardsResponse()">
-                  <svg width="15" height="18" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
-                  <span>Show every friction signal</span>
-                  <svg viewBox="0 0 13 13" fill="none" width="10" height="10" style="margin-left:auto;opacity:.5">
-                    <path d="M2 6.5H11M7 2.5L11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <div class="eval-action-row">
+                  <div class="aimy-done" style="width:100%;border-top:none;padding-top:0;margin-top:0">
+                    <span class="work-state ws-recommended" data-work-state="recommended"><span class="ws-dot"></span>Recommended</span><span class="aimy-done-text"><b>Friction signals</b> ready to review across the product set</span>
+                    <span class="aimy-done-actions">
+                      <button data-entry-mode="investigate" class="aimy-done-link primary" data-aimy-review="Show every friction signal across the product set, group the signals by root cause, and rank the actions AiMY recommends by expected impact." data-aimy-topic="friction-signals">Review friction signals</button>
+                    </span>
+                  </div>
                 </div>
 
               </div>
@@ -8774,7 +9110,7 @@
                  Doctrine §5.1 and §7.1: the briefing leads with what this role
                  must not miss. A Director does not need the team's daily score;
                  they need which portfolios moved and what is waiting on them. -->
-            <div class="slv" id="briefingOpenerDirector" role="region" aria-label="Since your last visit">
+            <div class="slv audit-only" id="briefingOpenerDirector" role="region" aria-label="Since your last visit">
               <div class="slv-head">
                 <svg viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
                 <b>Since your last visit</b>
@@ -8846,7 +9182,12 @@
 
             <!-- Portfolio breakdown (reuse eval-panel + eval-bar rows) -->
             <div class="eval-panel">
-              <div class="eval-header"><div class="eval-header-left"><span class="eval-title">Portfolio breakdown</span></div></div>
+              <div class="eval-header">
+                <div class="eval-header-left">
+                  <span class="eval-title">Portfolio audit quality</span>
+                  <span class="eval-header-sub">Average audit quality score by portfolio · CSAT for context</span>
+                </div>
+              </div>
               <div class="eval-insight">
                 <svg class="eval-insight-mark" width="16" height="18" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
                 <p class="eval-insight-text"><strong>Objectif Lune</strong> and <strong>Qvidian</strong> are the drag, both <span class="hl-err">below 81% quality</span> and <span class="hl-err">under 75% CSAT</span>, the same <span class="hl-warn">billing-escalation</span> root cause. I&#39;ve briefed both leads and staged the fixes.</p>
@@ -8876,47 +9217,47 @@
                 ══════════════════════════════════════════════════════════════════ -->
 
                 <div class="eval-products-section" data-aimy-item="portfolio-ranking">
-                  <div class="eval-bars-section-label">Portfolio ranking &middot; quality vs the 90% goal</div>
+                  <div class="eval-bars-section-label">Portfolio comparison <strong>· average audit quality vs 90% target</strong></div>
                   <div class="eval-bars">
                     <div class="eval-bar-row" data-entry-mode="investigate" data-aimy-topic="portfolio-behind" data-aimy-ask="Objectif Lune is the worst portfolio at 79.2% quality and 72% CSAT. Show the goal breakdown and the fixes I staged.">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--err)"></span>Objectif Lune</span>
-                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 72%</span><span class="eval-bar-avg err">79.2%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 72%</span><span class="eval-bar-avg err">79.2% quality</span></div>
                       </div>
                       <div class="eval-bar-track has-goal"><div class="eval-bar-fill" style="width:16.8%;background:var(--err)"></div><span class="eval-bar-goal-mark" style="left:60%"></span></div>
                     </div>
                     <div class="eval-bar-row" data-entry-mode="investigate" data-aimy-topic="portfolio-behind" data-aimy-ask="Qvidian has been flat around 80% all year. Show the two goals holding it back and the coaching I queued.">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--err)"></span>Qvidian</span>
-                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 74%</span><span class="eval-bar-avg err">80.1%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 74%</span><span class="eval-bar-avg err">80.1% quality</span></div>
                       </div>
                       <div class="eval-bar-track has-goal"><div class="eval-bar-fill" style="width:20.4%;background:var(--err)"></div><span class="eval-bar-goal-mark" style="left:60%"></span></div>
                     </div>
                     <div class="eval-bar-row" data-entry-mode="investigate" data-aimy-topic="portfolio-behind" data-aimy-ask="Second Street is trending up toward 90%, now at 86%. Show the trend and whether it stays on track.">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--warn)"></span>Second Street</span>
-                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 83%</span><span class="eval-bar-avg warn">86.0%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 83%</span><span class="eval-bar-avg warn">86.0% quality</span></div>
                       </div>
                       <div class="eval-bar-track has-goal"><div class="eval-bar-fill" style="width:44.0%;background:var(--warn)"></div><span class="eval-bar-goal-mark" style="left:60%"></span></div>
                     </div>
                     <div class="eval-bar-row" data-entry-mode="investigate" data-aimy-topic="portfolio-behind" data-aimy-ask="InterFax is at 88.4%, just under the 90% goal. Show the trend and the last gap to close.">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--warn)"></span>InterFax</span>
-                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 86%</span><span class="eval-bar-avg warn">88.4%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 86%</span><span class="eval-bar-avg warn">88.4% quality</span></div>
                       </div>
                       <div class="eval-bar-track has-goal"><div class="eval-bar-fill" style="width:53.6%;background:var(--warn)"></div><span class="eval-bar-goal-mark" style="left:60%"></span></div>
                     </div>
                     <div class="eval-bar-row" data-entry-mode="investigate" data-aimy-topic="portfolio-ahead" data-aimy-ask="RightAnswers has stayed above the 90% goal all year at 91.3%. Show the playbook I captured to replicate it.">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--ok)"></span>RightAnswers</span>
-                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 89%</span><span class="eval-bar-avg ok">91.3%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 89%</span><span class="eval-bar-avg ok">91.3% quality</span></div>
                       </div>
                       <div class="eval-bar-track has-goal"><div class="eval-bar-fill" style="width:65.2%;background:var(--ok)"></div><span class="eval-bar-goal-mark" style="left:60%"></span></div>
                     </div>
                     <div class="eval-bar-row" data-entry-mode="investigate" data-aimy-topic="portfolio-ahead" data-aimy-ask="Adestra is the top portfolio at 93.7%. Show the trend and the playbook I captured.">
                       <div class="eval-bar-top">
                         <span class="eval-bar-label"><span class="eval-dot" style="background:var(--ok)"></span>Adestra</span>
-                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 91%</span><span class="eval-bar-avg ok">93.7%</span></div>
+                        <div class="eval-bar-right"><span class="eval-bar-pct">CSAT 91%</span><span class="eval-bar-avg ok">93.7% quality</span></div>
                       </div>
                       <div class="eval-bar-track has-goal"><div class="eval-bar-fill" style="width:74.8%;background:var(--ok)"></div><span class="eval-bar-goal-mark" style="left:60%"></span></div>
                     </div>
@@ -9004,7 +9345,7 @@
               <button class="filter-chip" data-filter="Product">Product</button>
               <button class="filter-chip" data-filter="Agents">Agents</button>
               <button class="filter-chip" data-filter="Time Period">Time Period</button>
-              <button class="filter-chip" data-filter="All">Reset all</button>
+              <button class="filter-chip" data-action="clear-filters">Reset all</button>
             </div>
           </div>
 
@@ -9075,14 +9416,6 @@
                here intact, and they now position against this rather than
                against the overlay, which has become a row. -->
           <div class="overlay-main">
-            <!-- Top label -->
-            <div class="overlay-badge">
-              <svg width="18" height="20" viewBox="0 0 18 20">
-                <use href="#aimy-logo-small" />
-              </svg>
-              AiMY
-            </div>
-
             <!-- Close button -->
             <button
               class="overlay-close"
@@ -9227,9 +9560,10 @@
         if (opening) panel.removeAttribute("hidden");
         else panel.setAttribute("hidden", "");
         btn.setAttribute("aria-expanded", opening ? "true" : "false");
-        btn.querySelector(".slv-score-toggle-label").textContent = opening
-          ? "Hide the trend"
-          : "Show the trend";
+        btn.setAttribute("aria-label", opening ? "Close Quality Score trend" : "Open Quality Score trend");
+        btn.setAttribute("title", opening ? "Close trend" : "Open trend");
+        const actionLabel = btn.querySelector(".slv-score-toggle-action-label");
+        if (actionLabel) actionLabel.textContent = opening ? "Close trend" : "Open trend";
       }
 
       // ── Quality Score Chart ───────────────────────────────────
@@ -9304,9 +9638,59 @@
         return d;
       }
 
+      function renderQualityMiniTrend(data, range) {
+        const path = document.getElementById('qsMiniTrendPath');
+        const fill = document.getElementById('qsMiniTrendFill');
+        const end = document.getElementById('qsMiniTrendEnd');
+        const target = document.getElementById('qsMiniTrendTarget');
+        const source = document.getElementById('qsMiniTrendSource');
+        if (!path || !fill || !end || !target || !data || !data.scores.length) return;
+
+        const box = path.ownerSVGElement.viewBox.baseVal;
+        const width = box.width;
+        const height = box.height;
+        const padX = 4;
+        const padY = 5;
+        const rawMin = Math.min(...data.scores, 90);
+        const rawMax = Math.max(...data.scores, 90);
+        const min = Math.max(0, rawMin - 3);
+        const max = Math.min(100, rawMax + 3);
+        const span = Math.max(1, max - min);
+        const xStep = data.scores.length === 1 ? 0 : (width - padX * 2) / (data.scores.length - 1);
+        const yFor = score => padY + ((max - score) / span) * (height - padY * 2);
+        const points = data.scores.map((score, index) => [padX + index * xStep, yFor(score)]);
+
+        let d = `M${points[0][0]},${points[0][1]}`;
+        for (let index = 1; index < points.length; index++) {
+          const previous = points[index - 1];
+          const current = points[index];
+          const control = (current[0] - previous[0]) * 0.4;
+          d += ` C${previous[0] + control},${previous[1]} ${current[0] - control},${current[1]} ${current[0]},${current[1]}`;
+        }
+
+        const last = points[points.length - 1];
+        path.setAttribute('d', d);
+        fill.setAttribute('d', `${d} L${last[0]},${height - padY} L${points[0][0]},${height - padY} Z`);
+        end.setAttribute('cx', last[0]);
+        end.setAttribute('cy', last[1]);
+        const targetY = yFor(90);
+        target.setAttribute('y1', targetY);
+        target.setAttribute('y2', targetY);
+        if (source) source.textContent = `Real audit data · ${range}`;
+      }
+
       function applyRangeToChart(range) {
         const data = RANGE_DATA[range];
         if (!data) return;
+        renderQualityMiniTrend(data, range);
+        const csatPeriodLabel = document.getElementById('csatPeriodLabel');
+        const csatPeriods = {
+          YTD: 'Year to date',
+          '90D': 'Last 90 days',
+          '30D': 'Last 30 days',
+          '7D': 'This week',
+        };
+        if (csatPeriodLabel) csatPeriodLabel.textContent = csatPeriods[range] || 'This week';
         const n = data.scores.length;
         const maxY = 200;
         // Distribute points across x=40..800 (760px span)
@@ -10531,8 +10915,14 @@
             // Update active filter strip
             const parsed = parseFilterFromText(text);
             if (parsed) {
-              activeFilters[parsed.key] = parsed.value;
-              renderActiveStrip();
+              if (parsed.key.toLowerCase() === "interaction type") {
+                const value = parsed.value.toLowerCase();
+                const type = value === "calls" ? "calls" : value === "tickets" ? "tickets" : "all";
+                setInteractionType(type);
+              } else {
+                activeFilters[parsed.key] = parsed.value;
+                renderActiveStrip();
+              }
             }
 
             // Restart flash animation
@@ -11662,10 +12052,50 @@
        the user focuses the input. It hides on blur (with a short
        delay so clicks on chips register before the tray disappears). */
         const filterTray = document.getElementById("filterTray");
-        const activeFilterStrip = document.getElementById("activeFilterStrip");
-        const afsClearAll = document.getElementById("afsClearAll");
+        const activeFilterStrip = null;
+        const afsClearAll = null;
         let trayHideTimer = null;
         let activeFilters = {}; // { Company: "Upland", "Time Period": "This week", … }
+        let interactionType = "all";
+        document.body.dataset.interactionType = interactionType;
+        const INTERACTION_TYPES = {
+          all: "All interactions",
+          calls: "Calls",
+          tickets: "Tickets",
+        };
+
+        function setInteractionType(type, options) {
+          const next = Object.prototype.hasOwnProperty.call(INTERACTION_TYPES, type) ? type : "all";
+          const changed = interactionType !== next;
+          interactionType = next;
+          document.body.dataset.interactionType = next;
+          document.querySelectorAll(".interaction-type-option").forEach((button) => {
+            const selected = button.dataset.interactionType === next;
+            button.setAttribute("aria-checked", String(selected));
+          });
+          if (next === "all") delete activeFilters["Interaction type"];
+          else activeFilters["Interaction type"] = INTERACTION_TYPES[next];
+          renderActiveStrip();
+          if (changed && !(options && options.silent)) {
+            window.dispatchEvent(new CustomEvent("aimy:interaction-type-changed", {
+              detail: { interactionType: next },
+            }));
+          }
+          return next;
+        }
+
+        document.querySelectorAll(".interaction-type-option").forEach((button) => {
+          button.addEventListener("click", () => setInteractionType(button.dataset.interactionType));
+          button.addEventListener("keydown", (event) => {
+            if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+            event.preventDefault();
+            const options = Array.from(document.querySelectorAll(".interaction-type-option"));
+            const index = options.indexOf(button);
+            const next = options[(index + (event.key === "ArrowRight" ? 1 : -1) + options.length) % options.length];
+            setInteractionType(next.dataset.interactionType);
+            next.focus();
+          });
+        });
 
         function showTray() {
           clearTimeout(trayHideTimer);
@@ -11698,7 +12128,7 @@
           "Product":     "Filter by Product: ",
           "Agents":      "Filter by Agents: ",
           "Time Period":  "Filter by Time Period: ",
-          "All":         "Reset all filters",
+          "Interaction type": "Filter by Interaction type: ",
         };
 
         const FILTER_SUGGESTIONS = {
@@ -11706,6 +12136,7 @@
           "Product":     ["Objectif Lune", "Adestra", "InterFax", "Qvidian", "RightAnswers", "Second Street"],
           "Agents":      ["Salma Ehab", "Omar Adel", "Sara Hassan", "Karim Nour", "Ahmed Mahfouz"],
           "Time Period":  ["This week", "Last 30 days", "Last 90 days", "Q2 2026", "Custom range"],
+          "Interaction type": ["All interactions", "Calls", "Tickets"],
         };
 
         // Cache the default inner HTML so we can restore it
@@ -11762,7 +12193,7 @@
           filterTrayInner.querySelectorAll(".filter-chip[data-filter]").forEach(chip => {
             chip.addEventListener("click", () => {
               const key = chip.dataset.filter;
-              if (key === "All") {
+              if (chip.dataset.action === "clear-filters") {
                 floatInput.value = "";
                 floatInput.dispatchEvent(new Event("input"));
                 clearAllFilters();
@@ -11795,6 +12226,7 @@
         }
 
         function renderActiveStrip() {
+          if (!activeFilterStrip) return;
           // Remove all chips (keep the label and clear-all button)
           activeFilterStrip.querySelectorAll(".afs-chip").forEach(c => c.remove());
           const entries = Object.entries(activeFilters);
@@ -11816,18 +12248,22 @@
           // Wire up individual remove buttons
           activeFilterStrip.querySelectorAll(".afs-chip-x").forEach(btn => {
             btn.addEventListener("click", () => {
-              delete activeFilters[btn.dataset.key];
-              renderActiveStrip();
+              if (btn.dataset.key === "Interaction type") setInteractionType("all");
+              else {
+                delete activeFilters[btn.dataset.key];
+                renderActiveStrip();
+              }
             });
           });
         }
 
         function clearAllFilters() {
           activeFilters = {};
+          setInteractionType("all", { silent: true });
           renderActiveStrip();
         }
 
-        afsClearAll.addEventListener("click", clearAllFilters);
+        if (afsClearAll) afsClearAll.addEventListener("click", clearAllFilters);
 
         /* ══════════════════════════════════════════════════════════════════
            THE SURFACE THIS PAGE CAN CHANGE, AS A QUERY STRING
@@ -11847,7 +12283,7 @@
           /* The dimensions are a closed set, so a slug can be turned back into
              the label it came from. Round-tripping "Time Period" through a URL
              key is otherwise the one thing that can silently go wrong. */
-          var DIMS = Object.keys(FILTER_PREFIXES).filter(function (k) { return k !== "All"; });
+          var DIMS = Object.keys(FILTER_PREFIXES).filter(function (k) { return k !== "Interaction type"; });
           function slug(k) {
             return "f_" + String(k).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
           }
@@ -11859,9 +12295,9 @@
 
           window.AIMY_SURFACE = {
             initials: "NW",
-            SCALAR: ["view", "scenario", "chart"].concat(DIMS.map(slug)),
+            SCALAR: ["view", "scenario", "chart", "interaction"].concat(DIMS.map(slug)),
             MULTI: [],
-            DEFAULTS: { view: "manager", scenario: "critical" },
+            DEFAULTS: { view: "manager", scenario: "critical", interaction: "all" },
 
             read: function () {
               var out = { scenario: activeScenario };
@@ -11872,6 +12308,7 @@
               if (on) out.view = on.getAttribute("data-view");
               var tog = document.getElementById("qsChartToggle");
               if (tog && tog.getAttribute("aria-expanded") === "true") out.chart = "1";
+              out.interaction = interactionType;
               Object.keys(activeFilters).forEach(function (k) { out[slug(k)] = activeFilters[k]; });
               return out;
             },
@@ -11882,6 +12319,7 @@
                 /* Filters: rebuilt from nothing, never merged. */
                 activeFilters = {};
                 DIMS.forEach(function (k) { if (v[slug(k)]) activeFilters[k] = v[slug(k)]; });
+                setInteractionType(v.interaction || "all", { silent: true });
                 renderActiveStrip();
 
                 /* The detected state. `setScenario` repaints the pill, the
@@ -13163,7 +13601,7 @@
             var b = btns[i];
             if (b.closest('.slv')) continue;
             if (b.closest('[data-aimy-item]')) continue;
-            var card = b.closest('.aimy-done, .goal-brief, .bcard, .attn-block');
+            var card = b.closest('.aimy-done, .goal-brief, .ai-insight, .bcard, .attn-block');
             if (!card || !card.querySelector('.work-state')) continue;
             card.setAttribute('data-aimy-item', b.getAttribute('data-aimy-topic'));
           }
@@ -13180,7 +13618,7 @@
           /* Find the card that owns this topic: the action element's nearest
              labelled ancestor, or any card tagged with the same item. */
           var card = null;
-          if (env.el) card = env.el.closest("[data-aimy-item], .bcard, .goal-brief, .attn-block, .summary-signal, .aimy-done");
+          if (env.el) card = env.el.closest("[data-aimy-item], .bcard, .goal-brief, .ai-insight, .attn-block, .summary-signal, .aimy-done");
           if (!card && topic) card = document.querySelector('[data-aimy-item="' + topic + '"]');
           if (!card) return;
 
@@ -13259,6 +13697,35 @@
       })();
     </script>
     <script>
+      /* Audit/Evaluation content view switcher. The existing content markers
+         remain the source of truth; this only controls their visibility. */
+      (function () {
+        var tabs = document.querySelectorAll("[data-content-view]");
+        function setContentView(view) {
+          var isEvaluation = view === "evaluation";
+          document.body.setAttribute("data-content-view", view);
+          document.querySelectorAll(".audit-only").forEach(function (el) {
+            el.hidden = isEvaluation;
+          });
+          document.querySelectorAll(".evaluation-only").forEach(function (el) {
+            el.hidden = !isEvaluation;
+          });
+          tabs.forEach(function (tab) {
+            var active = tab.getAttribute("data-content-view") === view;
+            tab.classList.toggle("active", active);
+            tab.setAttribute("aria-selected", active ? "true" : "false");
+          });
+        }
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            setContentView(tab.getAttribute("data-content-view"));
+          });
+        });
+        setContentView("audit");
+      })();
+
+    </script>
+    <script>
       /* Director view: role toggle + multi-series portfolio chart (per-line hover). */
       (function () {
         var tabs = document.querySelectorAll(".view-toggle-btn");
@@ -13295,7 +13762,7 @@
       })();
 
           </script>
-  
+
     <script>
     (function(){
       var DATA={

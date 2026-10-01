@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AiMY QA · Design Documentation</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <title>AiMY QA · Semantic & Typography Color Update</title>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,7 +14,7 @@
     ═══════════════════════════════════════════════ */
     :root {
       /* ── AI Brand Gradient ── */
-      --ai: linear-gradient(104deg, #0066ff 0%, #61adf1 47%, #6fdfe2 100%);
+      --ai: linear-gradient(104deg, #0066ff 0%, #61adf1 47%, #45d3e6 100%);
 
       /* ── Dark Scale (navy-tinted) ── */
       --d950: #080b10;
@@ -24,13 +23,13 @@
       --d800: #1c2630;
       --d750: #233040;
       --d700: #2e3d50;
-      --d600: #4a5b6e;
-      --d500: #637280;
-      --d400: #8b9aaa;
-      --d300: #b0bcca;
-      --d200: #c8d2dc;
-      --d100: #d8e0e8;
-      --d50:  #eef2f6;
+      --d600: #8091a5;
+      --d500: #8394a8;
+      --d400: #93a2b4;
+      --d300: #a8b5c5;
+      --d200: #c3ceda;
+      --d100: #dee5ed;
+      --d50:  #f5f7fb;
 
       /* ── Brand / Primary ── */
       --brand:        #3369ff;
@@ -44,21 +43,34 @@
       --qa-accent-glow:rgba(139,79,244,0.25);
 
       /* ── Secondary Accents ── */
-      --teal:   #6fdfe2;
-      --teal-dim: rgba(111,223,226,0.12);
-      --purple: #8b4ff4;
+      --cyan:        #45d3e6;
+      --cyan-rgb:    69,211,230;
+      --cyan-bg:     rgba(69,211,230,0.12);
+      --cyan-border: rgba(69,211,230,0.30);
+      --teal:        var(--cyan);      /* compatibility alias */
+      --teal-dim:    var(--cyan-bg);   /* compatibility alias */
+      --purple:      #8b4ff4;
 
       /* ── Semantic Status ── */
-      --ok:      #17b26a;
-      --ok-bg:   rgba(23,178,106,0.12);
-      --ok-glow: rgba(23,178,106,0.2);
-      --warn:    #f79009;
-      --warn-bg: rgba(247,144,9,0.12);
-      --err:     #f04438;
-      --err-bg:  rgba(240,68,56,0.12);
-      --err-glow:rgba(240,68,56,0.2);
-      --info:    #0ea5e9;
-      --info-bg: rgba(14,165,233,0.12);
+      --ok:          #4ed6a1;
+      --ok-rgb:      78,214,161;
+      --ok-bg:       rgba(78,214,161,0.12);
+      --ok-border:   rgba(78,214,161,0.30);
+      --ok-glow:     rgba(78,214,161,0.20);
+      --warn:        #f7c95c;
+      --warn-rgb:    247,201,92;
+      --warn-bg:     rgba(247,201,92,0.13);
+      --warn-border: rgba(247,201,92,0.32);
+      --err:         #ff7282;
+      --err-rgb:     255,114,130;
+      --err-bg:      rgba(255,114,130,0.12);
+      --err-border:  rgba(255,114,130,0.30);
+      --err-glow:    rgba(255,114,130,0.20);
+      --info:        #7ea7ff;
+      --info-rgb:    126,167,255;
+      --info-bg:     rgba(126,167,255,0.12);
+      --info-border: rgba(126,167,255,0.28);
+      --text-on-status: #0d1117;
 
       /* ── Surface Tokens ── */
       --body-bg:          #0f1215;
@@ -76,7 +88,7 @@
       /* ── Gradients ── */
       --grad-avatar: linear-gradient(135deg,#7c3aed,#3369ff);
       --grad-ellipse-1: radial-gradient(ellipse at 30% 50%, rgba(0,102,255,0.18) 0%, rgba(97,173,241,0.1) 28%, transparent 60%);
-      --grad-ellipse-2: radial-gradient(ellipse at 75% 70%, rgba(111,223,226,0.1) 0%, rgba(139,79,244,0.07) 38%, transparent 60%);
+      --grad-ellipse-2: radial-gradient(ellipse at 75% 70%, rgba(69,211,230,0.1) 0%, rgba(139,79,244,0.07) 38%, transparent 60%);
 
       /* ── Layout ── */
       --topbar-height: 60px;
@@ -119,7 +131,24 @@
       --shadow-md: 0 4px 16px rgba(0,0,0,0.35);
       --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
       --shadow-xl: 0 16px 48px rgba(0,0,0,0.5);
-    }
+
+        --err-strong: #ff5268;
+
+        /* Typography colors use named roles instead of ad-hoc ramp choices. */
+        --text-strong:      #f5f7fb;
+        --text-primary:     #dee5ed;
+        --text-secondary:   #c3ceda;
+        --text-subtext:     #a8b5c5;
+        --text-muted:       #93a2b4;
+        --text-caption:     #8394a8;
+        --text-placeholder: #8091a5;
+        --text-link:        #7ea7ff;
+        --ink-primary:      var(--text-strong);
+        --ink-secondary:    var(--text-primary);
+        --ink-muted:        var(--text-subtext);
+        --ink-placeholder:  var(--text-placeholder);
+        --ink-rule:         var(--text-caption);
+}
 
     /* ═══════════════════════════════════════════════
        BASE
@@ -184,7 +213,7 @@
     .ds-topbar-version {
       font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--teal); background: var(--teal-dim);
-      border: 1px solid rgba(111,223,226,0.2);
+      border: 1px solid rgba(69,211,230,0.2);
       padding: 3px 10px; border-radius: var(--r-pill);
     }
     .ds-topbar-search {
@@ -351,7 +380,7 @@
     .ds-code .cv { color: var(--teal); }                        /* value */
     .ds-code .cs { color: var(--ok); }                          /* string / number */
     .ds-code .ct { color: #f1a1c8; }                            /* type / selector */
-    .ds-code .cn { color: #ffc96b; }                            /* name / variable */
+    .ds-code .cn { color: #f7c95c; }                            /* name / variable */
     .ds-code-label {
       font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--d600); margin-bottom: 6px;
@@ -390,9 +419,9 @@
       display: flex; gap: 11px; align-items: flex-start;
     }
     .ds-callout.info  { background: rgba(51,105,255,0.08);  border: 1px solid rgba(51,105,255,0.18);  color: #a8c8ff; }
-    .ds-callout.warn  { background: var(--warn-bg);          border: 1px solid rgba(247,144,9,0.22);   color: #ffd08a; }
-    .ds-callout.ok    { background: var(--ok-bg);            border: 1px solid rgba(23,178,106,0.22);  color: #7dd9b0; }
-    .ds-callout.err   { background: var(--err-bg);           border: 1px solid rgba(240,68,56,0.22);   color: #ffaaaa; }
+    .ds-callout.warn  { background: var(--warn-bg);          border: 1px solid rgba(247,201,92,0.22);   color: #f7c95c; }
+    .ds-callout.ok    { background: var(--ok-bg);            border: 1px solid rgba(78,214,161,0.22);  color: #4ed6a1; }
+    .ds-callout.err   { background: var(--err-bg);           border: 1px solid rgba(255,114,130,0.22);   color: #ff8996; }
     .ds-callout-icon  { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
 
     /* ── Preview Sandbox ── */
@@ -426,14 +455,14 @@
       border-radius: var(--r-pill); letter-spacing: 0.04em;
       text-transform: uppercase; vertical-align: middle; white-space: nowrap;
     }
-    .tag-ok      { background: var(--ok-bg);   color: var(--ok);   border: 1px solid rgba(23,178,106,0.22); }
-    .tag-warn    { background: var(--warn-bg);  color: var(--warn); border: 1px solid rgba(247,144,9,0.22); }
-    .tag-err     { background: var(--err-bg);   color: var(--err);  border: 1px solid rgba(240,68,56,0.22); }
+    .tag-ok      { background: var(--ok-bg);   color: var(--ok);   border: 1px solid rgba(78,214,161,0.22); }
+    .tag-warn    { background: var(--warn-bg);  color: var(--warn); border: 1px solid rgba(247,201,92,0.22); }
+    .tag-err     { background: var(--err-bg);   color: var(--err);  border: 1px solid rgba(255,114,130,0.22); }
     .tag-ai      { background: rgba(0,102,255,0.1); color: #61adf1; border: 1px solid rgba(0,102,255,0.22); }
     .tag-qa      { background: var(--qa-accent-dim); color: var(--qa-accent); border: 1px solid rgba(var(--qa-accent-rgb),0.22); }
     .tag-neutral { background: rgba(255,255,255,0.05); color: var(--d300); border: 1px solid rgba(255,255,255,0.1); }
-    .tag-info    { background: var(--info-bg);  color: var(--info); border: 1px solid rgba(14,165,233,0.22); }
-    .tag-teal    { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(111,223,226,0.22); }
+    .tag-info    { background: var(--info-bg);  color: var(--info); border: 1px solid rgba(126,167,255,0.22); }
+    .tag-teal    { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(69,211,230,0.22); }
 
     /* ── Signal / Live Badge ── */
     .signal-badge {
@@ -441,8 +470,8 @@
       font-size: 9px; font-weight: 700; padding: 3px 9px;
       border-radius: var(--r-pill); letter-spacing: 0.06em; text-transform: uppercase;
     }
-    .signal-badge.err { background: var(--err-bg); color: var(--err); border: 1px solid rgba(240,68,56,0.22); }
-    .signal-badge.ok  { background: var(--ok-bg);  color: var(--ok);  border: 1px solid rgba(23,178,106,0.22); }
+    .signal-badge.err { background: var(--err-bg); color: var(--err); border: 1px solid rgba(255,114,130,0.22); }
+    .signal-badge.ok  { background: var(--ok-bg);  color: var(--ok);  border: 1px solid rgba(78,214,161,0.22); }
     .signal-dot {
       width: 5px; height: 5px; border-radius: 50%; background: currentColor;
       animation: blink 1.2s ease-in-out infinite;
@@ -479,9 +508,9 @@
       border-color: rgba(51,105,255,0.3);
       color: #7badff;
     }
-    .chip.ok    { background: var(--ok-bg);   border-color: rgba(23,178,106,0.25); color: var(--ok); }
-    .chip.warn  { background: var(--warn-bg);  border-color: rgba(247,144,9,0.25);  color: var(--warn); }
-    .chip.err   { background: var(--err-bg);   border-color: rgba(240,68,56,0.25);  color: var(--err); }
+    .chip.ok    { background: var(--ok-bg);   border-color: rgba(78,214,161,0.25); color: var(--ok); }
+    .chip.warn  { background: var(--warn-bg);  border-color: rgba(247,201,92,0.25);  color: var(--warn); }
+    .chip.err   { background: var(--err-bg);   border-color: rgba(255,114,130,0.25);  color: var(--err); }
     .chip-dismiss {
       font-size: 13px; line-height: 1; opacity: 0.5;
       cursor: pointer; margin-left: 2px;
@@ -535,14 +564,14 @@
     .btn-ghost  { background: rgba(255,255,255,0.05); color: var(--d300); border-color: rgba(255,255,255,0.1); }
     .btn-ghost:hover  { background: rgba(255,255,255,0.09); color: var(--d50); border-color: rgba(255,255,255,0.16); }
 
-    .btn-err    { background: var(--err-bg);  color: var(--err);  border-color: rgba(240,68,56,0.25); }
-    .btn-err:hover    { background: rgba(240,68,56,0.2); }
+    .btn-err    { background: var(--err-bg);  color: var(--err);  border-color: rgba(255,114,130,0.25); }
+    .btn-err:hover    { background: rgba(255,114,130,0.2); }
 
-    .btn-warn   { background: var(--warn-bg); color: var(--warn); border-color: rgba(247,144,9,0.25); }
-    .btn-warn:hover   { background: rgba(247,144,9,0.2); }
+    .btn-warn   { background: var(--warn-bg); color: var(--warn); border-color: rgba(247,201,92,0.25); }
+    .btn-warn:hover   { background: rgba(247,201,92,0.2); }
 
-    .btn-ok     { background: var(--ok-bg);   color: var(--ok);   border-color: rgba(23,178,106,0.25); }
-    .btn-ok:hover     { background: rgba(23,178,106,0.22); }
+    .btn-ok     { background: var(--ok-bg);   color: var(--ok);   border-color: rgba(78,214,161,0.25); }
+    .btn-ok:hover     { background: rgba(78,214,161,0.22); }
 
     .btn-qa     { background: var(--qa-accent-dim); color: var(--qa-accent); border-color: rgba(var(--qa-accent-rgb),0.28); }
     .btn-qa:hover     { background: rgba(var(--qa-accent-rgb),0.22); }
@@ -576,9 +605,9 @@
       transition: border-color var(--t-base), transform var(--t-base), box-shadow var(--t-base);
     }
     .bcard:hover { border-color: var(--card-border-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-    .bcard.p1 { border-color: rgba(240,68,56,0.2); }
-    .bcard.p2 { border-color: rgba(247,144,9,0.2); }
-    .bcard.p3 { border-color: rgba(23,178,106,0.16); }
+    .bcard.p1 { border-color: rgba(255,114,130,0.2); }
+    .bcard.p2 { border-color: rgba(247,201,92,0.2); }
+    .bcard.p3 { border-color: rgba(78,214,161,0.16); }
     .bcard.tier-primary { box-shadow: 0 0 0 1px rgba(var(--qa-accent-rgb),0.3), var(--shadow-md); }
 
     .bcard-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
@@ -806,7 +835,7 @@
     .progress-bar-fill.err  { background: var(--err); }
     .progress-bar-fill.brand{ background: var(--brand); }
     .progress-bar-fill.ai   {
-      background: linear-gradient(90deg, #0066ff, #6fdfe2);
+      background: linear-gradient(90deg, #0066ff, #45d3e6);
     }
 
     /* thick variant for goal category breakdown */
@@ -857,7 +886,7 @@
       transition: all var(--t-fast); white-space: nowrap;
     }
     .copy-btn:hover, .ds-copy-btn:hover { background: rgba(255,255,255,0.1); color: var(--d100); border-color: rgba(255,255,255,0.18); }
-    .copy-btn.copied, .ds-copy-btn.copied { background: var(--ok-bg); border-color: rgba(23,178,106,0.3); color: var(--ok); }
+    .copy-btn.copied, .ds-copy-btn.copied { background: var(--ok-bg); border-color: rgba(78,214,161,0.3); color: var(--ok); }
     .copy-btn svg, .ds-copy-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
 
     /* Code block copy button, absolute top-right when inside .ds-code-wrap */
@@ -1112,9 +1141,9 @@
       border-radius: var(--r-pill); letter-spacing: 0.05em; text-transform: uppercase;
       flex-shrink: 0;
     }
-    .bcard.p1 .priority-badge { background: var(--err-bg);  color: var(--err);  border: 1px solid rgba(240,68,56,0.2); }
-    .bcard.p2 .priority-badge { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,144,9,0.2); }
-    .bcard.p3 .priority-badge { background: var(--ok-bg);   color: var(--ok);   border: 1px solid rgba(23,178,106,0.2); }
+    .bcard.p1 .priority-badge { background: var(--err-bg);  color: var(--err);  border: 1px solid rgba(255,114,130,0.2); }
+    .bcard.p2 .priority-badge { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,201,92,0.2); }
+    .bcard.p3 .priority-badge { background: var(--ok-bg);   color: var(--ok);   border: 1px solid rgba(78,214,161,0.2); }
     .bcard.ai .priority-badge { background: rgba(0,102,255,0.1); color: #61adf1; border: 1px solid rgba(0,102,255,0.2); }
 
     /* Conclusion, the AI-generated headline sentence */
@@ -1152,12 +1181,12 @@
       flex-shrink: 0;
     }
     .action-btn svg { width: 13px; height: 13px; }
-    .bcard.p1 .action-btn { background: var(--err-bg);  color: var(--err);  border-color: rgba(240,68,56,0.25); }
-    .bcard.p1 .action-btn:hover { background: rgba(240,68,56,0.18); }
-    .bcard.p2 .action-btn { background: var(--warn-bg); color: var(--warn); border-color: rgba(247,144,9,0.25); }
-    .bcard.p2 .action-btn:hover { background: rgba(247,144,9,0.18); }
-    .bcard.p3 .action-btn { background: var(--ok-bg);   color: var(--ok);   border-color: rgba(23,178,106,0.25); }
-    .bcard.p3 .action-btn:hover { background: rgba(23,178,106,0.18); }
+    .bcard.p1 .action-btn { background: var(--err-bg);  color: var(--err);  border-color: rgba(255,114,130,0.25); }
+    .bcard.p1 .action-btn:hover { background: rgba(255,114,130,0.18); }
+    .bcard.p2 .action-btn { background: var(--warn-bg); color: var(--warn); border-color: rgba(247,201,92,0.25); }
+    .bcard.p2 .action-btn:hover { background: rgba(247,201,92,0.18); }
+    .bcard.p3 .action-btn { background: var(--ok-bg);   color: var(--ok);   border-color: rgba(78,214,161,0.25); }
+    .bcard.p3 .action-btn:hover { background: rgba(78,214,161,0.18); }
 
     /* Expand toggle, "Metric Breakdown ↓" / "Hide data ↑" */
     .expand-toggle {
@@ -1188,7 +1217,7 @@
     .bcard-ack-btn.dismiss { color: var(--d600); }
     .bcard-ack-btn.dismiss:hover { color: var(--d400); }
     .bcard-ack-btn.acknowledged {
-      color: var(--ok); border-color: rgba(23,178,106,0.22); background: var(--ok-bg);
+      color: var(--ok); border-color: rgba(78,214,161,0.22); background: var(--ok-bg);
       cursor: default; pointer-events: none;
     }
 
@@ -1222,7 +1251,7 @@
     .signal-card {
       background: color-mix(in srgb, var(--err) 4%, var(--card-bg));
       border-radius: var(--r-2xl) var(--r-2xl) 0 0;
-      border: 1px solid rgba(240,68,56,0.3); border-bottom: none;
+      border: 1px solid rgba(255,114,130,0.3); border-bottom: none;
       overflow: hidden;
     }
     .signal-body { padding: 20px; }
@@ -1268,11 +1297,11 @@
     .primary-action-btn {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--font-sans); font-size: 12px; font-weight: 700; color: var(--err);
-      background: var(--err-bg); border: 1px solid rgba(240,68,56,0.3);
+      background: var(--err-bg); border: 1px solid rgba(255,114,130,0.3);
       border-radius: var(--r-md); padding: 9px 16px; cursor: pointer; white-space: nowrap;
       transition: background var(--t-fast), border-color var(--t-fast);
     }
-    .primary-action-btn:hover { background: rgba(240,68,56,0.18); border-color: rgba(240,68,56,0.5); }
+    .primary-action-btn:hover { background: rgba(255,114,130,0.18); border-color: rgba(255,114,130,0.5); }
     .primary-action-btn svg   { width: 13px; height: 13px; flex-shrink: 0; }
     .secondary-actions { display: flex; gap: 6px; flex-wrap: wrap; }
     .sec-btn {
@@ -1317,7 +1346,7 @@
     .spike-chart-area   { position: relative; height: 72px; }
     .spike-chart-area svg { width: 100%; height: 100%; overflow: visible; }
     .spike-annotation {
-      position: absolute; background: var(--d750); border: 1px solid rgba(240,68,56,0.35);
+      position: absolute; background: var(--d750); border: 1px solid rgba(255,114,130,0.35);
       border-radius: var(--r-md); padding: 5px 9px; font-size: 10px; color: var(--d300);
       pointer-events: none; white-space: nowrap; line-height: 1.4; top: -4px; right: 0; z-index: 2;
     }
@@ -1342,10 +1371,10 @@
     }
     .driver-bar-track { flex: 1; height: 7px; background: rgba(255,255,255,0.08); border-radius: var(--r-xs); overflow: hidden; }
     .driver-bar-fill  { height: 100%; border-radius: var(--r-xs); transform-origin: left center; }
-    .driver-bar-fill.primary   { background: linear-gradient(90deg,#f04438,#fb7067); box-shadow: 0 0 8px rgba(240,68,56,0.4); }
-    .driver-bar-fill.secondary { background: rgba(240,68,56,0.35); }
-    .driver-bar-fill.minor     { background: rgba(240,68,56,0.28); }
-    .driver-bar-fill.neutral   { background: rgba(23,178,106,0.3); }
+    .driver-bar-fill.primary   { background: linear-gradient(90deg,#ff7282,#fb7067); box-shadow: 0 0 8px rgba(255,114,130,0.4); }
+    .driver-bar-fill.secondary { background: rgba(255,114,130,0.35); }
+    .driver-bar-fill.minor     { background: rgba(255,114,130,0.28); }
+    .driver-bar-fill.neutral   { background: rgba(78,214,161,0.3); }
     .driver-bar-stat { font-size: 11px; font-weight: 700; color: var(--d50); width: 36px; text-align: right; flex-shrink: 0; }
     .driver-bar-stat.primary-stat { color: var(--err); }
 
@@ -1353,7 +1382,7 @@
     .feed-items {
       background: var(--card-bg);
       border-radius: 0 0 var(--r-2xl) var(--r-2xl);
-      border: 1px solid rgba(240,68,56,0.15);
+      border: 1px solid rgba(255,114,130,0.15);
       border-top: 1px solid rgba(255,255,255,0.05); overflow: hidden;
     }
     .feed-header {
@@ -1732,7 +1761,7 @@
       display: inline-flex; align-items: center; gap: 5px;
       font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
       text-transform: uppercase; padding: 3px 9px; border-radius: var(--r-pill);
-      background: linear-gradient(104deg, rgba(0,102,255,0.15), rgba(111,223,226,0.12));
+      background: linear-gradient(104deg, rgba(0,102,255,0.15), rgba(69,211,230,0.12));
       border: 1px solid rgba(97,173,241,0.25); color: #61adf1;
     }
     .aimy-badge svg { width: 11px; height: 11px; }
@@ -1756,7 +1785,7 @@
     .aimy-toast-icon {
       width: 28px; height: 28px; border-radius: var(--r-md); flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      background: var(--ok-bg); border: 1px solid rgba(23,178,106,0.2);
+      background: var(--ok-bg); border: 1px solid rgba(78,214,161,0.2);
     }
     .aimy-toast-icon svg { width: 14px; height: 14px; stroke: var(--ok); stroke-width: 2.5; }
 
@@ -1810,12 +1839,12 @@
       border-color: rgba(139,79,244,0.22);
     }
     .ds-disp-row.sla-row {
-      background: rgba(240,68,56,0.03);
-      border-color: rgba(240,68,56,0.12);
+      background: rgba(255,114,130,0.03);
+      border-color: rgba(255,114,130,0.14);
     }
     .ds-disp-row.sla-row.selected {
-      background: rgba(240,68,56,0.08);
-      border-color: rgba(240,68,56,0.25);
+      background: rgba(255,114,130,0.08);
+      border-color: rgba(255,114,130,0.25);
     }
     .ds-disp-row.resolved-row { opacity: 0.7; }
     .ds-disp-row.resolved-row:hover { opacity: 1; }
@@ -1845,7 +1874,7 @@
       font-size: 9px; font-weight: 700;
       padding: 2px 7px; border-radius: 8px;
       background: var(--err-bg); color: var(--err);
-      border: 1px solid rgba(240,68,56,0.2); white-space: nowrap;
+      border: 1px solid rgba(255,114,130,0.2); white-space: nowrap;
     }
 
     /* Outcome badge (resolved rows) */
@@ -1854,7 +1883,7 @@
       padding: 2px 7px; border-radius: 8px; white-space: nowrap;
     }
     .outcome-badge.upheld    { background: rgba(255,255,255,0.06); color: var(--d300); border: 1px solid rgba(255,255,255,0.1); }
-    .outcome-badge.overturned{ background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(23,178,106,0.2); }
+    .outcome-badge.overturned{ background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(78,214,161,0.2); }
     .outcome-badge.partial   { background: rgba(139,79,244,0.1); color: var(--qa-accent); border: 1px solid rgba(139,79,244,0.2); }
 
     /* ── SLA Indicators ───────────────────────────────────────────── */
@@ -1862,7 +1891,7 @@
       display: inline-flex; align-items: center; gap: 5px;
       font-size: 10px; font-weight: 700;
       padding: 3px 9px; border-radius: 20px;
-      background: var(--err-bg); border: 1px solid rgba(240,68,56,0.2);
+      background: var(--err-bg); border: 1px solid rgba(255,114,130,0.2);
       color: var(--err);
     }
     .sla-warning-pill svg { width: 11px; height: 11px; }
@@ -1903,7 +1932,7 @@
     }
     .aimy-suggest-accept:hover { background: rgba(0,102,255,0.18); }
     .aimy-suggest-accept.accepted {
-      background: var(--ok-bg); border-color: rgba(23,178,106,0.2);
+      background: var(--ok-bg); border-color: rgba(78,214,161,0.2);
       color: var(--ok); cursor: default; pointer-events: none;
     }
 
@@ -1919,9 +1948,9 @@
       font-size: 10px; font-weight: 700;
       padding: 3px 10px; border-radius: 20px; letter-spacing: 0.04em;
     }
-    .detail-status-badge.pending    { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,144,9,0.2); }
+    .detail-status-badge.pending    { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,201,92,0.2); }
     .detail-status-badge.in-review  { background: rgba(51,105,255,0.1); color: #61adf1; border: 1px solid rgba(51,105,255,0.22); }
-    .detail-status-badge.resolved   { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(23,178,106,0.2); }
+    .detail-status-badge.resolved   { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(78,214,161,0.2); }
     .justify-label-pill {
       font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px;
       background: rgba(139,79,244,0.1); color: var(--qa-accent);
@@ -2067,7 +2096,7 @@
     /* Resolved outcome block */
     .resolved-outcome-block { padding: 14px 16px; border-radius: 10px; margin-bottom: 14px; border: 1px solid; }
     .resolved-outcome-block.upheld     { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
-    .resolved-outcome-block.overturned { background: var(--ok-bg); border-color: rgba(23,178,106,0.2); }
+    .resolved-outcome-block.overturned { background: var(--ok-bg); border-color: rgba(78,214,161,0.2); }
     .resolved-outcome-block.partial    { background: rgba(139,79,244,0.06); border-color: rgba(139,79,244,0.15); }
     .rob-header { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--d50); margin-bottom: 6px; }
     .rob-header svg { width: 14px; height: 14px; flex-shrink: 0; }
@@ -2077,7 +2106,7 @@
     .score-delta-resolved { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
     .sdr-before { font-size: 16px; font-weight: 700; color: var(--err); }
     .sdr-after  { font-size: 16px; font-weight: 700; color: var(--ok); }
-    .sdr-delta  { font-size: 13px; font-weight: 700; padding: 2px 9px; border-radius: 8px; background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(23,178,106,0.2); }
+    .sdr-delta  { font-size: 13px; font-weight: 700; padding: 2px 9px; border-radius: 8px; background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(78,214,161,0.2); }
 
     /* ── Audit Trail ──────────────────────────────────────────────── */
     .ds-audit-trail { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; }
@@ -2112,10 +2141,10 @@
       width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
       margin-top: 5px; border: 2px solid var(--card-bg);
     }
-    .audit-event-dot.decision   { background: var(--ok); box-shadow: 0 0 0 3px rgba(23,178,106,0.12); }
+    .audit-event-dot.decision   { background: var(--ok); box-shadow: 0 0 0 3px rgba(78,214,161,0.14); }
     .audit-event-dot.review     { background: var(--brand); }
-    .audit-event-dot.sla-event  { background: var(--err); box-shadow: 0 0 0 3px rgba(240,68,56,0.15); }
-    .audit-event-dot.escalation { background: var(--warn); box-shadow: 0 0 0 3px rgba(247,144,9,0.15); }
+    .audit-event-dot.sla-event  { background: var(--err); box-shadow: 0 0 0 3px rgba(255,114,130,0.15); }
+    .audit-event-dot.escalation { background: var(--warn); box-shadow: 0 0 0 3px rgba(247,201,92,0.15); }
     .audit-event-dot.submission { background: var(--d400); }
     .audit-event-content { flex: 1; }
     .audit-event-top { display: flex; align-items: center; gap: 10px; margin-bottom: 3px; flex-wrap: wrap; }
@@ -2164,12 +2193,12 @@
     }
     .tpl-type-badge.system { background: rgba(51,105,255,0.1); color: #61adf1; border: 1px solid rgba(51,105,255,0.2); }
     .tpl-type-badge.custom { background: rgba(139,79,244,0.1); color: var(--qa-accent); border: 1px solid rgba(139,79,244,0.2); }
-    .tpl-type-badge.forked { background: rgba(111,223,226,0.08); color: var(--teal); border: 1px solid rgba(111,223,226,0.2); }
+    .tpl-type-badge.forked { background: rgba(69,211,230,0.08); color: var(--teal); border: 1px solid rgba(69,211,230,0.2); }
     .tpl-active-badge {
       display: flex; align-items: center; gap: 5px;
       font-size: 9px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
       color: var(--ok); padding: 3px 8px;
-      background: var(--ok-bg); border: 1px solid rgba(23,178,106,0.2); border-radius: 20px;
+      background: var(--ok-bg); border: 1px solid rgba(78,214,161,0.2); border-radius: 20px;
     }
     .tpl-active-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ok); animation: blink 2s ease-in-out infinite; }
     .tpl-card-name { font-size: 14px; font-weight: 700; color: var(--d50); letter-spacing: -0.01em; line-height: 1.3; }
@@ -2221,7 +2250,7 @@
     .ds-aimy-intel-bar {
       display: flex; align-items: center; justify-content: space-between; gap: 8px;
       padding: 10px 14px; border-radius: 10px; flex-wrap: wrap;
-      background: linear-gradient(104deg, rgba(0,102,255,0.07) 0%, rgba(97,173,241,0.05) 50%, rgba(111,223,226,0.04) 100%);
+      background: linear-gradient(104deg, rgba(0,102,255,0.07) 0%, rgba(97,173,241,0.05) 50%, rgba(69,211,230,0.04) 100%);
       border: 1px solid rgba(97,173,241,0.18);
     }
     .aib-left { display: flex; align-items: center; gap: 8px; min-width: 0; flex-wrap: wrap; }
@@ -2274,8 +2303,8 @@
       font-size: 9px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
       padding: 2px 7px; border-radius: 20px; white-space: nowrap;
     }
-    .metric-status-badge.active     { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(23,178,106,0.2); }
-    .metric-status-badge.draft      { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,144,9,0.2); }
+    .metric-status-badge.active     { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(78,214,161,0.2); }
+    .metric-status-badge.draft      { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,201,92,0.2); }
     .metric-status-badge.deprecated { background: rgba(255,255,255,0.04); color: var(--d500); border: 1px solid rgba(255,255,255,0.08); }
     .metric-templates-count {
       font-size: 10px; font-weight: 600; color: var(--d400);
@@ -2317,9 +2346,9 @@
       font-size: 9px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
       padding: 2px 7px; border-radius: 20px; flex-shrink: 0;
     }
-    .cr-status-badge.pending, .cr-status-badge.pending-review { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,144,9,0.2); }
-    .cr-status-badge.approved  { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(23,178,106,0.2); }
-    .cr-status-badge.rejected  { background: var(--err-bg); color: var(--err); border: 1px solid rgba(240,68,56,0.2); }
+    .cr-status-badge.pending, .cr-status-badge.pending-review { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,201,92,0.2); }
+    .cr-status-badge.approved  { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(78,214,161,0.2); }
+    .cr-status-badge.rejected  { background: var(--err-bg); color: var(--err); border: 1px solid rgba(255,114,130,0.2); }
     .cr-status-badge.deployed  { background: rgba(0,102,255,0.1); color: #61adf1; border: 1px solid rgba(0,102,255,0.2); }
     .cr-metric-name { font-size: 13px; font-weight: 700; color: var(--d100); flex: 1; min-width: 0; }
     .cr-meta        { font-size: 10px; color: var(--d500); margin-left: auto; white-space: nowrap; }
@@ -2393,16 +2422,16 @@
       display: flex; align-items: center; gap: 5px;
       font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
     }
-    .health-summary-pill.healthy  { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(23,178,106,0.2); }
-    .health-summary-pill.warning  { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,144,9,0.2); }
-    .health-summary-pill.critical { background: var(--err-bg); color: var(--err); border: 1px solid rgba(240,68,56,0.2); }
+    .health-summary-pill.healthy  { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(78,214,161,0.2); }
+    .health-summary-pill.warning  { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,201,92,0.2); }
+    .health-summary-pill.critical { background: var(--err-bg); color: var(--err); border: 1px solid rgba(255,114,130,0.2); }
     .ds-health-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
       border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 14px;
       transition: border-color var(--transition-base);
     }
-    .ds-health-card.warn { border-color: rgba(247,144,9,0.2); }
-    .ds-health-card.crit { border-color: rgba(240,68,56,0.22); }
+    .ds-health-card.warn { border-color: rgba(247,201,92,0.2); }
+    .ds-health-card.crit { border-color: rgba(255,114,130,0.22); }
     .health-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
     .health-metric-name   { font-size: 13px; font-weight: 700; color: var(--d100); letter-spacing: -0.01em; }
     .health-metric-source { font-size: 10px; color: var(--d500); margin-top: 2px; }
@@ -2534,11 +2563,11 @@
       border-radius: 20px; letter-spacing: 0.04em; text-transform: uppercase; flex-shrink: 0;
     }
     .brief-risk-pill .risk-dot { width: 6px; height: 6px; border-radius: 50%; }
-    .brief-risk-pill.risk-err  { background: var(--err-bg); color: var(--err); border: 1px solid rgba(240,68,56,0.2); }
+    .brief-risk-pill.risk-err  { background: var(--err-bg); color: var(--err); border: 1px solid rgba(255,114,130,0.2); }
     .brief-risk-pill.risk-err .risk-dot { background: var(--err); }
-    .brief-risk-pill.risk-warn { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,144,9,0.2); }
+    .brief-risk-pill.risk-warn { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(247,201,92,0.2); }
     .brief-risk-pill.risk-warn .risk-dot { background: var(--warn); }
-    .brief-risk-pill.risk-ok   { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(23,178,106,0.2); }
+    .brief-risk-pill.risk-ok   { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(78,214,161,0.2); }
     .brief-risk-pill.risk-ok .risk-dot { background: var(--ok); }
 
     /* ── goal Mini Grid ────────────────────────────────────────────── */
@@ -2656,8 +2685,8 @@
     .coaching-confidence {
       display: flex; align-items: center; gap: 4px;
       font-size: 10px; font-weight: 600; color: var(--teal);
-      padding: 2px 8px; background: rgba(111,223,226,0.07);
-      border: 1px solid rgba(111,223,226,0.2); border-radius: 20px;
+      padding: 2px 8px; background: rgba(69,211,230,0.07);
+      border: 1px solid rgba(69,211,230,0.2); border-radius: 20px;
     }
     .coaching-confidence svg { width: 9px; height: 9px; fill: var(--teal); }
     .coaching-card-body { padding: 12px 14px; }
@@ -2690,8 +2719,8 @@
       border: 1px solid transparent;
       transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
     }
-    .coach-btn.accept  { background: rgba(23,178,106,0.12); color: var(--ok); border-color: rgba(23,178,106,0.25); }
-    .coach-btn.accept:hover { background: rgba(23,178,106,0.22); }
+    .coach-btn.accept  { background: rgba(78,214,161,0.14); color: var(--ok); border-color: rgba(78,214,161,0.25); }
+    .coach-btn.accept:hover { background: rgba(78,214,161,0.22); }
     .coach-btn.defer   { background: rgba(139,79,244,0.08); color: var(--qa-accent); border-color: rgba(139,79,244,0.2); }
     .coach-btn.defer:hover { background: rgba(139,79,244,0.16); }
     .coach-btn.dismiss-coaching { background: rgba(255,255,255,0.03); color: var(--d500); border-color: rgba(255,255,255,0.07); margin-left: auto; }
@@ -2702,7 +2731,7 @@
       border-top: 1px solid rgba(255,255,255,0.06);
     }
     .ds-coaching-card.state-accepted .coaching-card-actions { display: none; }
-    .ds-coaching-card.state-accepted .coaching-card-header { background: rgba(23,178,106,0.06); }
+    .ds-coaching-card.state-accepted .coaching-card-header { background: rgba(78,214,161,0.06); }
     .ds-coaching-card.state-accepted .coaching-state-pill  { display: flex; color: var(--ok); }
     .ds-coaching-card.state-deferred .coaching-state-pill  { display: flex; color: var(--warn); }
     .coaching-state-pill svg { width: 12px; height: 12px; stroke: currentColor; fill: none; }
@@ -2744,10 +2773,10 @@
     .ds-di-src-card:hover { border-color: rgba(255,255,255,0.13); background: rgba(255,255,255,0.04); }
     .ds-di-src-card.di-src-selected { border-color: rgba(51,105,255,0.5); background: rgba(51,105,255,0.06); }
     .ds-di-src-card.di-src-error {
-      border-color: rgba(240,68,56,0.35); background: rgba(240,68,56,0.04);
-      box-shadow: 0 0 0 1px rgba(240,68,56,0.12), 0 4px 20px rgba(240,68,56,0.08);
+      border-color: rgba(255,114,130,0.35); background: rgba(255,114,130,0.04);
+      box-shadow: 0 0 0 1px rgba(255,114,130,0.14), 0 4px 20px rgba(255,114,130,0.08);
     }
-    .ds-di-src-card.di-src-warn { border-color: rgba(247,144,9,0.28); background: rgba(247,144,9,0.03); }
+    .ds-di-src-card.di-src-warn { border-color: rgba(247,201,92,0.28); background: rgba(247,201,92,0.03); }
     .di-sc-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .di-sc-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
     .di-sc-icon {
@@ -2756,17 +2785,17 @@
     }
     .ic-zendesk  { background: rgba(3,118,190,0.18); color: #5ac8f5; }
     .ic-freshdesk{ background: rgba(0,168,61,0.15);  color: #4dc98a; }
-    .ic-s3       { background: rgba(247,144,9,0.15);  color: var(--warn); }
-    .ic-connect  { background: rgba(111,223,226,0.13);color: var(--teal); }
+    .ic-s3       { background: rgba(247,201,92,0.15);  color: var(--warn); }
+    .ic-connect  { background: rgba(69,211,230,0.13);color: var(--teal); }
     .di-sc-name { font-size: 12px; font-weight: 600; color: var(--d100); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .di-sc-url  { font-size: 10px; color: var(--d500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px; }
     .di-sc-pill {
       font-size: 10px; font-weight: 600; border-radius: 20px; padding: 3px 9px;
       display: flex; align-items: center; gap: 5px; flex-shrink: 0; white-space: nowrap;
     }
-    .pill-active { background: rgba(23,178,106,0.12); color: var(--ok); }
-    .pill-warn   { background: rgba(247,144,9,0.12);  color: var(--warn); }
-    .pill-error  { background: rgba(240,68,56,0.1);   color: var(--err); }
+    .pill-active { background: rgba(78,214,161,0.14); color: var(--ok); }
+    .pill-warn   { background: rgba(247,201,92,0.14);  color: var(--warn); }
+    .pill-error  { background: rgba(255,114,130,0.1);   color: var(--err); }
     .di-pill-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; display: inline-block; }
     .pill-active .di-pill-dot { animation: diDotPulse 2s ease-in-out infinite; }
     @keyframes diDotPulse { 0%,100%{ opacity:1 } 50%{ opacity:.35 } }
@@ -2778,7 +2807,7 @@
     .di-sc-freshbar { height: 3px; border-radius: 0 0 10px 10px; margin: 14px -14px -12px; flex-shrink: 0; }
     .di-sc-freshbar.fresh    { background: var(--ok); opacity: 0.7; }
     .di-sc-freshbar.stale    { background: var(--warn); opacity: 0.85; }
-    .di-sc-freshbar.bar-error{ background: var(--err); opacity: 1; box-shadow: 0 0 8px rgba(240,68,56,0.4); }
+    .di-sc-freshbar.bar-error{ background: var(--err); opacity: 1; box-shadow: 0 0 8px rgba(255,114,130,0.4); }
 
     /* ── Drop Zone ── */
     .ds-di-dropzone {
@@ -2869,7 +2898,7 @@
     .ds-di-failed-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
     .di-failed-item {
       display: flex; align-items: flex-start; gap: 10px;
-      background: rgba(240,68,56,0.05); border: 1px solid rgba(240,68,56,0.15);
+      background: rgba(255,114,130,0.05); border: 1px solid rgba(255,114,130,0.15);
       border-radius: 8px; padding: 10px 12px;
     }
     .di-failed-ic { color: var(--err); flex-shrink: 0; margin-top: 1px; }
@@ -2928,8 +2957,8 @@
     .di-field-pw { font-family: 'JetBrains Mono', monospace; letter-spacing: .1em; }
     .di-field-hint { font-size: 11px; color: var(--d500); margin-top: 5px; line-height: 1.5; }
     .di-danger-zone {
-      margin-top: 18px; padding: 14px; border: 1px solid rgba(240,68,56,0.2);
-      border-radius: 8px; background: rgba(240,68,56,0.04);
+      margin-top: 18px; padding: 14px; border: 1px solid rgba(255,114,130,0.2);
+      border-radius: 8px; background: rgba(255,114,130,0.04);
     }
     .di-danger-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--err); margin-bottom: 10px; }
     .di-danger-btns { display: flex; gap: 8px; }
@@ -2945,8 +2974,8 @@
     .di-btn-primary:not(:disabled):hover { background: #2356d8; }
     .di-btn-ghost { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--d100); }
     .di-btn-ghost:hover { background: rgba(255,255,255,0.09); }
-    .di-btn-danger { background: rgba(240,68,56,0.08); border-color: rgba(240,68,56,0.25); color: var(--err); }
-    .di-btn-danger:not(:disabled):hover { background: rgba(240,68,56,0.15); }
+    .di-btn-danger { background: rgba(255,114,130,0.08); border-color: rgba(255,114,130,0.25); color: var(--err); }
+    .di-btn-danger:not(:disabled):hover { background: rgba(255,114,130,0.15); }
 
     /* ── Wiz Stepper ── */
     .ds-di-wiz-steps { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
@@ -3074,6 +3103,64 @@
     }
     .qf-hint-sep { color: var(--d700); }
 
+
+    /* ═══════════════════════════════════════════════
+       SEMANTIC + TYPOGRAPHY COLOR REFRESH
+       Surfaces, glass, purple accent and transparency remain unchanged.
+    ═══════════════════════════════════════════════ */
+    .palette-preserved { display:flex; flex-wrap:wrap; gap:7px; margin:0 0 22px; }
+    .palette-preserved-item { display:inline-flex; align-items:center; gap:7px; padding:6px 9px; border:1px solid var(--card-border); border-radius:var(--r-md); background:rgba(255,255,255,0.025); color:var(--text-subtext); font-size:10.5px; font-weight:600; }
+    .palette-preserved-dot { width:12px; height:12px; border-radius:4px; border:1px solid rgba(255,255,255,0.14); flex:none; }
+    .semantic-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:24px; }
+    .semantic-card { overflow:hidden; border:1px solid var(--card-border); border-radius:var(--r-xl); background:var(--card-bg); }
+    .semantic-color { height:72px; position:relative; padding:12px; display:flex; align-items:flex-end; }
+    .semantic-color::after { content:""; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 55%); pointer-events:none; }
+    .semantic-role { position:relative; z-index:1; color:var(--text-on-status); font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .semantic-meta { padding:12px; }
+    .semantic-name { color:var(--text-strong); font-size:12px; font-weight:700; margin-bottom:4px; }
+    .semantic-value { color:var(--text-caption); font:10px/1.5 var(--font-mono); }
+    .semantic-tag-line { display:flex; gap:6px; flex-wrap:wrap; margin-top:9px; }
+    .tag-solid { color:var(--text-on-status); border-color:transparent; }
+    .tag-solid.tag-ok { background:var(--ok); }
+    .tag-solid.tag-warn { background:var(--warn); }
+    .tag-solid.tag-err { background:var(--err); }
+    .tag-solid.tag-teal { background:var(--cyan); }
+    .tag-ok { background:var(--ok-bg); color:var(--ok); border-color:var(--ok-border); }
+    .tag-warn { background:var(--warn-bg); color:var(--warn); border-color:var(--warn-border); }
+    .tag-err { background:var(--err-bg); color:var(--err); border-color:var(--err-border); }
+    .tag-info { background:var(--info-bg); color:var(--info); border-color:var(--info-border); }
+    .tag-teal, .tag-ai { background:var(--cyan-bg); color:var(--cyan); border-color:var(--cyan-border); }
+    .tag-neutral { background:rgba(255,255,255,0.05); color:var(--text-subtext); border-color:rgba(255,255,255,0.11); }
+
+    .tag.tag-solid.tag-ok { background:var(--ok); color:var(--text-on-status); border-color:transparent; }
+    .tag.tag-solid.tag-warn { background:var(--warn); color:var(--text-on-status); border-color:transparent; }
+    .tag.tag-solid.tag-err { background:var(--err); color:var(--text-on-status); border-color:transparent; }
+    .tag.tag-solid.tag-teal { background:var(--cyan); color:var(--text-on-status); border-color:transparent; }
+    .chip.ok, .btn-ok { border-color:var(--ok-border); }
+    .chip.warn, .btn-warn { border-color:var(--warn-border); }
+    .chip.err, .btn-err { border-color:var(--err-border); }
+    .ds-callout.ok { border-color:var(--ok-border); color:var(--ok); }
+    .ds-callout.warn { border-color:var(--warn-border); color:var(--warn); }
+    .ds-callout.err { border-color:var(--err-border); color:var(--err); }
+    .ds-callout.info { border-color:var(--info-border); color:var(--info); }
+    .type-color-panel { border:1px solid var(--card-border); border-radius:var(--r-xl); background:var(--card-bg); overflow:hidden; margin:0 0 28px; }
+    .type-color-row { display:grid; grid-template-columns:180px minmax(0,1fr) 116px; gap:18px; align-items:center; padding:15px 18px; border-bottom:1px solid rgba(255,255,255,0.055); }
+    .type-color-row:last-child { border-bottom:0; }
+    .type-token { font:10px var(--font-mono); color:var(--text-caption); }
+    .type-sample strong { display:block; font-size:12.5px; margin-bottom:3px; }
+    .type-sample span { font-size:10.5px; line-height:1.45; }
+    .type-ratio { justify-self:end; padding:4px 7px; border:1px solid var(--card-border); border-radius:var(--r-sm); color:var(--text-caption); font:9.5px var(--font-mono); }
+    .type-strong { color:var(--text-strong); }
+    .type-primary { color:var(--text-primary); }
+    .type-secondary { color:var(--text-secondary); }
+    .type-subtext { color:var(--text-subtext); }
+    .type-muted { color:var(--text-muted); }
+    .type-caption { color:var(--text-caption); }
+    .type-link { color:var(--text-link); }
+    .palette-note { border-left:2px solid var(--cyan); padding:10px 13px; background:var(--cyan-bg); color:var(--text-subtext); font-size:11px; line-height:1.6; border-radius:0 var(--r-md) var(--r-md) 0; margin-top:14px; }
+    @media (max-width:900px) { .semantic-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .type-color-row { grid-template-columns:140px minmax(0,1fr); }.type-ratio{grid-column:2;justify-self:start;} }
+    @media (max-width:620px) { .semantic-grid { grid-template-columns:1fr; }.type-color-row{grid-template-columns:1fr;gap:7px}.type-ratio{grid-column:auto;} }
+
   </style>
 </head>
 <body>
@@ -3151,7 +3238,7 @@
     AiMY
   </a>
   <span class="ds-topbar-sep">/</span>
-  <span class="ds-topbar-title">QA Design Documentation</span>
+  <span class="ds-topbar-title">QA Design Documentation · Color update</span>
 
   <div class="ds-topbar-right">
     <div class="ds-topbar-search" role="button" tabindex="0" aria-label="Quick find (press / or ⌘K)">
@@ -3159,7 +3246,7 @@
       Quick find&nbsp;
       <kbd>/</kbd>
     </div>
-    <!-- <span class="ds-topbar-version">v2 · 2026</span> -->
+    <span class="ds-topbar-version">Semantic refresh</span>
   </div>
 </header>
 
@@ -3179,6 +3266,7 @@
 
   <div class="ds-nav-group">
     <span class="ds-nav-label">Foundations</span>
+    <a class="ds-nav-link" href="#palette-update"><span class="dot"></span>Semantic + Type</a>
     <a class="ds-nav-link" href="#colors"><span class="dot"></span>Color Tokens</a>
     <a class="ds-nav-link" href="#gradients"><span class="dot"></span>Gradients</a>
     <a class="ds-nav-link" href="#typography"><span class="dot"></span>Typography</a>
@@ -3312,6 +3400,36 @@
 </div>
 
 <!-- ══════════════════════════════════════════════
+     SEMANTIC + TYPOGRAPHY COLOR UPDATE
+══════════════════════════════════════════════ -->
+<div class="ds-section">
+  <span class="ds-section-anchor" id="palette-update"></span>
+  <div class="ds-h2">Semantic + Typography Color Update</div>
+  <p class="ds-desc">A focused contrast pass for status, tags, cyan signals, and supporting text. The dark canvas, card surfaces, purple QA accent, and transparent treatments remain unchanged.</p>
+
+  <div class="ds-h3">Preserved foundation</div>
+  <div class="palette-preserved">
+    <span class="palette-preserved-item"><i class="palette-preserved-dot" style="background:#0f1215"></i>Canvas #0f1215</span>
+    <span class="palette-preserved-item"><i class="palette-preserved-dot" style="background:#141b24"></i>Card #141b24</span>
+    <span class="palette-preserved-item"><i class="palette-preserved-dot" style="background:#1c2630"></i>Raised #1c2630</span>
+    <span class="palette-preserved-item"><i class="palette-preserved-dot" style="background:#8b4ff4"></i>QA purple #8b4ff4</span>
+    <span class="palette-preserved-item"><i class="palette-preserved-dot" style="background:rgba(20,27,36,.85)"></i>Glass rgba(20,27,36,.85)</span>
+  </div>
+
+  <div class="ds-h3">New semantic colors</div>
+  <div class="semantic-grid">
+    <article class="semantic-card"><div class="semantic-color" style="background:var(--ok)"><span class="semantic-role">Success</span></div><div class="semantic-meta"><div class="semantic-name">Green</div><div class="semantic-value">#4ED6A1<br>tint 12% · border 30%</div><div class="semantic-tag-line"><span class="tag tag-ok">Pass</span><span class="tag tag-ok tag-solid">Resolved</span></div></div></article>
+    <article class="semantic-card"><div class="semantic-color" style="background:var(--warn)"><span class="semantic-role">Warning</span></div><div class="semantic-meta"><div class="semantic-name">Yellow</div><div class="semantic-value">#F7C95C<br>tint 13% · border 32%</div><div class="semantic-tag-line"><span class="tag tag-warn">Review</span><span class="tag tag-warn tag-solid">At risk</span></div></div></article>
+    <article class="semantic-card"><div class="semantic-color" style="background:var(--err)"><span class="semantic-role">Critical</span></div><div class="semantic-meta"><div class="semantic-name">Red</div><div class="semantic-value">#FF7282<br>tint 12% · border 30%</div><div class="semantic-tag-line"><span class="tag tag-err">Critical</span><span class="tag tag-err tag-solid">Failed</span></div></div></article>
+    <article class="semantic-card"><div class="semantic-color" style="background:var(--cyan)"><span class="semantic-role">AI / Live</span></div><div class="semantic-meta"><div class="semantic-name">Cyan</div><div class="semantic-value">#45D3E6<br>tint 12% · border 30%</div><div class="semantic-tag-line"><span class="tag tag-teal">Live</span><span class="tag tag-teal tag-solid">AI signal</span></div></div></article>
+  </div>
+  <div class="demo-row">
+    <span class="tag tag-err">P1 Critical</span><span class="tag tag-warn">P2 Warning</span><span class="tag tag-ok">Pass</span><span class="tag tag-info">Informational</span><span class="tag tag-ai">AI Scored</span><span class="tag tag-qa">QA Active</span><span class="tag tag-neutral">Neutral</span>
+  </div>
+  <div class="palette-note">Use the tinted tag for status and metadata. Use a solid tag only for short, high-priority states. Bright semantic fills use #0d1117 text for contrast; purple keeps its existing treatment.</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
      SURFACES OVERVIEW
 ══════════════════════════════════════════════ -->
 <div class="ds-section">
@@ -3430,13 +3548,13 @@
     <div class="token-item" onclick="copyColor('#1c2630','--d800')"><div class="token-swatch" style="background:#1c2630"></div><div class="token-info"><div class="token-name">--d800</div><div class="token-val">#1c2630</div></div><div class="token-copy-hint">Copy</div></div>
     <div class="token-item" onclick="copyColor('#233040','--d750')"><div class="token-swatch" style="background:#233040"></div><div class="token-info"><div class="token-name">--d750</div><div class="token-val">#233040</div></div><div class="token-copy-hint">Copy</div></div>
     <div class="token-item" onclick="copyColor('#2e3d50','--d700')"><div class="token-swatch" style="background:#2e3d50"></div><div class="token-info"><div class="token-name">--d700</div><div class="token-val">#2e3d50</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#4a5b6e','--d600')"><div class="token-swatch" style="background:#4a5b6e"></div><div class="token-info"><div class="token-name">--d600</div><div class="token-val">#4a5b6e</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#637280','--d500')"><div class="token-swatch" style="background:#637280"></div><div class="token-info"><div class="token-name">--d500</div><div class="token-val">#637280</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#8b9aaa','--d400')"><div class="token-swatch" style="background:#8b9aaa"></div><div class="token-info"><div class="token-name">--d400</div><div class="token-val">#8b9aaa</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#b0bcca','--d300')"><div class="token-swatch" style="background:#b0bcca"></div><div class="token-info"><div class="token-name">--d300</div><div class="token-val">#b0bcca</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#c8d2dc','--d200')"><div class="token-swatch" style="background:#c8d2dc"></div><div class="token-info"><div class="token-name">--d200</div><div class="token-val">#c8d2dc</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#d8e0e8','--d100')"><div class="token-swatch" style="background:#d8e0e8"></div><div class="token-info"><div class="token-name">--d100</div><div class="token-val">#d8e0e8</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#eef2f6','--d50')"><div class="token-swatch" style="background:#eef2f6"></div><div class="token-info"><div class="token-name">--d50 · foreground</div><div class="token-val">#eef2f6</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#8091a5','--d600')"><div class="token-swatch" style="background:#8091a5"></div><div class="token-info"><div class="token-name">--d600</div><div class="token-val">#8091a5</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#8394a8','--d500')"><div class="token-swatch" style="background:#8394a8"></div><div class="token-info"><div class="token-name">--d500</div><div class="token-val">#8394a8</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#93a2b4','--d400')"><div class="token-swatch" style="background:#93a2b4"></div><div class="token-info"><div class="token-name">--d400</div><div class="token-val">#93a2b4</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#a8b5c5','--d300')"><div class="token-swatch" style="background:#a8b5c5"></div><div class="token-info"><div class="token-name">--d300</div><div class="token-val">#a8b5c5</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#c3ceda','--d200')"><div class="token-swatch" style="background:#c3ceda"></div><div class="token-info"><div class="token-name">--d200</div><div class="token-val">#c3ceda</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#dee5ed','--d100')"><div class="token-swatch" style="background:#dee5ed"></div><div class="token-info"><div class="token-name">--d100</div><div class="token-val">#dee5ed</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#f5f7fb','--d50')"><div class="token-swatch" style="background:#f5f7fb"></div><div class="token-info"><div class="token-name">--d50 · foreground</div><div class="token-val">#f5f7fb</div></div><div class="token-copy-hint">Copy</div></div>
   </div>
 
   <div class="ds-h3">Brand &amp; Accent</div>
@@ -3445,20 +3563,20 @@
     <div class="token-item" onclick="copyColor('rgba(51,105,255,0.15)','--brand-dim')"><div class="token-swatch" style="background:rgba(51,105,255,0.15)"></div><div class="token-info"><div class="token-name">--brand-dim</div><div class="token-val">rgba(51,105,255,0.15)</div></div><div class="token-copy-hint">Copy</div></div>
     <div class="token-item" onclick="copyColor('#8b4ff4','--qa-accent')"><div class="token-swatch" style="background:#8b4ff4"></div><div class="token-info"><div class="token-name">--qa-accent ⚠</div><div class="token-val">#8b4ff4 · placeholder</div></div><div class="token-copy-hint">Copy</div></div>
     <div class="token-item" onclick="copyColor('rgba(139,79,244,0.15)','--qa-accent-dim')"><div class="token-swatch" style="background:rgba(139,79,244,0.15)"></div><div class="token-info"><div class="token-name">--qa-accent-dim</div><div class="token-val">rgba(139,79,244,0.15)</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#6fdfe2','--teal')"><div class="token-swatch" style="background:#6fdfe2"></div><div class="token-info"><div class="token-name">--teal</div><div class="token-val">#6fdfe2 · AI signals</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('rgba(111,223,226,0.12)','--teal-dim')"><div class="token-swatch" style="background:rgba(111,223,226,0.12)"></div><div class="token-info"><div class="token-name">--teal-dim</div><div class="token-val">rgba(111,223,226,0.12)</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#45d3e6','--teal')"><div class="token-swatch" style="background:#45d3e6"></div><div class="token-info"><div class="token-name">--cyan · --teal alias</div><div class="token-val">#45d3e6 · AI signals</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('rgba(69,211,230,0.12)','--teal-dim')"><div class="token-swatch" style="background:rgba(69,211,230,0.12)"></div><div class="token-info"><div class="token-name">--cyan-bg · --teal-dim alias</div><div class="token-val">rgba(69,211,230,0.12)</div></div><div class="token-copy-hint">Copy</div></div>
   </div>
 
   <div class="ds-h3">Semantic Status</div>
   <div class="token-grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">
-    <div class="token-item" onclick="copyColor('#17b26a','--ok')"><div class="token-swatch" style="background:#17b26a"></div><div class="token-info"><div class="token-name">--ok</div><div class="token-val">#17b26a · Pass, success</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('rgba(23,178,106,0.12)','--ok-bg')"><div class="token-swatch" style="background:rgba(23,178,106,0.12)"></div><div class="token-info"><div class="token-name">--ok-bg</div><div class="token-val">rgba(23,178,106,0.12)</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#f79009','--warn')"><div class="token-swatch" style="background:#f79009"></div><div class="token-info"><div class="token-name">--warn</div><div class="token-val">#f79009 · Borderline</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('rgba(247,144,9,0.12)','--warn-bg')"><div class="token-swatch" style="background:rgba(247,144,9,0.12)"></div><div class="token-info"><div class="token-name">--warn-bg</div><div class="token-val">rgba(247,144,9,0.12)</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#f04438','--err')"><div class="token-swatch" style="background:#f04438"></div><div class="token-info"><div class="token-name">--err</div><div class="token-val">#f04438 · Fail, critical</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('rgba(240,68,56,0.12)','--err-bg')"><div class="token-swatch" style="background:rgba(240,68,56,0.12)"></div><div class="token-info"><div class="token-name">--err-bg</div><div class="token-val">rgba(240,68,56,0.12)</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('#0ea5e9','--info')"><div class="token-swatch" style="background:#0ea5e9"></div><div class="token-info"><div class="token-name">--info</div><div class="token-val">#0ea5e9 · Informational</div></div><div class="token-copy-hint">Copy</div></div>
-    <div class="token-item" onclick="copyColor('rgba(14,165,233,0.12)','--info-bg')"><div class="token-swatch" style="background:rgba(14,165,233,0.12)"></div><div class="token-info"><div class="token-name">--info-bg</div><div class="token-val">rgba(14,165,233,0.12)</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#4ed6a1','--ok')"><div class="token-swatch" style="background:#4ed6a1"></div><div class="token-info"><div class="token-name">--ok</div><div class="token-val">#4ed6a1 · Pass, success</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('rgba(78,214,161,0.14)','--ok-bg')"><div class="token-swatch" style="background:rgba(78,214,161,0.14)"></div><div class="token-info"><div class="token-name">--ok-bg</div><div class="token-val">rgba(78,214,161,0.14)</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#f7c95c','--warn')"><div class="token-swatch" style="background:#f7c95c"></div><div class="token-info"><div class="token-name">--warn</div><div class="token-val">#f7c95c · Borderline</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('rgba(247,201,92,0.14)','--warn-bg')"><div class="token-swatch" style="background:rgba(247,201,92,0.14)"></div><div class="token-info"><div class="token-name">--warn-bg</div><div class="token-val">rgba(247,201,92,0.14)</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#ff7282','--err')"><div class="token-swatch" style="background:#ff7282"></div><div class="token-info"><div class="token-name">--err</div><div class="token-val">#ff7282 · Fail, critical</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('rgba(255,114,130,0.14)','--err-bg')"><div class="token-swatch" style="background:rgba(255,114,130,0.14)"></div><div class="token-info"><div class="token-name">--err-bg</div><div class="token-val">rgba(255,114,130,0.14)</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('#7ea7ff','--info')"><div class="token-swatch" style="background:#7ea7ff"></div><div class="token-info"><div class="token-name">--info</div><div class="token-val">#7ea7ff · Informational</div></div><div class="token-copy-hint">Copy</div></div>
+    <div class="token-item" onclick="copyColor('rgba(126,167,255,0.14)','--info-bg')"><div class="token-swatch" style="background:rgba(126,167,255,0.14)"></div><div class="token-info"><div class="token-name">--info-bg</div><div class="token-val">rgba(126,167,255,0.14)</div></div><div class="token-copy-hint">Copy</div></div>
   </div>
 
   <div class="ds-h3">Surface &amp; Card Tokens</div>
@@ -3475,7 +3593,7 @@
     <tbody>
       <tr><td>--brand</td><td><code>#3369ff</code></td><td>Primary CTAs, focus rings, brand buttons, AI canvas accent</td></tr>
       <tr><td>--qa-accent ⚠</td><td><code>#8b4ff4</code></td><td>Nav active state, chip active, topnav tab active, one swap propagates everywhere</td></tr>
-      <tr><td>--teal</td><td><code>#6fdfe2</code></td><td>AI identity signals, eyebrows, version badge, gradient endpoint</td></tr>
+      <tr><td>--teal</td><td><code>#45d3e6</code></td><td>AI identity signals, eyebrows, version badge, gradient endpoint</td></tr>
       <tr><td>--ok / --warn / --err</td><td>Green / Amber / Red</td><td>Scores, findings, justifys, pipeline status, badge variants</td></tr>
       <tr><td>--card-bg</td><td><code>#141b24</code></td><td>Every card, sidebar, filter tray, tooltip, shared surface token</td></tr>
       <tr><td>--body-bg</td><td><code>#0f1215</code></td><td>Page background only, never used on elevated surfaces</td></tr>
@@ -3492,12 +3610,12 @@
   <p class="ds-desc">Four gradient roles. Direction and stops are fixed, never modify. Click a row to copy the CSS value.</p>
 
   <div class="grad-row">
-    <div class="grad-item" onclick="copyColor('linear-gradient(104deg,#0066ff 0%,#61adf1 47%,#6fdfe2 100%)','--ai')">
-      <div class="grad-swatch" style="background:linear-gradient(104deg,#0066ff 0%,#61adf1 47%,#6fdfe2 100%)"></div>
+    <div class="grad-item" onclick="copyColor('linear-gradient(104deg,#0066ff 0%,#61adf1 47%,#45d3e6 100%)','--ai')">
+      <div class="grad-swatch" style="background:linear-gradient(104deg,#0066ff 0%,#61adf1 47%,#45d3e6 100%)"></div>
       <div class="grad-info">
         <div class="grad-name">--ai</div>
-        <div class="grad-val">linear-gradient(104deg, #0066ff 0%, #61adf1 47%, #6fdfe2 100%)</div>
-        <button class="copy-btn" onclick="event.stopPropagation();copyColor('linear-gradient(104deg,#0066ff 0%,#61adf1 47%,#6fdfe2 100%)','--ai')">Copy</button>
+        <div class="grad-val">linear-gradient(104deg, #0066ff 0%, #61adf1 47%, #45d3e6 100%)</div>
+        <button class="copy-btn" onclick="event.stopPropagation();copyColor('linear-gradient(104deg,#0066ff 0%,#61adf1 47%,#45d3e6 100%)','--ai')">Copy</button>
       </div>
     </div>
     <div class="grad-item" onclick="copyColor('linear-gradient(135deg,#7c3aed,#3369ff)','Avatar fill')">
@@ -3509,19 +3627,19 @@
       </div>
     </div>
     <div class="grad-item" onclick="copyColor('radial-gradient(ellipse at 30% 50%,rgba(0,102,255,0.18) 0%,rgba(97,173,241,0.1) 28%,transparent 60%)','Ellipse 1')">
-      <div class="grad-swatch" style="background:radial-gradient(ellipse at 30% 50%,rgba(0,102,255,0.24) 0%,rgba(97,173,241,0.15) 28%,rgba(111,223,226,0.09) 52%,transparent 70%)"></div>
+      <div class="grad-swatch" style="background:radial-gradient(ellipse at 30% 50%,rgba(0,102,255,0.24) 0%,rgba(97,173,241,0.15) 28%,rgba(69,211,230,0.09) 52%,transparent 70%)"></div>
       <div class="grad-info">
         <div class="grad-name">Ellipse · Primary</div>
-        <div class="grad-val">radial-gradient(ellipse at 30% 50%, #0066ff→#61adf1→#6fdfe2→transparent)</div>
+        <div class="grad-val">radial-gradient(ellipse at 30% 50%, #0066ff→#61adf1→#45d3e6→transparent)</div>
         <button class="copy-btn" onclick="event.stopPropagation();copyColor('radial-gradient(ellipse at 30% 50%,rgba(0,102,255,0.18) 0%,rgba(97,173,241,0.1) 28%,transparent 60%)','Ellipse 1')">Copy</button>
       </div>
     </div>
-    <div class="grad-item" onclick="copyColor('radial-gradient(ellipse at 75% 70%,rgba(111,223,226,0.1) 0%,rgba(139,79,244,0.07) 38%,transparent 60%)','Ellipse 2')">
-      <div class="grad-swatch" style="background:radial-gradient(ellipse at 75% 70%,rgba(111,223,226,0.11) 0%,rgba(139,79,244,0.08) 38%,transparent 66%)"></div>
+    <div class="grad-item" onclick="copyColor('radial-gradient(ellipse at 75% 70%,rgba(69,211,230,0.1) 0%,rgba(139,79,244,0.07) 38%,transparent 60%)','Ellipse 2')">
+      <div class="grad-swatch" style="background:radial-gradient(ellipse at 75% 70%,rgba(69,211,230,0.11) 0%,rgba(139,79,244,0.08) 38%,transparent 66%)"></div>
       <div class="grad-info">
         <div class="grad-name">Ellipse · Secondary</div>
         <div class="grad-val">radial-gradient(ellipse at 75% 70%, teal → purple → transparent)</div>
-        <button class="copy-btn" onclick="event.stopPropagation();copyColor('radial-gradient(ellipse at 75% 70%,rgba(111,223,226,0.1) 0%,rgba(139,79,244,0.07) 38%,transparent 60%)','Ellipse 2')">Copy</button>
+        <button class="copy-btn" onclick="event.stopPropagation();copyColor('radial-gradient(ellipse at 75% 70%,rgba(69,211,230,0.1) 0%,rgba(139,79,244,0.07) 38%,transparent 60%)','Ellipse 2')">Copy</button>
       </div>
     </div>
   </div>
@@ -3549,6 +3667,19 @@
   <span class="ds-section-anchor" id="typography"></span>
   <div class="ds-h2">Typography</div>
   <p class="ds-desc">One typeface across all surfaces: <strong>Urbanist</strong> (300–800). Code and token values use <strong>JetBrains Mono</strong>. Headings use negative tracking; labels use positive tracking.</p>
+
+  <div class="ds-h3">Typography color roles</div>
+  <p class="ds-desc">Supporting text now has explicit roles. Subtext stays clearly separate from body copy while every readable role shown here remains above 4.5:1 against the standard card surface.</p>
+  <div class="type-color-panel">
+    <div class="type-color-row"><div><div class="type-token">--text-strong</div><div class="type-token">#F5F7FB</div></div><div class="type-sample type-strong"><strong>Strong / headings</strong><span>Quality performance overview</span></div><div class="type-ratio">16.2:1</div></div>
+    <div class="type-color-row"><div><div class="type-token">--text-primary</div><div class="type-token">#DEE5ED</div></div><div class="type-sample type-primary"><strong>Primary body</strong><span>Three goals require attention before the next review cycle.</span></div><div class="type-ratio">13.6:1</div></div>
+    <div class="type-color-row"><div><div class="type-token">--text-secondary</div><div class="type-token">#C3CEDA</div></div><div class="type-sample type-secondary"><strong>Secondary copy</strong><span>AiMY found a repeated coaching pattern across six agents.</span></div><div class="type-ratio">10.9:1</div></div>
+    <div class="type-color-row"><div><div class="type-token">--text-subtext</div><div class="type-token">#A8B5C5</div></div><div class="type-sample type-subtext"><strong>Subtext / evidence</strong><span>Team Cairo · 14 interactions · updated 2 minutes ago</span></div><div class="type-ratio">8.3:1</div></div>
+    <div class="type-color-row"><div><div class="type-token">--text-muted</div><div class="type-token">#93A2B4</div></div><div class="type-sample type-muted"><strong>Muted context</strong><span>Compared with the previous 30-day period</span></div><div class="type-ratio">6.7:1</div></div>
+    <div class="type-color-row"><div><div class="type-token">--text-caption</div><div class="type-token">#8394A8</div></div><div class="type-sample type-caption"><strong>Caption / metadata</strong><span>LAST SYNC · 09:42 UTC</span></div><div class="type-ratio">5.6:1</div></div>
+    <div class="type-color-row"><div><div class="type-token">--text-link</div><div class="type-token">#7EA7FF</div></div><div class="type-sample type-link"><strong>Interactive text</strong><span>Review the 8 affected agents →</span></div><div class="type-ratio">7.3:1</div></div>
+  </div>
+
 
   <!-- Type scale rows -->
   <div style="border:1px solid rgba(255,255,255,0.06);border-radius:var(--r-xl);overflow:hidden;margin-bottom:28px">
@@ -3959,19 +4090,19 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Dashboard
       </a>
-      <a class="nav-item" href="agent-scorecards.html">
+      <a class="nav-item" href="#" data-prototype-only="true" aria-disabled="true" title="Screen not included in this prototype">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
         Reviews
       </a>
-      <a class="nav-item" href="my-profile.html" style="order:10;margin-top:auto;">
+      <a class="nav-item" href="#" data-prototype-only="true" aria-disabled="true" title="Screen not included in this prototype" style="order:10;margin-top:auto;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         My Profile
       </a>
-      <a class="nav-item" href="goal-browser.html">
+      <a class="nav-item" href="#" data-prototype-only="true" aria-disabled="true" title="Screen not included in this prototype">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="4" x2="9" y2="20"/></svg>
         Goal Hub
       </a>
-      <a class="nav-item" href="data-ingestion.html">
+      <a class="nav-item" href="#" data-prototype-only="true" aria-disabled="true" title="Screen not included in this prototype">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
         Data
       </a>
@@ -4025,13 +4156,13 @@
     <div style="max-width:420px;display:flex;flex-direction:column;gap:12px;">
 
       <!-- P1 card -->
-      <div style="background:var(--card-bg);border:1px solid rgba(240,68,56,0.22);border-radius:14px;overflow:hidden;position:relative;">
+      <div style="background:var(--card-bg);border:1px solid rgba(255,114,130,0.22);border-radius:14px;overflow:hidden;position:relative;">
         <div style="padding:16px;">
           <!-- meta -->
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
             <span style="width:8px;height:8px;border-radius:50%;background:var(--err);flex-shrink:0;display:inline-block;"></span>
             <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--d400);">SLA Breach</span>
-            <span style="font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--err-bg);color:var(--err);border:1px solid rgba(240,68,56,0.2);margin-left:auto;letter-spacing:0.04em;text-transform:uppercase;">P1 · Critical</span>
+            <span style="font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--err-bg);color:var(--err);border:1px solid rgba(255,114,130,0.2);margin-left:auto;letter-spacing:0.04em;text-transform:uppercase;">P1 · Critical</span>
           </div>
           <!-- conclusion -->
           <p style="font-size:13px;font-weight:600;color:var(--d100);line-height:1.55;margin:0 0 10px;">
@@ -4053,7 +4184,7 @@
           <div style="height:1px;background:rgba(255,255,255,0.06);margin:0 -18px 12px -22px;"></div>
           <!-- action row, flex COLUMN, expand-toggle is BELOW action-btn -->
           <div style="display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:space-between;">
-            <button style="display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:8px 16px;border-radius:8px;background:var(--err-bg);color:var(--err);border:1px solid rgba(240,68,56,0.25);cursor:pointer;font-family:Urbanist,sans-serif;">
+            <button style="display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:8px 16px;border-radius:8px;background:var(--err-bg);color:var(--err);border:1px solid rgba(255,114,130,0.25);cursor:pointer;font-family:Urbanist,sans-serif;">
               View breached tickets
               <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;"><path d="M2 6.5H11M7 2.5L11 6.5L7 10.5"/></svg>
             </button>
@@ -4080,9 +4211,9 @@
   <table class="ds-table">
     <thead><tr><th>Modifier</th><th>Border color</th><th>Action btn color</th></tr></thead>
     <tbody>
-      <tr><td><code>.p1</code></td><td><code>rgba(240,68,56,0.18)</code></td><td>err tint</td></tr>
-      <tr><td><code>.p2</code></td><td><code>rgba(247,144,9,0.18)</code></td><td>warn tint</td></tr>
-      <tr><td><code>.p3</code></td><td><code>rgba(23,178,106,0.15)</code></td><td>ok tint</td></tr>
+      <tr><td><code>.p1</code></td><td><code>rgba(255,114,130,0.18)</code></td><td>err tint</td></tr>
+      <tr><td><code>.p2</code></td><td><code>rgba(247,201,92,0.18)</code></td><td>warn tint</td></tr>
+      <tr><td><code>.p3</code></td><td><code>rgba(78,214,161,0.15)</code></td><td>ok tint</td></tr>
       <tr><td><code>.ai</code></td><td>brand tint</td><td>-</td></tr>
       <tr><td><code>.tier-primary</code></td><td><code>--card-border</code> (base) + qa-accent double-ring <code>box-shadow</code></td><td>-</td></tr>
     </tbody>
@@ -4167,17 +4298,17 @@
   <div class="ds-h3">Evaluation Result Card · Score States</div>
   <div class="ds-preview">
     <div class="demo-row">
-      <div style="padding:14px 18px;background:var(--card-bg);border:1px solid rgba(23,178,106,0.24);border-radius:var(--r-lg);min-width:130px;text-align:center">
+      <div style="padding:14px 18px;background:var(--card-bg);border:1px solid rgba(78,214,161,0.24);border-radius:var(--r-lg);min-width:130px;text-align:center">
         <div style="font-size:30px;font-weight:800;color:var(--ok);letter-spacing:-0.03em;line-height:1">88%</div>
         <span class="tag tag-ok" style="margin:7px 0;display:inline-flex">Pass</span>
         <div style="font-size:10px;color:var(--d400)">High confidence</div>
       </div>
-      <div style="padding:14px 18px;background:var(--card-bg);border:1px solid rgba(247,144,9,0.24);border-radius:var(--r-lg);min-width:130px;text-align:center">
+      <div style="padding:14px 18px;background:var(--card-bg);border:1px solid rgba(247,201,92,0.24);border-radius:var(--r-lg);min-width:130px;text-align:center">
         <div style="font-size:30px;font-weight:800;color:var(--warn);letter-spacing:-0.03em;line-height:1">72%</div>
         <span class="tag tag-warn" style="margin:7px 0;display:inline-flex">Borderline</span>
         <div style="font-size:10px;color:var(--d400)">Medium confidence</div>
       </div>
-      <div style="padding:14px 18px;background:var(--card-bg);border:1px solid rgba(240,68,56,0.24);border-radius:var(--r-lg);min-width:130px;text-align:center">
+      <div style="padding:14px 18px;background:var(--card-bg);border:1px solid rgba(255,114,130,0.24);border-radius:var(--r-lg);min-width:130px;text-align:center">
         <div style="font-size:30px;font-weight:800;color:var(--err);letter-spacing:-0.03em;line-height:1">51%</div>
         <span class="tag tag-err" style="margin:7px 0;display:inline-flex">Fail</span>
         <div style="font-size:10px;color:var(--d400)">Low confidence</div>
@@ -4725,7 +4856,7 @@
     <tbody>
       <tr><td>.driver-bars</td><td>flex column, gap 8px</td><td>Always render bars sorted by impact (highest first).</td></tr>
       <tr><td>.driver-bar-name</td><td>11px/600 --d50, fixed 140px width</td><td>Emoji icon + label + optional .primary-driver-badge for rank 1.</td></tr>
-      <tr><td>.driver-bar-fill.primary</td><td>err gradient #f04438→#fb7067, 0 0 8px err glow</td><td>The top driver. Only one per card.</td></tr>
+      <tr><td>.driver-bar-fill.primary</td><td>err gradient #ff7282→#fb7067, 0 0 8px err glow</td><td>The top driver. Only one per card.</td></tr>
       <tr><td>.driver-bar-fill.secondary</td><td>rgba(err, 0.35)</td><td>Secondary contributors.</td></tr>
       <tr><td>.driver-bar-fill.neutral</td><td>rgba(ok, 0.3)</td><td>Positive factors, use ok green to contrast with err bars.</td></tr>
       <tr><td>transform-origin</td><td>left center on all fill elements</td><td>Required for the CSS <code>grow</code> scaleX animation to expand from left.</td></tr>
@@ -4956,7 +5087,7 @@
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
 
       <!-- urgent -->
-      <div style="display:flex;flex-direction:column;gap:5px;padding:16px;border-radius:12px;border:1px solid rgba(240,68,56,0.3);background:rgba(240,68,56,0.04);min-width:200px;flex:1;position:relative;overflow:hidden;">
+      <div style="display:flex;flex-direction:column;gap:5px;padding:16px;border-radius:12px;border:1px solid rgba(255,114,130,0.3);background:rgba(255,114,130,0.04);min-width:200px;flex:1;position:relative;overflow:hidden;">
         <!-- <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--err);"></div> -->
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
           <span style="font-size:12px;font-weight:700;color:var(--d50);line-height:1.4;">5 agents below threshold</span>
@@ -4970,7 +5101,7 @@
       </div>
 
       <!-- caution -->
-      <div style="display:flex;flex-direction:column;gap:5px;padding:16px;border-radius:12px;border:1px solid rgba(247,144,9,0.3);background:rgba(247,144,9,0.04);min-width:200px;flex:1;position:relative;overflow:hidden;">
+      <div style="display:flex;flex-direction:column;gap:5px;padding:16px;border-radius:12px;border:1px solid rgba(247,201,92,0.3);background:rgba(247,201,92,0.04);min-width:200px;flex:1;position:relative;overflow:hidden;">
         <!-- <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--warn);"></div> -->
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
           <span style="font-size:12px;font-weight:700;color:var(--d50);line-height:1.4;">Response time creeping up</span>
@@ -5167,7 +5298,7 @@
           <span style="font-size:17px;font-weight:700;color:var(--d50);letter-spacing:-0.01em;line-height:1.2;">Quality Score</span>
           <span style="font-size:11px;color:var(--d400);white-space:nowrap;">Interaction quality over time · updated daily</span>
         </div>
-        <button style="display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:var(--teal);padding:5px 10px;border:1px solid rgba(111,223,226,0.3);border-radius:8px;background:rgba(111,223,226,0.06);cursor:pointer;font-family:Urbanist,sans-serif;">
+        <button style="display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:var(--teal);padding:5px 10px;border:1px solid rgba(69,211,230,0.3);border-radius:8px;background:rgba(69,211,230,0.06);cursor:pointer;font-family:Urbanist,sans-serif;">
           <svg width="11" height="11" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
           AiMY Analysis
         </button>
@@ -5587,7 +5718,7 @@
 
       <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
         <div style="display:flex;flex-direction:column;align-items:center;gap:0">
-          <div class="avatar avatar-sm" style="flex-shrink:0;background:linear-gradient(135deg,#0066ff,#6fdfe2)">AI</div>
+          <div class="avatar avatar-sm" style="flex-shrink:0;background:linear-gradient(135deg,#0066ff,#45d3e6)">AI</div>
           <div style="width:1px;flex:1;background:rgba(255,255,255,0.06);margin-top:6px"></div>
         </div>
         <div style="flex:1;padding-bottom:8px">
@@ -5601,7 +5732,7 @@
       </div>
 
       <div style="display:flex;gap:12px;padding:12px 0">
-        <div class="avatar avatar-sm" style="flex-shrink:0;background:linear-gradient(135deg,#f79009,#f04438)">YA</div>
+        <div class="avatar avatar-sm" style="flex-shrink:0;background:linear-gradient(135deg,#f7c95c,#ff7282)">YA</div>
         <div style="flex:1">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
             <span style="font-size:12px;font-weight:700;color:var(--d50)">Youssef A.</span>
@@ -5632,14 +5763,14 @@
         <svg viewBox="0 0 100 100" style="width:100%;height:100%;transform:rotate(-90deg);" role="img" aria-label="72% pass, 11% borderline, 17% fail">
           <defs>
             <linearGradient id="dsPassGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#17B26A"/>
+              <stop offset="0%" stop-color="#4ed6a1"/>
               <stop offset="100%" stop-color="#22C55E"/>
             </linearGradient>
           </defs>
           <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
           <circle cx="50" cy="50" r="40" fill="none" stroke="url(#dsPassGrad)" stroke-width="10" stroke-linecap="butt" stroke-dasharray="181 251.3" stroke-dashoffset="0"/>
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#F79009" stroke-width="10" stroke-linecap="butt" stroke-dasharray="27.6 251.3" stroke-dashoffset="-181"/>
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#F04438" stroke-width="10" stroke-linecap="butt" stroke-dasharray="42.7 251.3" stroke-dashoffset="-208.6"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#f7c95c" stroke-width="10" stroke-linecap="butt" stroke-dasharray="27.6 251.3" stroke-dashoffset="-181"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#ff7282" stroke-width="10" stroke-linecap="butt" stroke-dasharray="42.7 251.3" stroke-dashoffset="-208.6"/>
         </svg>
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;">
           <span style="font-size:20px;font-weight:800;color:var(--d50);letter-spacing:-0.03em;line-height:1;">72%</span>
@@ -5698,9 +5829,9 @@
   <table class="ds-table">
     <thead><tr><th>Active state class</th><th>stroke-width</th><th>filter</th></tr></thead>
     <tbody>
-      <tr><td><code>.active-pass</code></td><td>13</td><td><code>drop-shadow(0 0 7px rgba(23,178,106,0.7))</code></td></tr>
-      <tr><td><code>.active-border</code></td><td>13</td><td><code>drop-shadow(0 0 7px rgba(247,144,9,0.7))</code></td></tr>
-      <tr><td><code>.active-fail</code></td><td>13</td><td><code>drop-shadow(0 0 7px rgba(240,68,56,0.7))</code></td></tr>
+      <tr><td><code>.active-pass</code></td><td>13</td><td><code>drop-shadow(0 0 7px rgba(78,214,161,0.7))</code></td></tr>
+      <tr><td><code>.active-border</code></td><td>13</td><td><code>drop-shadow(0 0 7px rgba(247,201,92,0.7))</code></td></tr>
+      <tr><td><code>.active-fail</code></td><td>13</td><td><code>drop-shadow(0 0 7px rgba(255,114,130,0.7))</code></td></tr>
       <tr><td><code>.dimmed</code></td><td>10 (unchanged)</td><td><code>opacity:0.25</code>, applied to non-hovered arcs</td></tr>
     </tbody>
   </table>
@@ -5773,7 +5904,7 @@
 
       <!-- anomaly -->
       <div style="position:relative;display:flex;flex-direction:column;align-items:center;cursor:pointer;">
-        <div style="position:relative;background:var(--d700);border:1px solid rgba(240,68,56,0.3);border-radius:8px;padding:10px 12px;width:170px;box-shadow:0 4px 16px rgba(0,0,0,0.3);margin-bottom:8px;">
+        <div style="position:relative;background:var(--d700);border:1px solid rgba(255,114,130,0.3);border-radius:8px;padding:10px 12px;width:170px;box-shadow:0 4px 16px rgba(0,0,0,0.3);margin-bottom:8px;">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
             <strong style="font-size:12px;color:var(--err);line-height:1;">Nov Dip</strong>
             <span style="font-size:12px;font-weight:700;color:var(--d50);">74.2%</span>
@@ -5781,13 +5912,13 @@
           <p style="font-size:11px;color:var(--d300);line-height:1.4;margin:0 0 8px;">Driven by 18% spike in billing escalations.</p>
           <button style="display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:var(--err);background:var(--err-bg);border:none;border-radius:8px;padding:4px 8px;cursor:pointer;font-family:Urbanist,sans-serif;">View Root Cause</button>
         </div>
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--err);border:2px solid var(--d800);box-shadow:0 0 0 4px rgba(240,68,56,0.15);"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--err);border:2px solid var(--d800);box-shadow:0 0 0 4px rgba(255,114,130,0.15);"></div>
         <div style="font-size:10px;color:var(--d500);margin-top:6px;">anomaly</div>
       </div>
 
       <!-- peak -->
       <div style="position:relative;display:flex;flex-direction:column;align-items:center;cursor:pointer;">
-        <div style="position:relative;background:var(--d700);border:1px solid rgba(23,178,106,0.3);border-radius:8px;padding:7px 10px;font-size:11px;color:var(--d400);white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,0.3);line-height:1.4;margin-bottom:8px;">
+        <div style="position:relative;background:var(--d700);border:1px solid rgba(78,214,161,0.3);border-radius:8px;padding:7px 10px;font-size:11px;color:var(--d400);white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,0.3);line-height:1.4;margin-bottom:8px;">
           Highest in year<br><span style="color:var(--ok);font-weight:700;">91.4%</span>
         </div>
         <div style="width:8px;height:8px;border-radius:50%;background:var(--ok);border:2px solid var(--d800);"></div>
@@ -5854,7 +5985,7 @@
         <button style="display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:var(--d400);padding:4px 10px;border:1px solid var(--d700);border-radius:8px;background:none;cursor:pointer;font-family:Urbanist,sans-serif;">↻ Refresh</button>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <div style="flex:1;min-width:160px;padding:14px;border-radius:12px;border:1px solid rgba(240,68,56,0.3);background:rgba(240,68,56,0.04);position:relative;overflow:hidden;">
+        <div style="flex:1;min-width:160px;padding:14px;border-radius:12px;border:1px solid rgba(255,114,130,0.3);background:rgba(255,114,130,0.04);position:relative;overflow:hidden;">
           <!-- <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--err);"></div> -->
           <div style="font-size:11px;font-weight:700;color:var(--d50);margin-bottom:4px;">5 agents below threshold</div>
           <div style="font-size:10px;color:var(--d400);">Review agents →</div>
@@ -6139,7 +6270,7 @@
       </div>
 
       <div class="user-pill">
-        <div class="avatar avatar-md" style="background:linear-gradient(135deg,#0066ff,#6fdfe2)">AI</div>
+        <div class="avatar avatar-md" style="background:linear-gradient(135deg,#0066ff,#45d3e6)">AI</div>
         <div>
           <div class="user-pill-name">AiMY</div>
           <div class="user-pill-role">AI System</div>
@@ -6469,8 +6600,8 @@
       </div>
 
       <!-- Error -->
-      <div class="empty-state" style="border-color:rgba(240,68,56,0.14)">
-        <div class="empty-state-icon" style="background:var(--err-bg);border-color:rgba(240,68,56,0.16)">⚠</div>
+      <div class="empty-state" style="border-color:rgba(138,71,63,0.14)">
+        <div class="empty-state-icon" style="background:var(--err-bg);border-color:rgba(255,114,130,0.16)">⚠</div>
         <div class="empty-state-title" style="color:var(--err)">Failed to load</div>
         <div class="empty-state-desc">Could not fetch evaluation data. Check your connection or contact support if this persists.</div>
         <button class="btn btn-err btn-sm" style="margin-top:4px">Retry</button>
@@ -6493,7 +6624,7 @@
 <span class="ct">&lt;/div&gt;</span>
 
 <span class="cm">&lt;!-- Error variant --&gt;</span>
-<span class="ct">&lt;div</span> <span class="ck">class</span>=<span class="cs">"empty-state"</span> <span class="ck">style</span>=<span class="cs">"border-color:rgba(240,68,56,0.14)"</span><span class="ct">&gt;</span>
+<span class="ct">&lt;div</span> <span class="ck">class</span>=<span class="cs">"empty-state"</span> <span class="ck">style</span>=<span class="cs">"border-color:rgba(138,71,63,0.14)"</span><span class="ct">&gt;</span>
   <span class="ct">&lt;div</span> <span class="ck">class</span>=<span class="cs">"empty-state-icon"</span> <span class="ck">style</span>=<span class="cs">"background:var(--err-bg)"</span><span class="ct">&gt;</span>⚠<span class="ct">&lt;/div&gt;</span>
   <span class="ct">&lt;div</span> <span class="ck">class</span>=<span class="cs">"empty-state-title"</span> <span class="ck">style</span>=<span class="cs">"color:var(--err)"</span><span class="ct">&gt;</span>Failed to load<span class="ct">&lt;/div&gt;</span>
   <span class="ct">&lt;div</span> <span class="ck">class</span>=<span class="cs">"empty-state-desc"</span><span class="ct">&gt;</span>Description<span class="ct">&lt;/div&gt;</span>
@@ -6590,42 +6721,42 @@
     <thead><tr><th>Foreground</th><th>Background</th><th>Ratio</th><th>Grade</th><th>Used on</th></tr></thead>
     <tbody>
       <tr>
-        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#eef2f6;display:inline-block;border:1px solid rgba(255,255,255,0.15)"></span>--d50 #eef2f6</span></td>
+        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#f5f7fb;display:inline-block;border:1px solid rgba(255,255,255,0.15)"></span>--d50 #f5f7fb</span></td>
         <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#141b24;display:inline-block"></span>--card-bg #141b24</span></td>
         <td><strong style="color:var(--ok)">12.1:1</strong></td>
         <td><span class="tag tag-ok">AAA</span></td>
         <td>Card titles, primary body text</td>
       </tr>
       <tr>
-        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#b0bcca;display:inline-block"></span>--d300 #b0bcca</span></td>
+        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#a8b5c5;display:inline-block"></span>--d300 #a8b5c5</span></td>
         <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#141b24;display:inline-block"></span>--card-bg #141b24</span></td>
         <td><strong style="color:var(--ok)">6.4:1</strong></td>
         <td><span class="tag tag-ok">AA</span></td>
         <td>Secondary text, field labels, nav items</td>
       </tr>
       <tr>
-        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#8b9aaa;display:inline-block"></span>--d400 #8b9aaa</span></td>
+        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#93a2b4;display:inline-block"></span>--d400 #93a2b4</span></td>
         <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#141b24;display:inline-block"></span>--card-bg #141b24</span></td>
         <td><strong style="color:var(--warn)">4.1:1</strong></td>
         <td><span class="tag tag-warn">AA Large</span></td>
         <td>Sub-labels, hints, only at 12px+ bold or 14px+</td>
       </tr>
       <tr>
-        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#17b26a;display:inline-block"></span>--ok #17b26a</span></td>
+        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#4ed6a1;display:inline-block"></span>--ok #4ed6a1</span></td>
         <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#141b24;display:inline-block"></span>--card-bg #141b24</span></td>
         <td><strong style="color:var(--ok)">5.2:1</strong></td>
         <td><span class="tag tag-ok">AA</span></td>
         <td>Pass labels, ok badge text</td>
       </tr>
       <tr>
-        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#f79009;display:inline-block"></span>--warn #f79009</span></td>
+        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#f7c95c;display:inline-block"></span>--warn #f7c95c</span></td>
         <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#141b24;display:inline-block"></span>--card-bg #141b24</span></td>
         <td><strong style="color:var(--ok)">7.1:1</strong></td>
         <td><span class="tag tag-ok">AAA</span></td>
         <td>Warning labels, borderline badge text</td>
       </tr>
       <tr>
-        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#f04438;display:inline-block"></span>--err #f04438</span></td>
+        <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#ff7282;display:inline-block"></span>--err #ff7282</span></td>
         <td><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#141b24;display:inline-block"></span>--card-bg #141b24</span></td>
         <td><strong style="color:var(--ok)">4.8:1</strong></td>
         <td><span class="tag tag-ok">AA</span></td>
@@ -6997,7 +7128,7 @@
           <svg width="14" height="16" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
         </div>
         <div style="padding:0;background:none;border:none;max-width:540px;">
-          <div style="display:flex;align-items:flex-start;gap:8px;padding:10px 14px;background:var(--err-bg);border:1px solid rgba(240,68,56,0.2);border-radius:4px 12px 12px 12px;font-size:13px;color:var(--d300);line-height:1.5;">
+          <div style="display:flex;align-items:flex-start;gap:8px;padding:10px 14px;background:var(--err-bg);border:1px solid rgba(255,114,130,0.2);border-radius:4px 12px 12px 12px;font-size:13px;color:var(--d300);line-height:1.5;">
             <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--err);fill:none;flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             I couldn't retrieve that data right now, try again in a moment or rephrase your question.
           </div>
@@ -7074,7 +7205,7 @@
       </div>
       <div style="width:1px;height:28px;background:rgba(255,255,255,0.08);flex-shrink:0;"></div>
       <button style="font-family:Urbanist,sans-serif;font-size:12px;font-weight:700;color:#61adf1;background:none;border:none;padding:6px 10px;border-radius:8px;cursor:pointer;flex-shrink:0;letter-spacing:-0.01em;">Undo</button>
-      <div style="position:absolute;bottom:0;left:0;height:2.5px;background:linear-gradient(90deg,#0066ff,#61adf1,#6fdfe2);border-radius:0 0 14px 14px;width:60%;transform-origin:left;opacity:0.9;"></div>
+      <div style="position:absolute;bottom:0;left:0;height:2.5px;background:linear-gradient(90deg,#0066ff,#61adf1,#45d3e6);border-radius:0 0 14px 14px;width:60%;transform-origin:left;opacity:0.9;"></div>
     </div>
   </div>
 
@@ -7294,7 +7425,7 @@
       <div style="background:var(--card-bg);border:1px solid rgba(var(--qa-accent-rgb),0.45);border-radius:14px;padding:18px;cursor:pointer;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;box-shadow:0 0 0 2px rgba(var(--qa-accent-rgb),0.15),0 8px 32px rgba(0,0,0,0.3);">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
           <span style="font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:rgba(51,105,255,0.1);color:#61adf1;border:1px solid rgba(51,105,255,0.2);">System</span>
-          <span style="display:flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--ok);padding:3px 8px;background:var(--ok-bg);border:1px solid rgba(23,178,106,0.2);border-radius:20px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--ok);display:inline-block;"></span>Active</span>
+          <span style="display:flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--ok);padding:3px 8px;background:var(--ok-bg);border:1px solid rgba(78,214,161,0.2);border-radius:20px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--ok);display:inline-block;"></span>Active</span>
         </div>
         <div style="font-size:14px;font-weight:700;color:var(--d50);letter-spacing:-0.01em;line-height:1.3;">Inbound Customer Service · Standard</div>
         <div style="font-size:11px;color:var(--d400);line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">Covers core behavioral goals for voice inbound: empathy, call control, resolution, script adherence, and AHT.</div>
@@ -7327,7 +7458,7 @@
       <!-- Forked template -->
       <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:18px;cursor:pointer;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;">
         <div style="display:flex;align-items:center;gap:8px;">
-          <span style="font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:rgba(111,223,226,0.08);color:var(--teal);border:1px solid rgba(111,223,226,0.2);">Forked</span>
+          <span style="font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:rgba(69,211,230,0.08);color:var(--teal);border:1px solid rgba(69,211,230,0.2);">Forked</span>
         </div>
         <div style="font-size:14px;font-weight:700;color:var(--d50);letter-spacing:-0.01em;line-height:1.3;">Inbound CX · Modified Empathy Weight</div>
         <div style="font-size:11px;color:var(--d400);line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">Fork of System standard. Empathy weight increased to 30% for healthcare accounts.</div>
@@ -7434,10 +7565,10 @@
       </div>
 
       <!-- Deprecated metric -->
-      <div style="background:var(--card-bg);border:1px solid rgba(240,68,56,0.18);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;cursor:pointer;opacity:0.7;">
+      <div style="background:var(--card-bg);border:1px solid rgba(255,114,130,0.18);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;cursor:pointer;opacity:0.7;">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
           <span style="font-size:13px;font-weight:700;color:var(--d50);letter-spacing:-0.005em;">Legacy CSAT v1</span>
-          <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:2px 7px;border-radius:20px;background:rgba(240,68,56,0.1);color:var(--err);border:1px solid rgba(240,68,56,0.2);flex-shrink:0;">Deprecated</span>
+          <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:2px 7px;border-radius:20px;background:rgba(255,114,130,0.1);color:var(--err);border:1px solid rgba(255,114,130,0.2);flex-shrink:0;">Deprecated</span>
         </div>
         <div style="font-size:10px;font-weight:600;color:var(--d500);">Source: Legacy API</div>
         <div style="font-size:11px;color:var(--d400);line-height:1.5;flex:1;">Old CSAT formula. Replaced by CSAT v2 in Q3 2024.</div>
@@ -7479,7 +7610,7 @@
           <div style="font-size:12px;font-weight:700;color:var(--d50);margin-bottom:2px;">Empathy weight increase · Inbound CX</div>
           <div style="font-size:10px;color:var(--d500);">Submitted by Lina H. · 2 days ago</div>
         </div>
-        <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:2px 7px;border-radius:20px;background:rgba(247,144,9,0.1);color:var(--warn);border:1px solid rgba(247,144,9,0.2);flex-shrink:0;">Pending</span>
+        <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:2px 7px;border-radius:20px;background:rgba(247,201,92,0.1);color:var(--warn);border:1px solid rgba(247,201,92,0.2);flex-shrink:0;">Pending</span>
       </div>
       <div style="display:flex;gap:16px;padding:10px 12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;">
         <div style="display:flex;flex-direction:column;gap:2px;">
@@ -7494,8 +7625,8 @@
       </div>
       <div style="font-size:11px;color:var(--d400);line-height:1.55;">"Healthcare accounts consistently flag empathy as their top concern, current weighting undersells its impact on CSAT."</div>
       <div style="display:flex;gap:8px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);">
-        <button style="flex:1;font-size:11px;font-weight:700;padding:7px 12px;border-radius:8px;background:var(--ok-bg);border:1px solid rgba(23,178,106,0.25);color:var(--ok);cursor:pointer;font-family:Urbanist,sans-serif;">Approve</button>
-        <button style="flex:1;font-size:11px;font-weight:700;padding:7px 12px;border-radius:8px;background:var(--err-bg);border:1px solid rgba(240,68,56,0.25);color:var(--err);cursor:pointer;font-family:Urbanist,sans-serif;">Reject</button>
+        <button style="flex:1;font-size:11px;font-weight:700;padding:7px 12px;border-radius:8px;background:var(--ok-bg);border:1px solid rgba(78,214,161,0.25);color:var(--ok);cursor:pointer;font-family:Urbanist,sans-serif;">Approve</button>
+        <button style="flex:1;font-size:11px;font-weight:700;padding:7px 12px;border-radius:8px;background:var(--err-bg);border:1px solid rgba(255,114,130,0.25);color:var(--err);cursor:pointer;font-family:Urbanist,sans-serif;">Reject</button>
         <button style="font-size:11px;font-weight:700;padding:7px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);color:var(--d400);cursor:pointer;font-family:Urbanist,sans-serif;">Discuss</button>
       </div>
     </div>
@@ -7582,7 +7713,7 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;max-width:660px;">
 
       <!-- Warn health card -->
-      <div style="background:var(--card-bg);border:1px solid rgba(247,144,9,0.2);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px;">
+      <div style="background:var(--card-bg);border:1px solid rgba(247,201,92,0.2);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px;">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;">
           <div>
             <div style="font-size:13px;font-weight:700;color:var(--d100);letter-spacing:-0.01em;">Average Handle Time</div>
@@ -7685,7 +7816,7 @@
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-          <span style="display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--ok);padding:3px 8px;background:var(--ok-bg);border:1px solid rgba(23,178,106,0.2);border-radius:20px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--ok);display:inline-block;"></span>Active</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--ok);padding:3px 8px;background:var(--ok-bg);border:1px solid rgba(78,214,161,0.2);border-radius:20px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--ok);display:inline-block;"></span>Active</span>
           <button style="width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--d500);">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:12px;height:12px;"><line x1="4" y1="4" x2="10" y2="10"/><line x1="10" y1="4" x2="4" y2="10"/></svg>
           </button>
@@ -7715,7 +7846,7 @@
               <span style="font-weight:800;color:var(--d50);font-size:12px;">30%</span>
             </div>
             <div style="display:flex;align-items:center;gap:8px;font-size:11px;">
-              <span style="width:8px;height:8px;border-radius:50%;background:#f79009;flex-shrink:0;display:inline-block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#f7c95c;flex-shrink:0;display:inline-block;"></span>
               <span style="flex:1;color:var(--d300);font-weight:500;">Adherence</span>
               <span style="font-weight:800;color:var(--d50);font-size:12px;">25%</span>
             </div>
@@ -7746,7 +7877,7 @@
             </div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
               <button style="display:inline-flex;align-items:center;gap:6px;font-family:Urbanist,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:20px;cursor:pointer;border:none;background:var(--qa-accent);color:#fff;box-shadow:0 2px 10px rgba(var(--qa-accent-rgb),0.3);">Edit in scorecard editor</button>
-              <button style="display:inline-flex;align-items:center;gap:6px;font-family:Urbanist,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:20px;cursor:pointer;background:rgba(111,223,226,0.08);color:var(--teal);border:1px solid rgba(111,223,226,0.2);">Suggest improvements</button>
+              <button style="display:inline-flex;align-items:center;gap:6px;font-family:Urbanist,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:20px;cursor:pointer;background:rgba(69,211,230,0.08);color:var(--teal);border:1px solid rgba(69,211,230,0.2);">Suggest improvements</button>
             </div>
           </div>
         </div>
@@ -7898,7 +8029,7 @@
           <span style="font-weight:700;color:var(--d100);">Inbound CX · Standard</span>
         </div>
         <div style="flex:1;display:flex;justify-content:center;">
-          <span style="display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:var(--d500);padding:4px 10px;background:rgba(111,223,226,0.05);border:1px solid rgba(111,223,226,0.12);border-radius:20px;">
+          <span style="display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:var(--d500);padding:4px 10px;background:rgba(69,211,230,0.05);border:1px solid rgba(69,211,230,0.12);border-radius:20px;">
             <svg viewBox="0 0 12 12" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" style="width:11px;height:11px;opacity:0.7;"><path d="M9 2L3 8M3 3h5v5"/></svg>
             <span style="color:var(--teal);font-weight:700;">Forked</span> from System Standard
           </span>
@@ -7954,7 +8085,7 @@
               </button>
             </div>
           </div>
-          <button style="display:flex;align-items:center;gap:5px;font-family:Urbanist,sans-serif;font-size:11px;font-weight:700;color:var(--teal);padding:6px 12px;border:1px solid rgba(111,223,226,0.2);border-radius:8px;background:rgba(111,223,226,0.05);cursor:pointer;align-self:flex-start;">
+          <button style="display:flex;align-items:center;gap:5px;font-family:Urbanist,sans-serif;font-size:11px;font-weight:700;color:var(--teal);padding:6px 12px;border:1px solid rgba(69,211,230,0.2);border-radius:8px;background:rgba(69,211,230,0.05);cursor:pointer;align-self:flex-start;">
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:12px;height:12px;"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>Add category
           </button>
         </div>
@@ -8024,7 +8155,7 @@
           <div style="display:flex;gap:4px;flex-wrap:wrap;margin-left:auto;">
             <button style="font-family:Urbanist,sans-serif;font-size:10px;font-weight:600;color:var(--d400);padding:4px 10px;border:1px solid rgba(255,255,255,0.07);border-radius:20px;background:none;cursor:pointer;">All</button>
             <button style="font-family:Urbanist,sans-serif;font-size:10px;font-weight:600;color:var(--qa-accent);padding:4px 10px;border:1px solid rgba(var(--qa-accent-rgb),0.25);border-radius:20px;background:rgba(var(--qa-accent-rgb),0.1);cursor:pointer;display:flex;align-items:center;gap:5px;">
-              Pending <span style="background:rgba(247,144,9,0.15);color:var(--warn);font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;">3</span>
+              Pending <span style="background:rgba(247,201,92,0.15);color:var(--warn);font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;">3</span>
             </button>
             <button style="font-family:Urbanist,sans-serif;font-size:10px;font-weight:600;color:var(--d400);padding:4px 10px;border:1px solid rgba(255,255,255,0.07);border-radius:20px;background:none;cursor:pointer;">Approved</button>
           </div>
@@ -8037,7 +8168,7 @@
         <div style="display:flex;flex-direction:column;gap:4px;">
           <button style="font-family:Urbanist,sans-serif;font-size:11px;font-weight:600;color:var(--d400);padding:7px 10px;border:1px solid rgba(255,255,255,0.07);border-radius:8px;background:none;cursor:pointer;text-align:left;">All changes</button>
           <button style="font-family:Urbanist,sans-serif;font-size:11px;font-weight:600;color:var(--qa-accent);padding:7px 10px;border:1px solid rgba(var(--qa-accent-rgb),0.25);border-radius:8px;background:rgba(var(--qa-accent-rgb),0.08);cursor:pointer;text-align:left;display:flex;align-items:center;gap:6px;">
-            Pending review <span style="background:rgba(247,144,9,0.15);color:var(--warn);font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;margin-left:auto;">3</span>
+            Pending review <span style="background:rgba(247,201,92,0.15);color:var(--warn);font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;margin-left:auto;">3</span>
           </button>
           <button style="font-family:Urbanist,sans-serif;font-size:11px;font-weight:600;color:var(--d400);padding:7px 10px;border:1px solid rgba(255,255,255,0.07);border-radius:8px;background:none;cursor:pointer;text-align:left;">Approved</button>
           <button style="font-family:Urbanist,sans-serif;font-size:11px;font-weight:600;color:var(--d400);padding:7px 10px;border:1px solid rgba(255,255,255,0.07);border-radius:8px;background:none;cursor:pointer;text-align:left;">Rejected</button>
@@ -8104,7 +8235,7 @@
           <div style="display:flex;flex-direction:column;gap:1px;align-items:flex-end;">
             <span style="font-size:11px;font-weight:800;letter-spacing:-0.01em;color:var(--err);">64%</span>
             <span style="font-size:8px;font-weight:600;color:var(--d500);text-transform:uppercase;letter-spacing:0.06em;">Quality</span>
-            <span style="display:inline-flex;font-size:9px;font-weight:700;padding:2px 6px;border-radius:999px;background:rgba(240,68,56,0.1);color:var(--err);border:1px solid rgba(240,68,56,0.2);margin-top:2px;white-space:nowrap;">Needs action</span>
+            <span style="display:inline-flex;font-size:9px;font-weight:700;padding:2px 6px;border-radius:999px;background:rgba(255,114,130,0.1);color:var(--err);border:1px solid rgba(255,114,130,0.2);margin-top:2px;white-space:nowrap;">Needs action</span>
           </div>
         </div>
 
@@ -8118,7 +8249,7 @@
           <div style="display:flex;flex-direction:column;gap:1px;align-items:flex-end;">
             <span style="font-size:11px;font-weight:800;color:var(--warn);">79%</span>
             <span style="font-size:8px;font-weight:600;color:var(--d500);text-transform:uppercase;letter-spacing:0.06em;">Quality</span>
-            <span style="display:inline-flex;font-size:9px;font-weight:700;padding:2px 6px;border-radius:999px;background:rgba(247,144,9,0.1);color:var(--warn);border:1px solid rgba(247,144,9,0.2);margin-top:2px;">Watch</span>
+            <span style="display:inline-flex;font-size:9px;font-weight:700;padding:2px 6px;border-radius:999px;background:rgba(247,201,92,0.1);color:var(--warn);border:1px solid rgba(247,201,92,0.2);margin-top:2px;">Watch</span>
           </div>
         </div>
 
@@ -8132,7 +8263,7 @@
           <div style="display:flex;flex-direction:column;gap:1px;align-items:flex-end;">
             <span style="font-size:11px;font-weight:800;color:var(--ok);">90%</span>
             <span style="font-size:8px;font-weight:600;color:var(--d500);text-transform:uppercase;letter-spacing:0.06em;">Quality</span>
-            <span style="display:inline-flex;font-size:9px;font-weight:700;padding:2px 6px;border-radius:999px;background:rgba(23,178,106,0.1);color:#17b26a;border:1px solid rgba(23,178,106,0.2);margin-top:2px;">On track</span>
+            <span style="display:inline-flex;font-size:9px;font-weight:700;padding:2px 6px;border-radius:999px;background:rgba(78,214,161,0.1);color:#4ed6a1;border:1px solid rgba(78,214,161,0.2);margin-top:2px;">On track</span>
           </div>
         </div>
 
@@ -8314,9 +8445,9 @@
         </div>
         <div style="position:relative;height:22px;">
           <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(255,255,255,0.04);"></div>
-          <div style="position:absolute;top:50%;left:0;width:11.7%;height:1.5px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,rgba(240,68,56,0.5));"></div>
-          <div style="position:absolute;top:50%;left:11.7%;width:12px;height:12px;border-radius:50%;background:var(--err);border:2px solid var(--card-bg);transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(240,68,56,0.18),0 0 0 6px rgba(240,68,56,0.08);"></div>
-          <div style="position:absolute;top:0;bottom:0;left:75%;width:1px;background:rgba(247,144,9,0.35);"></div>
+          <div style="position:absolute;top:50%;left:0;width:11.7%;height:1.5px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,rgba(255,114,130,0.5));"></div>
+          <div style="position:absolute;top:50%;left:11.7%;width:12px;height:12px;border-radius:50%;background:var(--err);border:2px solid var(--card-bg);transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(255,114,130,0.18),0 0 0 6px rgba(255,114,130,0.08);"></div>
+          <div style="position:absolute;top:0;bottom:0;left:75%;width:1px;background:rgba(247,201,92,0.35);"></div>
         </div>
         <span style="font-size:13px;font-weight:800;color:var(--err);letter-spacing:-0.01em;text-align:right;">47%</span>
         <span style="font-size:10px;font-weight:700;color:var(--err);text-align:right;">↓12pts</span>
@@ -8332,9 +8463,9 @@
         </div>
         <div style="position:relative;height:22px;">
           <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(255,255,255,0.04);"></div>
-          <div style="position:absolute;top:50%;left:0;width:91%;height:1.5px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,rgba(23,178,106,0.5));"></div>
-          <div style="position:absolute;top:50%;left:91%;width:12px;height:12px;border-radius:50%;background:var(--ok);border:2px solid var(--card-bg);transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(23,178,106,0.18);"></div>
-          <div style="position:absolute;top:0;bottom:0;left:75%;width:1px;background:rgba(247,144,9,0.35);"></div>
+          <div style="position:absolute;top:50%;left:0;width:91%;height:1.5px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,rgba(78,214,161,0.5));"></div>
+          <div style="position:absolute;top:50%;left:91%;width:12px;height:12px;border-radius:50%;background:var(--ok);border:2px solid var(--card-bg);transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(78,214,161,0.18);"></div>
+          <div style="position:absolute;top:0;bottom:0;left:75%;width:1px;background:rgba(247,201,92,0.35);"></div>
         </div>
         <span style="font-size:13px;font-weight:800;color:var(--ok);letter-spacing:-0.01em;text-align:right;">94%</span>
         <span style="font-size:10px;font-weight:700;color:var(--ok);text-align:right;">↑4pts</span>
@@ -8386,22 +8517,22 @@
       </div>
 
       <!-- Target line -->
-      <div style="position:absolute;top:28px;bottom:16px;left:calc(16px + 75%);width:1px;background:rgba(247,144,9,0.45);">
+      <div style="position:absolute;top:28px;bottom:16px;left:calc(16px + 75%);width:1px;background:rgba(247,201,92,0.45);">
         <span style="position:absolute;top:-16px;left:4px;font-size:8px;font-weight:800;color:var(--warn);letter-spacing:0.06em;white-space:nowrap;">TARGET 85%</span>
       </div>
 
       <!-- Canvas with zones + markers -->
       <div style="position:relative;height:56px;">
-        <span style="position:absolute;top:50%;height:8px;transform:translateY(-50%);border-radius:4px;left:0;right:50%;background:linear-gradient(90deg,rgba(240,68,56,0.1),rgba(240,68,56,0.04));"></span>
-        <span style="position:absolute;top:50%;height:8px;transform:translateY(-50%);border-radius:4px;left:50%;right:25%;background:rgba(247,144,9,0.06);"></span>
-        <span style="position:absolute;top:50%;height:8px;transform:translateY(-50%);border-radius:4px;left:75%;right:0;background:linear-gradient(90deg,rgba(23,178,106,0.04),rgba(23,178,106,0.1));"></span>
+        <span style="position:absolute;top:50%;height:8px;transform:translateY(-50%);border-radius:4px;left:0;right:50%;background:linear-gradient(90deg,rgba(255,114,130,0.1),rgba(255,114,130,0.04));"></span>
+        <span style="position:absolute;top:50%;height:8px;transform:translateY(-50%);border-radius:4px;left:50%;right:25%;background:rgba(247,201,92,0.06);"></span>
+        <span style="position:absolute;top:50%;height:8px;transform:translateY(-50%);border-radius:4px;left:75%;right:0;background:linear-gradient(90deg,rgba(78,214,161,0.04),rgba(78,214,161,0.1));"></span>
         <!-- err markers -->
-        <span style="position:absolute;top:50%;left:11.7%;width:18px;height:18px;border-radius:50%;background:var(--err);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;box-shadow:0 0 0 4px rgba(240,68,56,0.18);cursor:pointer;z-index:3;">1</span>
-        <span style="position:absolute;top:50%;left:36.7%;width:18px;height:18px;border-radius:50%;background:var(--err);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;box-shadow:0 0 0 4px rgba(240,68,56,0.18);cursor:pointer;z-index:3;">2</span>
+        <span style="position:absolute;top:50%;left:11.7%;width:18px;height:18px;border-radius:50%;background:var(--err);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;box-shadow:0 0 0 4px rgba(255,114,130,0.18);cursor:pointer;z-index:3;">1</span>
+        <span style="position:absolute;top:50%;left:36.7%;width:18px;height:18px;border-radius:50%;background:var(--err);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;box-shadow:0 0 0 4px rgba(255,114,130,0.18);cursor:pointer;z-index:3;">2</span>
         <!-- warn marker -->
-        <span style="position:absolute;top:50%;left:56.7%;width:18px;height:18px;border-radius:50%;background:var(--warn);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;box-shadow:0 0 0 4px rgba(247,144,9,0.18);cursor:pointer;z-index:3;">3</span>
+        <span style="position:absolute;top:50%;left:56.7%;width:18px;height:18px;border-radius:50%;background:var(--warn);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;box-shadow:0 0 0 4px rgba(247,201,92,0.18);cursor:pointer;z-index:3;">3</span>
         <!-- ok markers -->
-        <span style="position:absolute;top:50%;left:76.7%;width:18px;height:18px;border-radius:50%;background:var(--ok);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;box-shadow:0 0 0 4px rgba(23,178,106,0.18);cursor:pointer;z-index:3;">4</span>
+        <span style="position:absolute;top:50%;left:76.7%;width:18px;height:18px;border-radius:50%;background:var(--ok);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;box-shadow:0 0 0 4px rgba(78,214,161,0.18);cursor:pointer;z-index:3;">4</span>
         <span style="position:absolute;top:50%;left:85%;width:18px;height:18px;border-radius:50%;background:var(--ok);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;cursor:pointer;z-index:3;">6</span>
         <span style="position:absolute;top:50%;left:90%;width:18px;height:18px;border-radius:50%;background:var(--ok);border:2px solid var(--card-bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;cursor:pointer;z-index:3;">5</span>
       </div>
@@ -8454,10 +8585,10 @@
         <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:var(--d400);flex-shrink:0;">
           <span>Low</span>
           <div style="display:flex;gap:2px;align-items:center;">
-            <div style="width:12px;height:12px;border-radius:2px;background:rgba(240,68,56,0.72);"></div>
-            <div style="width:12px;height:12px;border-radius:2px;background:rgba(247,144,9,0.52);"></div>
-            <div style="width:12px;height:12px;border-radius:2px;background:rgba(23,178,106,0.40);"></div>
-            <div style="width:12px;height:12px;border-radius:2px;background:rgba(23,178,106,0.72);"></div>
+            <div style="width:12px;height:12px;border-radius:2px;background:rgba(255,114,130,0.72);"></div>
+            <div style="width:12px;height:12px;border-radius:2px;background:rgba(247,201,92,0.52);"></div>
+            <div style="width:12px;height:12px;border-radius:2px;background:rgba(78,214,161,0.40);"></div>
+            <div style="width:12px;height:12px;border-radius:2px;background:rgba(78,214,161,0.72);"></div>
           </div>
           <span>High</span>
         </div>
@@ -8475,15 +8606,15 @@
           <tbody>
             <tr>
               <td style="font-size:11px;font-weight:600;color:var(--d300);padding:3px 12px 3px 0;white-space:nowrap;">Next steps</td>
-              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(240,68,56,0.72);color:var(--err);">47</div></td>
-              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(23,178,106,0.72);color:var(--ok);">94</div></td>
-              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(23,178,106,0.40);color:var(--ok);">86</div></td>
+              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(255,114,130,0.72);color:var(--err);">47</div></td>
+              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(78,214,161,0.72);color:var(--ok);">94</div></td>
+              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(78,214,161,0.40);color:var(--ok);">86</div></td>
             </tr>
             <tr>
               <td style="font-size:11px;font-weight:600;color:var(--d300);padding:3px 12px 3px 0;white-space:nowrap;">Empathy</td>
-              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(247,144,9,0.52);color:var(--warn);">74</div></td>
-              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(23,178,106,0.56);color:var(--ok);">90</div></td>
-              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(23,178,106,0.72);color:var(--ok);">95</div></td>
+              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(247,201,92,0.52);color:var(--warn);">74</div></td>
+              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(78,214,161,0.56);color:var(--ok);">90</div></td>
+              <td style="padding:3px;"><div style="width:32px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:rgba(78,214,161,0.72);color:var(--ok);">95</div></td>
             </tr>
           </tbody>
         </table>
@@ -8514,27 +8645,27 @@
         <span style="font-size:9px;font-weight:700;color:var(--d500);text-align:center;padding:4px 0;">W5</span>
         <span style="font-size:9px;font-weight:700;color:var(--d500);text-align:center;padding:4px 0;">W6</span>
         <span style="font-size:11px;font-weight:700;color:var(--d100);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:8px;">Omar A.</span>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(240,68,56,0.72);cursor:pointer;"></div>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(240,68,56,0.60);cursor:pointer;"></div>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(247,144,9,0.52);cursor:pointer;"></div>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(247,144,9,0.38);cursor:pointer;"></div>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(23,178,106,0.40);cursor:pointer;"></div>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(23,178,106,0.56);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(255,114,130,0.72);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(255,114,130,0.60);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(247,201,92,0.52);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(247,201,92,0.38);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(78,214,161,0.40);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(78,214,161,0.56);cursor:pointer;"></div>
         <span style="font-size:11px;font-weight:700;color:var(--d100);padding-right:8px;">Jamal W.</span>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(23,178,106,0.72);cursor:pointer;"></div>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(23,178,106,0.56);cursor:pointer;"></div>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(23,178,106,0.72);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(78,214,161,0.72);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(78,214,161,0.56);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(78,214,161,0.72);cursor:pointer;"></div>
         <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(255,255,255,0.04);cursor:default;"></div>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(23,178,106,0.56);cursor:pointer;"></div>
-        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(23,178,106,0.40);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(78,214,161,0.56);cursor:pointer;"></div>
+        <div style="aspect-ratio:1;border-radius:3px;min-height:22px;background:rgba(78,214,161,0.40);cursor:pointer;"></div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-top:16px;font-size:10px;font-weight:600;color:var(--d400);letter-spacing:0.04em;">
         <span>Low</span>
         <div style="display:flex;height:6px;width:120px;border-radius:3px;overflow:hidden;">
-          <span style="flex:1;background:rgba(240,68,56,0.72);"></span>
-          <span style="flex:1;background:rgba(247,144,9,0.52);"></span>
-          <span style="flex:1;background:rgba(23,178,106,0.40);"></span>
-          <span style="flex:1;background:rgba(23,178,106,0.72);"></span>
+          <span style="flex:1;background:rgba(255,114,130,0.72);"></span>
+          <span style="flex:1;background:rgba(247,201,92,0.52);"></span>
+          <span style="flex:1;background:rgba(78,214,161,0.40);"></span>
+          <span style="flex:1;background:rgba(78,214,161,0.72);"></span>
         </div>
         <span>High</span>
       </div>
@@ -8558,14 +8689,14 @@
   <table class="ds-table">
     <thead><tr><th>Class</th><th>Score bucket</th><th>Background</th></tr></thead>
     <tbody>
-      <tr><td><code>.h-95</code></td><td>≥95%</td><td><code>rgba(23,178,106,0.72)</code></td></tr>
-      <tr><td><code>.h-90</code></td><td>90–94%</td><td><code>rgba(23,178,106,0.56)</code></td></tr>
-      <tr><td><code>.h-85</code></td><td>85–89%</td><td><code>rgba(23,178,106,0.40)</code></td></tr>
-      <tr><td><code>.h-80</code></td><td>80–84%</td><td><code>rgba(247,144,9,0.52)</code></td></tr>
-      <tr><td><code>.h-75</code></td><td>75–79%</td><td><code>rgba(247,144,9,0.38)</code></td></tr>
-      <tr><td><code>.h-70</code></td><td>70–74%</td><td><code>rgba(240,68,56,0.48)</code></td></tr>
-      <tr><td><code>.h-65</code></td><td>65–69%</td><td><code>rgba(240,68,56,0.60)</code></td></tr>
-      <tr><td><code>.h-60</code></td><td>&lt;65%</td><td><code>rgba(240,68,56,0.72)</code></td></tr>
+      <tr><td><code>.h-95</code></td><td>≥95%</td><td><code>rgba(78,214,161,0.72)</code></td></tr>
+      <tr><td><code>.h-90</code></td><td>90–94%</td><td><code>rgba(78,214,161,0.56)</code></td></tr>
+      <tr><td><code>.h-85</code></td><td>85–89%</td><td><code>rgba(78,214,161,0.40)</code></td></tr>
+      <tr><td><code>.h-80</code></td><td>80–84%</td><td><code>rgba(247,201,92,0.52)</code></td></tr>
+      <tr><td><code>.h-75</code></td><td>75–79%</td><td><code>rgba(247,201,92,0.38)</code></td></tr>
+      <tr><td><code>.h-70</code></td><td>70–74%</td><td><code>rgba(255,114,130,0.48)</code></td></tr>
+      <tr><td><code>.h-65</code></td><td>65–69%</td><td><code>rgba(255,114,130,0.60)</code></td></tr>
+      <tr><td><code>.h-60</code></td><td>&lt;65%</td><td><code>rgba(255,114,130,0.72)</code></td></tr>
       <tr><td><code>.h-na</code></td><td>No data</td><td><code>rgba(255,255,255,0.04)</code></td></tr>
     </tbody>
   </table>
@@ -8757,7 +8888,7 @@
           <div style="font-size:10px;font-weight:700;color:var(--err);margin-top:1px;">↓3 pts</div>
         </div>
         <div style="flex-shrink:0;min-width:110px;text-align:right;">
-          <button style="font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(240,68,56,0.1);color:var(--err);border:1px solid rgba(240,68,56,0.2);cursor:pointer;font-family:Urbanist,sans-serif;">Coach on this</button>
+          <button style="font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(255,114,130,0.1);color:var(--err);border:1px solid rgba(255,114,130,0.2);cursor:pointer;font-family:Urbanist,sans-serif;">Coach on this</button>
         </div>
       </div>
 
@@ -8870,7 +9001,7 @@
       <div style="width:100%;height:120px;position:relative;">
         <svg viewBox="0 0 440 120" style="width:100%;height:100%;display:block;overflow:visible;">
           <!-- Target line 85% -->
-          <line x1="0" y1="22.5" x2="440" y2="22.5" stroke="rgba(247,144,9,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="0" y1="22.5" x2="440" y2="22.5" stroke="rgba(247,201,92,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
           <!-- Team baseline -->
           <polyline points="0,60 40,57 80,55 120,58 160,54 200,50 240,48 280,45 320,43 360,40 400,38 440,35" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <!-- Agent line -->
@@ -9017,7 +9148,7 @@
             <svg width="12" height="13" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>
             <span class="coaching-card-type">Coaching Recommendation</span>
             <span class="coaching-confidence">
-              <svg viewBox="0 0 10 10" width="9" height="9"><circle cx="5" cy="5" r="4" fill="#6fdfe2"/></svg>
+              <svg viewBox="0 0 10 10" width="9" height="9"><circle cx="5" cy="5" r="4" fill="#45d3e6"/></svg>
               91% match
             </span>
           </div>
@@ -9148,11 +9279,11 @@
           </span>
           <span style="display:inline-flex;align-items:center;font-size:9px;font-weight:700;padding:2px 6px;background:rgba(255,255,255,0.06);border-radius:4px;color:var(--d300);">Agent</span>
           <span style="font-size:13px;font-weight:800;letter-spacing:-0.02em;min-width:36px;text-align:right;color:var(--err);">52%</span>
-          <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;background:rgba(240,68,56,0.12);color:#f04438;border:1px solid rgba(240,68,56,0.22);">Fail</span>
+          <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;background:rgba(255,114,130,0.14);color:#ff7282;border:1px solid rgba(255,114,130,0.22);">Fail</span>
           <span style="display:inline-flex;align-items:center;gap:4px;flex-shrink:0;">
-            <span style="width:3px;height:8px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
-            <span style="width:3px;height:12px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
-            <span style="width:3px;height:16px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
+            <span style="width:3px;height:8px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
+            <span style="width:3px;height:12px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
+            <span style="width:3px;height:16px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
           </span>
           <span style="font-size:10px;font-weight:700;color:var(--d400);">Negative</span>
         </div>
@@ -9166,25 +9297,25 @@
           </span>
           <span style="display:inline-flex;align-items:center;font-size:9px;font-weight:700;padding:2px 6px;background:rgba(255,255,255,0.06);border-radius:4px;color:var(--d300);">Agent</span>
           <span style="font-size:13px;font-weight:800;letter-spacing:-0.02em;min-width:36px;text-align:right;color:var(--ok);">96%</span>
-          <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;background:rgba(23,178,106,0.14);color:#17b26a;border:1px solid rgba(23,178,106,0.25);">Pass</span>
+          <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;background:rgba(63,107,82,0.14);color:#4ed6a1;border:1px solid rgba(78,214,161,0.25);">Pass</span>
           <span style="display:inline-flex;align-items:center;gap:4px;flex-shrink:0;">
-            <span style="width:3px;height:8px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
-            <span style="width:3px;height:12px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
-            <span style="width:3px;height:16px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
+            <span style="width:3px;height:8px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
+            <span style="width:3px;height:12px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
+            <span style="width:3px;height:16px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
           </span>
           <span style="font-size:10px;font-weight:700;color:var(--d400);">Positive</span>
         </div>
 
         <!-- low-conf / borderline row -->
-        <div style="display:grid;grid-template-columns:20px 1fr auto auto auto auto auto auto;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;cursor:pointer;border:1px solid rgba(240,68,56,0.12);background:rgba(240,68,56,0.03);">
+        <div style="display:grid;grid-template-columns:20px 1fr auto auto auto auto auto auto;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;cursor:pointer;border:1px solid rgba(255,114,130,0.14);background:rgba(255,114,130,0.03);">
           <input type="checkbox" style="width:14px;height:14px;border-radius:3px;accent-color:var(--brand);cursor:pointer;flex-shrink:0;">
           <div><div style="font-size:12px;font-weight:700;color:var(--d100);">Michael Chen</div><div style="font-size:11px;color:var(--d400);white-space:nowrap;">May 6, 2026 · Ticket</div></div>
           <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:var(--d400);padding:3px 8px;border-radius:5px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);">Ticket</span>
           <span style="display:inline-flex;align-items:center;font-size:9px;font-weight:700;padding:2px 6px;background:rgba(255,255,255,0.06);border-radius:4px;color:var(--d300);">Agent</span>
           <span style="font-size:13px;font-weight:800;letter-spacing:-0.02em;min-width:36px;text-align:right;color:var(--err);">44%</span>
-          <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;background:rgba(247,144,9,0.12);color:#f79009;border:1px solid rgba(247,144,9,0.22);">Borderline</span>
+          <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;background:rgba(247,201,92,0.14);color:#f7c95c;border:1px solid rgba(247,201,92,0.22);">Borderline</span>
           <span style="display:inline-flex;align-items:center;gap:4px;flex-shrink:0;">
-            <span style="width:3px;height:8px;border-radius:2px;background:#f04438;display:inline-block;"></span>
+            <span style="width:3px;height:8px;border-radius:2px;background:#ff7282;display:inline-block;"></span>
             <span style="width:3px;height:12px;border-radius:2px;background:rgba(255,255,255,0.12);display:inline-block;"></span>
             <span style="width:3px;height:16px;border-radius:2px;background:rgba(255,255,255,0.12);display:inline-block;"></span>
           </span>
@@ -9258,7 +9389,7 @@
 
       <!-- Action row -->
       <div style="display:flex;align-items:center;gap:8px;padding:14px 20px 16px;">
-        <button style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px 16px;border-radius:8px;background:rgba(240,68,56,0.08);border:1px solid rgba(240,68,56,0.22);color:#f04438;font-size:12px;font-weight:700;font-family:Urbanist,sans-serif;cursor:pointer;">
+        <button style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px 16px;border-radius:8px;background:rgba(255,114,130,0.08);border:1px solid rgba(255,114,130,0.22);color:#ff7282;font-size:12px;font-weight:700;font-family:Urbanist,sans-serif;cursor:pointer;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px;"><path d="M9 14l-4-4 4-4M5 10h14M15 14l4 4-4 4"/></svg>Raise justify
         </button>
         <button style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px 16px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);color:var(--d300);font-size:12px;font-weight:700;font-family:Urbanist,sans-serif;cursor:pointer;">
@@ -9313,9 +9444,9 @@
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
         <span style="font-size:9px;font-weight:700;color:var(--d500);text-transform:uppercase;letter-spacing:0.06em;">High</span>
         <span style="display:inline-flex;align-items:flex-end;gap:4px;">
-          <span style="width:3px;height:8px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
-          <span style="width:3px;height:12px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
-          <span style="width:3px;height:16px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
+          <span style="width:3px;height:8px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
+          <span style="width:3px;height:12px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
+          <span style="width:3px;height:16px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
         </span>
       </div>
 
@@ -9323,8 +9454,8 @@
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
         <span style="font-size:9px;font-weight:700;color:var(--d500);text-transform:uppercase;letter-spacing:0.06em;">Med</span>
         <span style="display:inline-flex;align-items:flex-end;gap:4px;">
-          <span style="width:3px;height:8px;border-radius:2px;background:#f79009;display:inline-block;"></span>
-          <span style="width:3px;height:12px;border-radius:2px;background:#f79009;display:inline-block;"></span>
+          <span style="width:3px;height:8px;border-radius:2px;background:#f7c95c;display:inline-block;"></span>
+          <span style="width:3px;height:12px;border-radius:2px;background:#f7c95c;display:inline-block;"></span>
           <span style="width:3px;height:16px;border-radius:2px;background:rgba(255,255,255,0.12);display:inline-block;"></span>
         </span>
       </div>
@@ -9333,7 +9464,7 @@
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
         <span style="font-size:9px;font-weight:700;color:var(--d500);text-transform:uppercase;letter-spacing:0.06em;">Low</span>
         <span style="display:inline-flex;align-items:flex-end;gap:4px;">
-          <span style="width:3px;height:8px;border-radius:2px;background:#f04438;display:inline-block;"></span>
+          <span style="width:3px;height:8px;border-radius:2px;background:#ff7282;display:inline-block;"></span>
           <span style="width:3px;height:12px;border-radius:2px;background:rgba(255,255,255,0.12);display:inline-block;"></span>
           <span style="width:3px;height:16px;border-radius:2px;background:rgba(255,255,255,0.12);display:inline-block;"></span>
         </span>
@@ -9342,11 +9473,11 @@
       <!-- High labeled -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
         <span style="font-size:9px;font-weight:700;color:var(--d500);text-transform:uppercase;letter-spacing:0.06em;">Labeled</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;background:rgba(23,178,106,0.10);color:#17b26a;border:1px solid rgba(23,178,106,0.40);">
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;background:rgba(78,214,161,0.10);color:#4ed6a1;border:1px solid rgba(78,214,161,0.40);">
           <span style="display:inline-flex;align-items:flex-end;gap:2px;">
-            <span style="width:3px;height:7px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
-            <span style="width:3px;height:10px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
-            <span style="width:3px;height:14px;border-radius:2px;background:#17b26a;display:inline-block;"></span>
+            <span style="width:3px;height:7px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
+            <span style="width:3px;height:10px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
+            <span style="width:3px;height:14px;border-radius:2px;background:#4ed6a1;display:inline-block;"></span>
           </span>High confidence
         </span>
       </div>
@@ -9365,9 +9496,9 @@
   <table class="ds-table">
     <thead><tr><th>State</th><th>Filled bars</th><th>Bar color</th><th>Inactive bar color</th></tr></thead>
     <tbody>
-      <tr><td><code>.conf-high</code></td><td>All 3</td><td><code>#17b26a</code></td><td>-</td></tr>
-      <tr><td><code>.conf-med</code></td><td>Bars 1 + 2</td><td><code>#f79009</code></td><td><code>rgba(255,255,255,0.12)</code></td></tr>
-      <tr><td><code>.conf-low</code></td><td>Bar 1 only</td><td><code>#f04438</code></td><td><code>rgba(255,255,255,0.12)</code></td></tr>
+      <tr><td><code>.conf-high</code></td><td>All 3</td><td><code>#4ed6a1</code></td><td>-</td></tr>
+      <tr><td><code>.conf-med</code></td><td>Bars 1 + 2</td><td><code>#f7c95c</code></td><td><code>rgba(255,255,255,0.12)</code></td></tr>
+      <tr><td><code>.conf-low</code></td><td>Bar 1 only</td><td><code>#ff7282</code></td><td><code>rgba(255,255,255,0.12)</code></td></tr>
     </tbody>
   </table>
 
@@ -9403,8 +9534,8 @@
   <p class="ds-desc">AiMY's persistent knowledge surface for a specific agent. Sits at the top of the agent scorecard, above the goal grid. Shows how long AiMY has been tracking the agent, accumulated evidence stats, the primary detected pattern, a trajectory confidence bar, and an expandable full detection timeline. Styled with an AI gradient tint (blue→teal) and a top-edge gradient shimmer line via <code>::before</code>. The <code>.memory-cue</code> pill is a compact variant used inside the <code>.ai-insight-panel</code> header to signal session continuity.</p>
 
   <div class="ds-preview">
-    <div style="background:linear-gradient(135deg,rgba(0,102,255,0.06) 0%,rgba(111,223,226,0.04) 100%);border:1px solid rgba(111,223,226,0.14);border-radius:12px;padding:14px 18px;position:relative;overflow:hidden;max-width:580px;">
-      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(111,223,226,0.35) 40%,rgba(0,102,255,0.25) 70%,transparent);"></div>
+    <div style="background:linear-gradient(135deg,rgba(0,102,255,0.06) 0%,rgba(69,211,230,0.04) 100%);border:1px solid rgba(69,211,230,0.14);border-radius:12px;padding:14px 18px;position:relative;overflow:hidden;max-width:580px;">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(69,211,230,0.35) 40%,rgba(0,102,255,0.25) 70%,transparent);"></div>
 
       <!-- Header -->
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
@@ -9576,7 +9707,7 @@
           <div style="font-size:14px;font-weight:700;color:var(--d50);letter-spacing:-0.01em;margin-bottom:2px;">Omar Abdallah</div>
           <div style="font-size:11px;font-weight:500;color:var(--d400);">Product Support<span style="margin:0 6px;opacity:0.5;">·</span>5 months tenure<span style="margin:0 6px;opacity:0.5;">·</span>Team Lead: Lina H.</div>
         </div>
-        <span style="display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;flex-shrink:0;background:var(--err-bg);color:var(--err);border:1px solid rgba(240,68,56,0.2);">
+        <span style="display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;flex-shrink:0;background:var(--err-bg);color:var(--err);border:1px solid rgba(255,114,130,0.2);">
           <span style="width:6px;height:6px;border-radius:50%;background:var(--err);display:inline-block;"></span>At risk
         </span>
       </div>
@@ -9606,7 +9737,7 @@
           <div style="font-size:13px;font-weight:700;color:var(--d50);line-height:1.2;">Michael Chen</div>
           <div style="font-size:10px;font-weight:600;color:var(--d400);margin-top:2px;">Watch · 11 months tenure</div>
         </div>
-        <span style="display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;flex-shrink:0;background:var(--warn-bg);color:var(--warn);border:1px solid rgba(247,144,9,0.2);">
+        <span style="display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;flex-shrink:0;background:var(--warn-bg);color:var(--warn);border:1px solid rgba(247,201,92,0.2);">
           <span style="width:6px;height:6px;border-radius:50%;background:var(--warn);display:inline-block;"></span>Watch
         </span>
       </div>
@@ -9924,7 +10055,7 @@
   <div class="ds-h3">Open Actions Chip (<code>.open-actions-chip</code>)</div>
   <p class="ds-desc">Attached to a brief card or roster row to show how many coaching/justify actions are still open and how long the oldest one has been waiting. Warn-tinted pill.</p>
   <div class="ds-preview">
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--d300);background:rgba(247,144,9,0.07);border:1px solid rgba(247,144,9,0.2);border-radius:20px;padding:4px 10px;">
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--d300);background:rgba(247,201,92,0.07);border:1px solid rgba(247,201,92,0.2);border-radius:20px;padding:4px 10px;">
       <span style="font-weight:800;color:var(--warn);">2</span> open actions ·
       <span style="color:var(--warn);font-size:10px;">oldest 14d</span>
     </span>
@@ -9939,14 +10070,14 @@
   <div class="ds-h3">AiMY Decision Summary (<code>.ads-*</code>), justifys</div>
   <p class="ds-desc">Shown in the justify workspace after a decision is confirmed. A teal-tinted confirmation block with a header (AiMY logo + "Decision logged"), a narrative sentence, and teal ghost action buttons. Rendered as a replacement for the decision zone once the ruling is saved.</p>
   <div class="ds-preview">
-    <div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:rgba(111,223,226,0.05);border:1px solid rgba(111,223,226,0.18);border-radius:12px;max-width:440px;">
+    <div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:rgba(69,211,230,0.05);border:1px solid rgba(69,211,230,0.18);border-radius:12px;max-width:440px;">
       <div style="display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);">
         <svg width="10" height="12" viewBox="0 0 18 20"><use href="#aimy-logo-small"/></svg>Decision logged · May 9, 2026 14:32
       </div>
       <p style="font-size:13px;color:var(--d200);line-height:1.7;margin:0;">Partial adjustment applied, <strong style="color:var(--d50);">Empathy goal raised from 47% to 55%</strong>. Call Control upheld. Quality score delta: <strong style="color:var(--d50);">+8pts</strong>.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button style="font-size:11px;font-weight:700;padding:6px 14px;border-radius:8px;border:1px solid rgba(111,223,226,0.25);background:rgba(111,223,226,0.07);color:var(--teal);cursor:pointer;font-family:Urbanist,sans-serif;">Notify agent</button>
-        <button style="font-size:11px;font-weight:700;padding:6px 14px;border-radius:8px;border:1px solid rgba(111,223,226,0.25);background:rgba(111,223,226,0.07);color:var(--teal);cursor:pointer;font-family:Urbanist,sans-serif;">Export decision</button>
+        <button style="font-size:11px;font-weight:700;padding:6px 14px;border-radius:8px;border:1px solid rgba(69,211,230,0.25);background:rgba(69,211,230,0.07);color:var(--teal);cursor:pointer;font-family:Urbanist,sans-serif;">Notify agent</button>
+        <button style="font-size:11px;font-weight:700;padding:6px 14px;border-radius:8px;border:1px solid rgba(69,211,230,0.25);background:rgba(69,211,230,0.07);color:var(--teal);cursor:pointer;font-family:Urbanist,sans-serif;">Export decision</button>
       </div>
     </div>
   </div>
@@ -9989,7 +10120,7 @@
       </div>
 
       <!-- SLA breach -->
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:11px 14px;cursor:pointer;margin:4px 8px;border-radius:8px;border:1px solid rgba(240,68,56,0.12);background:rgba(240,68,56,0.03);">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:11px 14px;cursor:pointer;margin:4px 8px;border-radius:8px;border:1px solid rgba(255,114,130,0.14);background:rgba(255,114,130,0.03);">
         <div style="display:flex;align-items:flex-start;gap:10px;flex:1;min-width:0;">
           <div style="width:8px;height:8px;border-radius:50%;background:var(--brand);flex-shrink:0;margin-top:5px;"></div>
           <div style="flex:1;min-width:0;">
@@ -10016,7 +10147,7 @@
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;">
           <span style="font-size:10px;color:var(--d600);">1d ago</span>
-          <span style="font-size:9px;font-weight:700;background:var(--ok-bg);color:var(--ok);border:1px solid rgba(23,178,106,0.2);padding:2px 7px;border-radius:4px;letter-spacing:0.04em;">OVERTURNED</span>
+          <span style="font-size:9px;font-weight:700;background:var(--ok-bg);color:var(--ok);border:1px solid rgba(78,214,161,0.2);padding:2px 7px;border-radius:4px;letter-spacing:0.04em;">OVERTURNED</span>
         </div>
       </div>
 
@@ -10064,7 +10195,7 @@
         </span>
       </div>
       <!-- Individual SLA breach badge inside row -->
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:11px 14px;cursor:pointer;margin:0 8px;border-radius:8px;border:1px solid rgba(240,68,56,0.12);background:rgba(240,68,56,0.03);">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:11px 14px;cursor:pointer;margin:0 8px;border-radius:8px;border:1px solid rgba(255,114,130,0.14);background:rgba(255,114,130,0.03);">
         <div style="font-size:13px;font-weight:700;color:var(--d100);">Fatima Al-Rashid · AHT · Tone</div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
           <span style="font-size:10px;color:var(--d600);">4h ago</span>
@@ -10156,10 +10287,10 @@
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;padding:7px 12px;gap:8px;background:rgba(0,0,0,0.2);font-weight:700;color:var(--d400);font-size:10px;text-transform:uppercase;letter-spacing:0.04em;">
           <span>Week</span><span>Score</span><span>Delta</span><span>Status</span>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;padding:7px 12px;gap:8px;border-top:1px solid rgba(255,255,255,0.04);background:rgba(240,68,56,0.03);">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;padding:7px 12px;gap:8px;border-top:1px solid rgba(255,255,255,0.04);background:rgba(255,114,130,0.03);">
           <span style="color:var(--d400);">W48</span><span style="font-weight:700;color:var(--err);">47%</span><span style="color:var(--err);">↓ 14pts</span><span style="color:var(--err);">Fail</span>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;padding:7px 12px;gap:8px;border-top:1px solid rgba(255,255,255,0.04);background:rgba(247,144,9,0.03);">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;padding:7px 12px;gap:8px;border-top:1px solid rgba(255,255,255,0.04);background:rgba(247,201,92,0.03);">
           <span style="color:var(--d400);">W47</span><span style="font-weight:700;color:var(--warn);">61%</span><span style="color:var(--warn);">↓ 8pts</span><span style="color:var(--warn);">Warn</span>
         </div>
       </div>
@@ -10169,7 +10300,7 @@
       </div>
       <!-- Actions -->
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
-        <button style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:8px;border:1px solid rgba(111,223,226,0.3);background:rgba(111,223,226,0.08);color:var(--teal);cursor:pointer;font-family:Urbanist,sans-serif;">Accept for review</button>
+        <button style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:8px;border:1px solid rgba(69,211,230,0.3);background:rgba(69,211,230,0.08);color:var(--teal);cursor:pointer;font-family:Urbanist,sans-serif;">Accept for review</button>
         <button style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:var(--d300);cursor:pointer;font-family:Urbanist,sans-serif;">Download evidence</button>
       </div>
     </div>
@@ -10484,7 +10615,7 @@
             <div style="font-size:10px;color:var(--d500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:110px;">api.yourco.zendesk.com</div>
           </div>
         </div>
-        <span style="font-size:10px;font-weight:600;border-radius:20px;padding:3px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0;background:rgba(23,178,106,0.12);color:var(--ok);">
+        <span style="font-size:10px;font-weight:600;border-radius:20px;padding:3px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0;background:rgba(78,214,161,0.14);color:var(--ok);">
           <span style="width:5px;height:5px;border-radius:50%;background:currentColor;display:inline-block;"></span>Active
         </span>
       </div>
@@ -10495,7 +10626,7 @@
     </button>
 
     <!-- Stale / warn -->
-    <button style="background:rgba(247,144,9,0.03);border:1px solid rgba(247,144,9,0.28);border-radius:10px;padding:14px 14px 12px;cursor:pointer;text-align:left;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:inherit;">
+    <button style="background:rgba(247,201,92,0.03);border:1px solid rgba(247,201,92,0.28);border-radius:10px;padding:14px 14px 12px;cursor:pointer;text-align:left;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:inherit;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
         <div style="display:flex;align-items:center;gap:10px;min-width:0;">
           <div style="width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,0.06);color:#4dc98a;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -10506,7 +10637,7 @@
             <div style="font-size:10px;color:var(--d500);">yourco.freshdesk.com</div>
           </div>
         </div>
-        <span style="font-size:10px;font-weight:600;border-radius:20px;padding:3px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0;background:rgba(247,144,9,0.12);color:var(--warn);">
+        <span style="font-size:10px;font-weight:600;border-radius:20px;padding:3px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0;background:rgba(247,201,92,0.14);color:var(--warn);">
           <span style="width:5px;height:5px;border-radius:50%;background:currentColor;display:inline-block;"></span>Stale
         </span>
       </div>
@@ -10517,7 +10648,7 @@
     </button>
 
     <!-- Error -->
-    <button style="background:rgba(240,68,56,0.04);border:1px solid rgba(240,68,56,0.35);border-radius:10px;padding:14px 14px 12px;cursor:pointer;text-align:left;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:inherit;box-shadow:0 0 0 1px rgba(240,68,56,0.12),0 4px 20px rgba(240,68,56,0.08);">
+    <button style="background:rgba(255,114,130,0.04);border:1px solid rgba(255,114,130,0.35);border-radius:10px;padding:14px 14px 12px;cursor:pointer;text-align:left;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:inherit;box-shadow:0 0 0 1px rgba(255,114,130,0.14),0 4px 20px rgba(255,114,130,0.08);">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
         <div style="display:flex;align-items:center;gap:10px;min-width:0;">
           <div style="width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,0.06);color:var(--warn);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -10528,7 +10659,7 @@
             <div style="font-size:10px;color:var(--d500);">qa-voice-bucket</div>
           </div>
         </div>
-        <span style="font-size:10px;font-weight:600;border-radius:20px;padding:3px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0;background:rgba(240,68,56,0.1);color:var(--err);">
+        <span style="font-size:10px;font-weight:600;border-radius:20px;padding:3px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0;background:rgba(255,114,130,0.1);color:var(--err);">
           <span style="width:5px;height:5px;border-radius:50%;background:currentColor;display:inline-block;"></span>Error
         </span>
       </div>
@@ -10550,7 +10681,7 @@
             <div style="font-size:10px;color:var(--d500);">Internal</div>
           </div>
         </div>
-        <span style="font-size:10px;font-weight:600;border-radius:20px;padding:3px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0;background:rgba(23,178,106,0.12);color:var(--ok);">
+        <span style="font-size:10px;font-weight:600;border-radius:20px;padding:3px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0;background:rgba(78,214,161,0.14);color:var(--ok);">
           <span style="width:5px;height:5px;border-radius:50%;background:currentColor;display:inline-block;"></span>Active
         </span>
       </div>
@@ -10567,8 +10698,8 @@
     <tbody>
       <tr><td><code>.di-src-card</code></td><td>Base card, ghost bg, 10px radius, flex column, <code>&lt;button&gt;</code> element with <code>data-src</code></td><td><code>rgba(255,255,255,0.025)</code> bg, <code>rgba(255,255,255,0.07)</code> border</td></tr>
       <tr><td><code>.di-src-selected</code></td><td>Active selection, brand blue tint</td><td>border <code>rgba(51,105,255,0.5)</code>, bg <code>rgba(51,105,255,0.06)</code></td></tr>
-      <tr><td><code>.di-src-warn</code></td><td>Stale source, amber border tint</td><td>border <code>rgba(247,144,9,0.28)</code>, bg <code>rgba(247,144,9,0.03)</code></td></tr>
-      <tr><td><code>.di-src-error</code></td><td>Failing source, red border + ambient glow</td><td>border <code>rgba(240,68,56,0.35)</code> + double box-shadow</td></tr>
+      <tr><td><code>.di-src-warn</code></td><td>Stale source, amber border tint</td><td>border <code>rgba(247,201,92,0.28)</code>, bg <code>rgba(247,201,92,0.03)</code></td></tr>
+      <tr><td><code>.di-src-error</code></td><td>Failing source, red border + ambient glow</td><td>border <code>rgba(255,114,130,0.35)</code> + double box-shadow</td></tr>
       <tr><td><code>.di-sc-pill</code></td><td>Status chip wrapper</td><td>Pair with <code>.pill-active</code>, <code>.pill-warn</code>, or <code>.pill-error</code>, note: NOT <code>di-pill-*</code></td></tr>
       <tr><td><code>.di-pill-dot</code></td><td>5px pulsing dot inside pill</td><td><code>background:currentColor</code>. Active variant animates via <code>@keyframes dotPulse</code></td></tr>
       <tr><td><code>.ic-zendesk/.ic-freshdesk/.ic-s3/.ic-connect</code></td><td>Icon container, base tint + per-integration hover reveal</td><td>Base: <code>rgba(255,255,255,0.06)</code>. Hover/selected: per-integration color tint</td></tr>
@@ -10690,7 +10821,7 @@
           </button>
         </div>
         <div style="height:2px;background:rgba(255,255,255,0.07);border-radius:1px;overflow:hidden;margin-bottom:6px;">
-          <div style="height:100%;width:62%;border-radius:1px;background:linear-gradient(90deg,#0066ff,#61adf1,#6fdfe2);"></div>
+          <div style="height:100%;width:62%;border-radius:1px;background:linear-gradient(90deg,#0066ff,#61adf1,#45d3e6);"></div>
         </div>
         <span style="font-size:10px;color:var(--d500);">Uploading… 62%</span>
       </div>
@@ -10706,7 +10837,7 @@
         <span style="font-size:10px;color:var(--ok);">Complete ✓</span>
       </div>
       <!-- failed -->
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(240,68,56,0.18);border-radius:9px;padding:12px 14px;">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,114,130,0.18);border-radius:9px;padding:12px 14px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
           <span style="flex:1;min-width:0;font-size:12px;font-weight:500;color:var(--d100);">transcripts_march_v2.json</span>
           <span style="font-size:11px;color:var(--d500);flex-shrink:0;">8.1 MB</span>
@@ -10800,7 +10931,7 @@
         <span style="font-size:12px;font-weight:600;color:var(--ok);">3,104 records synced</span>
       </div>
       <!-- Failed item expanded -->
-      <div style="margin-top:12px;display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:rgba(240,68,56,0.04);border:1px solid rgba(240,68,56,0.14);border-radius:10px;">
+      <div style="margin-top:12px;display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:rgba(255,114,130,0.04);border:1px solid rgba(138,71,63,0.14);border-radius:10px;">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px;color:var(--err);flex-shrink:0;margin-top:2px;"><circle cx="8" cy="8" r="6"/><line x1="8" y1="5" x2="8" y2="8"/><line x1="8" y1="11" x2="8.01" y2="11"/></svg>
         <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:600;color:var(--d100);margin-bottom:3px;">Zendesk API. May 8, 06:00</div>
@@ -11446,6 +11577,13 @@ function dsDiCfgTab(id, btn) {
   const target = document.getElementById(panes[id]);
   if (target) target.style.display = 'block';
 }
+
+document.querySelectorAll('[data-prototype-only]').forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    showToast('That product screen is outside this color prototype', 'i');
+  });
+});
 </script>
 
 </body>
